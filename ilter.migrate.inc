@@ -6,7 +6,7 @@
 /**
  * Implements hook_migrate_api().
  */
-function ntl_migrate_api() {
+function ilter_migrate_api() {
   $info = array(
     'api' => 2,
     'migrations' => array(
@@ -34,7 +34,7 @@ function ntl_migrate_api() {
 /**
  * Implements hook_deims_migration_overrides().
  */
-function ntl_deims_migration_overrides() {
+function ilter_deims_migration_overrides() {
   return array(
 //    'DeimsContentDataSet' => array('class_name' => 'IlterContentDataSetMigration'),
     'DeimsContentOrganization' => array('class_name' => 'IlterContentOrganizationMigration'),
