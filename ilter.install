@@ -1,0 +1,17 @@
+<?php
+/**
+ * Implements hook_install().
+ */
+function ilter_install() {
+  // Create the ILTER disciplines vocabulary.
+  $description = st('Subspecialties for ecosystem researchers');
+  $help = st('Enter a comma-separated list of words to describe your content.');
+  $vocabulary = (object) array(
+    'name' => st('ILTER Discipline'),
+    'description' => $description,
+    'machine_name' => 'ilter_discipline',
+    'help' => $help,
+
+  );
+  taxonomy_vocabulary_save($vocabulary);
+}
