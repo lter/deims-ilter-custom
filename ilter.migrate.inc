@@ -10,9 +10,9 @@ function ilter_migrate_api() {
   $info = array(
     'api' => 2,
     'migrations' => array(
-//      'IlterContentILTERNationalNetwork' => array(
-//        'class_name' => 'IlterContentILTERNationalNetworkMigration',
-//      ),
+      'IlterContentILTERNationalNetwork' => array(
+        'class_name' => 'IlterContentILTERNationalNetworkMigration',
+      ),
       'IlterTaxonomyILTERDiscipline' => array(
         'class_name' => 'DrupalTerm6Migration',
         'description' => "Taxonomy migration for the 'ILTER Discipline' vocabulary.",
@@ -20,6 +20,14 @@ function ilter_migrate_api() {
         'source_version' => 6,
         'source_vocabulary' => '2',
         'destination_vocabulary' => 'ilter_discipline',
+      ),
+      'IlterTaxonomyNetwork' => array(
+        'class_name' => 'DrupalTerm6Migration',
+        'description' => "Taxonomy migration for the 'Network' vocabulary.",
+        'source_connection' => 'drupal6',
+        'source_version' => 6,
+        'source_vocabulary' => '5',
+        'destination_vocabulary' => 'network',
       ),
     ),
   );
