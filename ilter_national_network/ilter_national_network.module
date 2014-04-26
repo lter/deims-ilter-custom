@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the ILTER National Network feature.
+ */
+
+include_once 'ilter_national_network.features.inc';
