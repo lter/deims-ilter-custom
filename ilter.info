@@ -4,3 +4,5 @@ core = 7.x
 ;dependencies[] = deims
 files[] = migration/IlterContentILTERNationalNetworkMigration.php
 files[] = migration/IlterContentOrganizationMigration.php
+files[] = migration/IlterContentPersonMigration.php
+

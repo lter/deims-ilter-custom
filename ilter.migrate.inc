@@ -46,7 +46,7 @@ function ilter_deims_migration_overrides() {
   return array(
 //    'DeimsContentDataSet' => array('class_name' => 'IlterContentDataSetMigration'),
     'DeimsContentOrganization' => array('class_name' => 'IlterContentOrganizationMigration'),
-//    'DeimsContentPerson' => array('class_name' => 'IlterContentPersonMigration'),
+    'DeimsContentPerson' => array('class_name' => 'IlterContentPersonMigration'),
 //    'DeimsFile' => array('class_name' => 'IlterFileMigration'),
   );
 }
