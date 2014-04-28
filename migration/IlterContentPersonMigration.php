@@ -38,15 +38,20 @@ class IlterContentPersonMigration extends DeimsContentPersonMigration {
     $this->addFieldMapping('field_networks_term_ref:source_type')
       ->defaultValue('tid');
 
+    // field_person_subjects	Subjects Investigated (term ref subjects envTheOLD )
 
-/**
-field_person_subjects	Subjects Investigated (term ref subjects envTheOLD )
-field_person_network	ILTER Network (node ref to LTER National Network)  
-field_person_rel_dataset  Related datasets
-field_dataset_site_ref	Site node ref (reused field..)
-field_dataset_site_name	Site name  Site node ref (reused field..) AGAIN!?!  
-field_person_orcid	ORCID ID (txt field)
-**/
+
+    // new field -- preserve migration JIC
+    $this->addFieldMapping('field_person_orcid','field_person_orcid');
+
+    // Node ref to Ilter Natl. Network.
+    $this->addFieldMapping('field_person_network','field_person_network')
+      ->sourceMigration('IlterContentILTERNationalNetwork');
+
+    // Node Red to "site".
+    $this->addFieldMapping('field_related_sites','field_dataset_site_name')
+      ->sourceMigration('DeimsContentResearchSite');
+
 
     // field_person_pubs does not exist
     $this->removeFieldMapping(NULL, 'field_person_pubs');
@@ -64,6 +69,8 @@ field_person_orcid	ORCID ID (txt field)
       'revision_uid',
       'field_person_pubs',
       'field_person_photo_data',
+      'field_dataset_site_ref', // it is a dupe: Site node ref 
+      'field_person_rel_dataset', // from the inverse relation - Related datasets
     ));
 
     $this->addUnmigratedDestinations(array(
