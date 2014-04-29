@@ -21,6 +21,14 @@ function ilter_migrate_api() {
         'source_vocabulary' => '2',
         'destination_vocabulary' => 'ilter_discipline',
       ),
+      'IlterTaxonomyEnvThesOld' => array(
+        'class_name' => 'DrupalTerm6Migration',
+        'description' => "Taxonomy migration for the 'EnvThesOld' vocabulary.",
+        'source_connection' => 'drupal6',
+        'source_version' => 6,
+        'source_vocabulary' => '3',
+        'destination_vocabulary' => 'envthesold',
+      ),
       'IlterTaxonomyNetwork' => array(
         'class_name' => 'DrupalTerm6Migration',
         'description' => "Taxonomy migration for the 'Network' vocabulary.",
