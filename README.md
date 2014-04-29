@@ -34,11 +34,14 @@ _github_ into the same _ilter_ folder.
 Also, we need new content types, views and DEIMS content type extensions for the 
 ILTER. You will find those, _featurized_, in the local github download subfolder named
 _features_ .  Inside, you will see some features that start with the word _deims_ and
-some that begin with the word _ntl_.  THe _deims_ are overrides of existing features,
-and are located in _/profiles/deims/modules/features_, just place the content accordingly,
-overwrite the existing ones with the new - DEIMS will enact the changes.  THe custom,
-_ntl_ specific need to be moved too, for example, copy them in the _modules_ folder,
-like this:
+some that begin with the word _ilter_.  These _deims_ modules contain overrides of existing 
+DEIMS default features, mostly are expansions of the current core content types. The
+original features are located in _/profiles/deims/modules/features_, just place the new
+overriding features in the corresponding folders, overwrite the existing ones with the new 
+ones. DEIMS will enact the changes automatically most of the times.  
 
-* `cp -r deims-ntl-custom/features/ilter_* DEIMSROOT/sites/default/modules/`
+THe custom features that begin with _ilter_ also need to be copied under your DEIMS 
+instance. For example, you can copy them in the _modules_ folder, like this:
+
+* `cp -r deims-ilter-custom/features/ilter_* DEIMSROOT/sites/default/modules/`
 
