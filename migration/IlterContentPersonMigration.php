@@ -39,14 +39,17 @@ class IlterContentPersonMigration extends DeimsContentPersonMigration {
       ->defaultValue('tid');
 
     // field_person_subjects	Subjects Investigated (term ref subjects envTheOLD )
+    $this->addFieldMapping('field_subjects_term_ref','field_person_subjects')
+     ->sourceMigration('IlterTaxonomyEnvThesOLD');
+    $this->addFieldMapping('field_subjects_term_ref:source_type')
+      ->defaultValue('tid');
 
-
-    // new field -- preserve migration JIC
     $this->addFieldMapping('field_person_orcid','field_person_orcid');
 
     // Node ref to Ilter Natl. Network.
     $this->addFieldMapping('field_person_network','field_person_network')
       ->sourceMigration('IlterContentILTERNationalNetwork');
+
 
     // Node Red to "site".
     $this->addFieldMapping('field_related_sites','field_dataset_site_name')
@@ -91,21 +94,8 @@ class IlterContentPersonMigration extends DeimsContentPersonMigration {
   public function prepareRow($row) {
     // Fix empty email values used on SEV.
     switch ($row->field_person_email) {
-      case 'unknown@sevilleta.unm.edu':
-      case 'none@sevilleta.unm.edu':
+      case 'none@none.com':
         $row->field_person_email = NULL;
-    }
-
-    // Fix country values used on SEV.
-    switch ($row->field_person_country) {
-      case 'Dublin':
-        $row->field_person_city = 'Dublin';
-        $row->field_person_country = 'Ireland';
-        break;
-      case 'Cumbria':
-        $row->field_person_state = 'Cumbria';
-        $row->field_person_country = 'United Kingdom';
-        break;
     }
 
     parent::prepareRow($row);
