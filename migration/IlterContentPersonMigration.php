@@ -47,7 +47,7 @@ class IlterContentPersonMigration extends DeimsContentPersonMigration {
     $this->addFieldMapping('field_person_orcid','field_person_orcid');
 
     // Node ref to Ilter Natl. Network.
-    $this->addFieldMapping('field_person_network','field_person_network')
+    $this->addFieldMapping('field_person_network_ref','field_person_network')
       ->sourceMigration('IlterContentILTERNationalNetwork');
 
 
@@ -55,6 +55,7 @@ class IlterContentPersonMigration extends DeimsContentPersonMigration {
     $this->addFieldMapping('field_related_sites','field_dataset_site_name')
       ->sourceMigration('DeimsContentResearchSite');
 
+    $this->addFieldMapping('field_address:postal_code','field_person_postalcode');
 
     // field_person_pubs does not exist
     $this->removeFieldMapping(NULL, 'field_person_pubs');
@@ -77,6 +78,7 @@ class IlterContentPersonMigration extends DeimsContentPersonMigration {
     ));
 
     $this->addUnmigratedDestinations(array(
+      'field_person_title',
       'field_associated_biblio_author',
       'field_images:language',
       'field_images:alt',
@@ -85,10 +87,16 @@ class IlterContentPersonMigration extends DeimsContentPersonMigration {
       'field_person_specialty_term:ignore_case',
       'field_networks_term_ref:create_term',
       'field_networks_term_ref:ignore_case',
+      'field_address:administrative_area',
+      'field_subjects_term_ref:create_term',
+      'field_subjects_term_ref:ignore_case',
+      'field_person_orcid:language',
     ));
-  }
 
-//        'field_person_list_in_directory',  <<== default to '1'  ?
+//        'field_list_in_directory',  <<== default to '1'  ?
+    $this->addFieldMapping('field_list_in_directory')
+      ->defaultValue('1');
+  }
 
 
   public function prepareRow($row) {
