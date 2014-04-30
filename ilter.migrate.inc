@@ -13,6 +13,17 @@ function ilter_migrate_api() {
       'IlterContentILTERNationalNetwork' => array(
         'class_name' => 'IlterContentILTERNationalNetworkMigration',
       ),
+      'IlterContentForum' => array(
+        'class_name' => 'IlterContentForumMigration',
+      ),
+      'IlterTaxonomyForums' => array(
+        'class_name' => 'DrupalTerm6Migration',
+        'description' => "Taxonomy migration for the 'Forums' vocabulary.",
+        'source_connection' => 'drupal6',
+        'source_version' => 6,
+        'source_vocabulary' => '7',
+        'destination_vocabulary' => 'forums',
+      ),
       'IlterTaxonomyILTERDiscipline' => array(
         'class_name' => 'DrupalTerm6Migration',
         'description' => "Taxonomy migration for the 'ILTER Discipline' vocabulary.",
