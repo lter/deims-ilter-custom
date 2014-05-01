@@ -46,7 +46,7 @@ function ilter_migrate_api() {
         'source_connection' => 'drupal6',
         'source_version' => 6,
         'source_vocabulary' => '5',
-        'destination_vocabulary' => 'network',
+        'destination_vocabulary' => 'networks',
       ),
     ),
   );
