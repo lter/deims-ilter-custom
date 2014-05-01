@@ -45,3 +45,6 @@ instance. For example, you can copy them in the _modules_ folder, like this:
 
 * `cp -r deims-ilter-custom/features/ilter_* DEIMSROOT/sites/default/modules/`
 
+## Notes ##
+
+Please enable the Forum core module before you attempt the migration.
