@@ -5,4 +5,5 @@ core = 7.x
 files[] = migration/IlterContentForumMigration.php
 files[] = migration/IlterContentILTERNationalNetworkMigration.php
 files[] = migration/IlterContentOrganizationMigration.php
+files[] = migration/IlterContentPageMigration.php
 files[] = migration/IlterContentPersonMigration.php
