@@ -32,29 +32,6 @@ function deims_person_taxonomy_default_vocabularies() {
         ),
       ),
     ),
-    'ilter_discipline' => array(
-      'name' => 'ILTER Discipline',
-      'machine_name' => 'ilter_discipline',
-      'description' => 'Subspecialties for ecosystem researchers',
-      'hierarchy' => '0',
-      'module' => 'taxonomy',
-      'weight' => '0',
-      'rdf_mapping' => array(
-        'rdftype' => array(
-          0 => 'skos:ConceptScheme',
-        ),
-        'name' => array(
-          'predicates' => array(
-            0 => 'dc:title',
-          ),
-        ),
-        'description' => array(
-          'predicates' => array(
-            0 => 'rdfs:comment',
-          ),
-        ),
-      ),
-    ),
     'networks' => array(
       'name' => 'Networks',
       'machine_name' => 'networks',
