@@ -2,6 +2,7 @@ name = ILTER
 description = Custom code and migrations specific to the LTER-Europe and ILTER.
 core = 7.x
 ;dependencies[] = deims
+files[] = migration/IlterContentCommitteeMigration.php
 files[] = migration/IlterContentILTERNationalNetworkMigration.php
 files[] = migration/IlterContentForumMigration.php
 files[] = migration/IlterContentOrganizationMigration.php

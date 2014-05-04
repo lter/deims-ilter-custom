@@ -10,6 +10,9 @@ function ilter_migrate_api() {
   $info = array(
     'api' => 2,
     'migrations' => array(
+      'IlterContentCommittee' => array(
+        'class_name' => 'IlterContentCommitteeMigration',
+      ),
       'IlterContentILTERNationalNetwork' => array(
         'class_name' => 'IlterContentILTERNationalNetworkMigration',
       ),
