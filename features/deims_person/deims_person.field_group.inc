@@ -57,6 +57,7 @@ function deims_person_field_group_info() {
       0 => 'group_contact',
       1 => 'group_organization',
       2 => 'group_records',
+      3 => 'group_person_committe',
     ),
     'format_type' => 'htabs',
     'format_settings' => array(
@@ -98,6 +99,36 @@ function deims_person_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_person_committe|node|person|form';
+  $field_group->group_name = 'group_person_committe';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'person';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_details';
+  $field_group->data = array(
+    'label' => 'Committees',
+    'weight' => '11',
+    'children' => array(
+      0 => 'field_pers_comm_participation',
+      1 => 'field_pers_comm_skills',
+      2 => 'field_pers_comm_time',
+    ),
+    'format_type' => 'htab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-person-committe field-group-htab',
+        'required_fields' => 1,
+        'id' => '',
+      ),
+    ),
+  );
+  $export['group_person_committe|node|person|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_records|node|person|form';
   $field_group->group_name = 'group_records';
   $field_group->entity_type = 'node';
@@ -115,6 +146,7 @@ function deims_person_field_group_info() {
       4 => 'field_person_orcid',
       5 => 'field_person_network_ref',
       6 => 'field_related_sites',
+      7 => 'field_pers_comm_active',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
