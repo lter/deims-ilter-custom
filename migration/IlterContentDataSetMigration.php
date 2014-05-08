@@ -30,11 +30,6 @@ SOURCES UNMMAPED
 
 -- this seems a good spot to use the "keywords" vocab?
 
-URLs
-field_dataset_keyw_env_voca    EnvEurope Thesaurus Web site
-field_dataset_keyw_env_voca:title   EnvEurope Thesaurus Web site subfield
-field_dataset_keyw_env_voca:attributes	EnvEurope Thesaurus Web site subfield
-
 [ vocabs ]
 
 use "field_keywords":
@@ -48,12 +43,6 @@ create vocab:
 1	EnvEurope_datapolicy
 
 [ end vocabs ]
-
-create field:
-field_dataset_md_date	Metadata date  (would this be pubDate?()
-
-create field:
-field_dataset_lang	Language  ( use system ? )
 
 create field OR reuse related-links:
 field_dataset_online_locator	Web address  255 nids
@@ -79,10 +68,8 @@ field_dataset_taxa_rankname	Level  50 nids
 field_dataset_taxa_common	Common name 18 nids
 field_dataset_taxa_scientific	Scientific name  23 nids 
 
-create fields:
-field_dataset_rights	  Intellectual rights   187 nids
+create fields: this is taxonomy
 field_dataset_access_use  Principal and granted permission  179 nids
-field_dataset_legal	  Legal act 39 nids
 
 create fields:
 field_dataset_samp_freq	Sampling time span  (cardinlty 1)
@@ -127,6 +114,12 @@ field_keywords:source_type	Option: Set to 'tid' when the value is a source ID
     $this->addFieldMapping('field_short_name', 'field_dataset_short_name');
     //$this->addFieldMapping('field_keywords', '9');
 
+    $this->addFieldMapping('field_date','field_dataset_md_date');
+  
+    $this->addFieldMapping('field_language','field_dataset_lang')
+     ->description('may have to use prepareRow');
+
+
     $this->addFieldMapping('field_related_links', 'field_dataset_related_links');
     $this->addFieldMapping('field_related_links:title', 'field_dataset_related_links:title');
     $this->addFieldMapping('field_related_links:attributes', 'field_dataset_related_links:attributes');
@@ -138,6 +131,9 @@ field_keywords:source_type	Option: Set to 'tid' when the value is a source ID
     $this->addFieldMapping('field_instrumentation', 'field_instrumentation');
 //    $this->addFieldMapping('field_instrumentation:format', 'field_instrumentation:format')
 //      ->callbacks(array($this, 'mapFormat'));
+    $this->addFieldMapping('field_dataset_rights','field_dataset_rights');
+    $this->addFieldMapping('field_dataset_legal','field_dataset_legal');
+
     $this->addFieldMapping('field_project_roles')
       ->description('Handled in prepare().');
     $this->addFieldMapping('field_date_range', 'field_beg_end_date');
@@ -149,6 +145,11 @@ field_keywords:source_type	Option: Set to 'tid' when the value is a source ID
       ->sourceMigration('DeimsContentPerson');
     $this->addFieldMapping('field_person_metadata_provider','field_dataset_mdprovider_ref')
       ->sourceMigration('DeimsContentPerson');
+
+//  need to create field
+    $this->addFieldMapping('field_url','field_dataset_keyw_env_voca');
+    $this->addFieldMapping('field_url:title','field_dataset_keyw_env_voca:title');
+    $this->addFieldMapping('field_url:attributes','field_dataset_keyw_env_voca:attributes');
 
     $this->addUnmigratedSources(array(
       'revision',
@@ -185,10 +186,19 @@ field_keywords:source_type	Option: Set to 'tid' when the value is a source ID
       'field_additional_information:format', 
       'field_maintenance', 
       'field_maintenance:format', 
+      'field_quality_assurance:format', 
+      'field_methods:format', 
+      'field_instrumentation:format', 
       'field_purpose', 
       'field_purpose:format',
       'field_date_range:timezone',
       'field_date_range:rrule',
+      'field_date:timezone',
+      'field_date:rrule',
+      'field_date:to',
+      'field_language:language',
+      'field_dataset_rights:language',
+      'field_dataset_legal:language',
       'field_keywords:create_term',
       'field_keywords:ignore_case',
       'field_publication_date:timezone',
@@ -243,4 +253,6 @@ field_keywords:source_type	Option: Set to 'tid' when the value is a source ID
 
     return $field_values;
   }
+
+
 }

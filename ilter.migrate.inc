@@ -19,6 +19,9 @@ function ilter_migrate_api() {
       'IlterContentForum' => array(
         'class_name' => 'IlterContentForumMigration',
       ),
+      'IlterFieldsCoordDataset' => array(
+        'class_name' => 'IlterFieldsCoordDatasetMigration',
+      ),
       'IlterTaxonomyForums' => array(
         'class_name' => 'DrupalTerm6Migration',
         'description' => "Taxonomy migration for the 'Forums' vocabulary.",
