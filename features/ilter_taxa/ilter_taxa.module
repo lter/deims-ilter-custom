@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the ILTER Taxa feature.
+ */
+
+include_once 'ilter_taxa.features.inc';
