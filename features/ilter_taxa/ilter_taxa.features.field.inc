@@ -10,6 +10,70 @@
 function ilter_taxa_field_default_fields() {
   $fields = array();
 
+  // Exported field: 'taxa-taxa-field_taxa_authority'.
+  $fields['taxa-taxa-field_taxa_authority'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_taxa_authority',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'url',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'url',
+    ),
+    'field_instance' => array(
+      'bundle' => 'taxa',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'e.g. USDA plants http://plants.usda.gov,  ITIS http://itis.gov,   Species2000 http://www.sp2000.org ,  Tropicos http://www.tropicos.org/, etc',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'url',
+          'settings' => array(
+            'nofollow' => FALSE,
+            'trim_length' => 80,
+          ),
+          'type' => 'url_default',
+          'weight' => 3,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'taxa',
+      'field_name' => 'field_taxa_authority',
+      'label' => 'Taxonomic Authority',
+      'required' => 0,
+      'settings' => array(
+        'title_fetch' => 0,
+        'title_field' => 0,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'url',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'url_external',
+        'weight' => '4',
+      ),
+      'workbench_access_field' => 0,
+    ),
+  );
+
   // Exported field: 'taxa-taxa-field_taxa_common'.
   $fields['taxa-taxa-field_taxa_common'] = array(
     'field_config' => array(
@@ -78,6 +142,152 @@ function ilter_taxa_field_default_fields() {
         ),
         'type' => 'text_textfield',
         'weight' => '3',
+      ),
+      'workbench_access_field' => 0,
+    ),
+  );
+
+  // Exported field: 'taxa-taxa-field_taxa_id'.
+  $fields['taxa-taxa-field_taxa_id'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_taxa_id',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '150',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'taxa',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'The taxon identifier used by the corresponding Authority for identification and cataloguing purposes.  I.e, 823171 or ARABI',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 4,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'taxa',
+      'field_name' => 'field_taxa_id',
+      'label' => 'Taxon ID',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '40',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '5',
+      ),
+      'workbench_access_field' => 0,
+    ),
+  );
+
+  // Exported field: 'taxa-taxa-field_taxa_internal_id'.
+  $fields['taxa-taxa-field_taxa_internal_id'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_taxa_internal_id',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '150',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'taxa',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Legacy or internal taxon id used in your information system, database or classification. If none, ignore it.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 5,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'taxa',
+      'field_name' => 'field_taxa_internal_id',
+      'label' => 'Internal Taxon ID',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '40',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '6',
       ),
       'workbench_access_field' => 0,
     ),
@@ -234,11 +444,17 @@ function ilter_taxa_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Common Name');
+  t('Internal Taxon ID');
+  t('Legacy or internal taxon id used in your information system, database or classification. If none, ignore it.');
   t('Level');
   t('Scientific Name');
   t('Select the taxa level you want to provide scientific or common, or both names. It is recommended to provide information starting from the level kingdom, to a level which reflects the dataset being documented');
+  t('Taxon ID');
+  t('Taxonomic Authority');
+  t('The taxon identifier used by the corresponding Authority for identification and cataloguing purposes.  I.e, 823171 or ARABI');
   t('Type here a common name of the level selected above');
   t('Type here a scientific name for the level selected above');
+  t('e.g. USDA plants http://plants.usda.gov,  ITIS http://itis.gov,   Species2000 http://www.sp2000.org ,  Tropicos http://www.tropicos.org/, etc');
 
   return $fields;
 }
