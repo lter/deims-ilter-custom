@@ -1,0 +1,67 @@
+<?php
+/**
+ * @file
+ * Code for the Data Set Content Type feature.
+ */
+
+include_once 'deims_data_set.features.inc';
+
+/**
+ * Implements hook_field_widget_form_alter().
+ */
+function deims_data_set_field_widget_form_alter(&$element, &$form_state, $context) {
+  // Force the data set ID to be a numeric field for entry rather than
+  // free-form text.
+  // @todo Remove when this field is converted to a number field.
+  if ($context['field']['field_name'] == 'field_data_set_id' && $element['value']['#type'] == 'textfield') {
+    $element['value']['#type'] = 'numberfield';
+    $element['value']['#min'] = 1;
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function deims_data_set_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'data_set_node_form') {
+    global $user;
+    // Hide a bunch of cruft from folks who don't need to see it.
+    if (!in_array('administrator', $user->roles)) {
+      $form['#after_build'][] = 'deims_data_set_after_build';
+    }
+  }
+}
+
+/**
+ * Hide all the fields that aren't pertinent to adding a data set.
+ *
+ * @params array $form
+ *   The form being modified.
+ */
+function deims_data_set_after_build($form, &$form_state) {
+  // Hide Format text.
+  $fields = array(
+    'field_abstract',
+    'field_purpose',
+    'field_additional_information',
+    'field_maintenance',
+    'field_methods',
+    'field_quality_assurance',
+    'field_instrumentation',
+  );
+
+  foreach ($fields as $field) {
+    if (is_array($form[$field][LANGUAGE_NONE][0])) {
+      $form[$field][LANGUAGE_NONE][0]['format']['#access'] = FALSE;
+    }
+  }
+
+  // Hide the vertical tabs at the bottom (except for Publishing Options).
+  field_group_hide_field_groups($form, array('group_read_only'));
+  $form['custom_breadcrumbs']['#access'] = FALSE;
+  $form['author']['#access'] = FALSE;
+  $form['path']['#access'] = FALSE;
+  $form['print']['#access'] = FALSE;
+
+  return $form;
+}

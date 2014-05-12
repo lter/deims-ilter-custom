@@ -1,0 +1,14 @@
+name = ILTER Free Keyword
+core = 7.x
+package = ILTER Features
+version = 7.x-1.0-dev
+project = ilter_free_keyword
+dependencies[] = eck
+dependencies[] = eck
+dependencies[] = features
+dependencies[] = text
+features[eck_bundle][] = free_keyword_free_keyword
+features[eck_entity_type][] = free_keyword
+features[features_api][] = api:1
+features[field][] = free_keyword-free_keyword-field_free_keyword
+features[field][] = free_keyword-free_keyword-field_free_vocab_id

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the ILTER Free Keyword feature.
+ */
+
+include_once 'ilter_free_keyword.features.inc';

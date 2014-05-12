@@ -1,0 +1,15 @@
+name = ILTER Sampling Area
+core = 7.x
+package = ILTER Features
+version = 7.x-1.0-dev
+project = ilter_sampling_area
+dependencies[] = eck
+dependencies[] = eck
+dependencies[] = features
+dependencies[] = select_or_other
+dependencies[] = text
+features[eck_bundle][] = sampling_description_sampling_description
+features[eck_entity_type][] = sampling_description
+features[features_api][] = api:1
+features[field][] = sampling_description-sampling_description-field_sampdesc_description
+features[field][] = sampling_description-sampling_description-field_sampdesc_timespan
