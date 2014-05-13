@@ -30,6 +30,8 @@ SOURCES UNMMAPED
 
 -- this seems a good spot to use the "keywords" vocab?
 
+URLs
+
 [ vocabs ]
 
 use "field_keywords":
@@ -105,13 +107,21 @@ field_keywords:source_type	Option: Set to 'tid' when the value is a source ID
       ->description('Possibly overridden in prepareRow().');
 
 **/
+    $this->addFieldMapping('field_keywords','field_dataset_keyw_env')
+      ->sourceMigration('IlterTaxonomyEnvThes3'); 
+    $this->addFieldMapping('field_keywords:source_type')
+      ->defaultValue('tid');
+   
+    $this->addFieldMapping('field_access_use_termref','field_dataset_access_use')
+      ->sourceMigration('IlterTaxonomyEnvEuropeDataPolicy');
+    $this->addFieldMapping('field_access_use_termref:source_type')
+      ->defaultValue('tid');
 
     $this->addFieldMapping('field_data_set_id', 'field_dataset_id');
     $this->addFieldMapping('field_abstract', 'field_dataset_abstract');
     $this->addFieldMapping('field_abstract:format', 'field_dataset_abstract:format')
       ->callbacks(array($this, 'mapFormat'));
     //$this->addFieldMapping('field_core_areas', '1');
-    $this->addFieldMapping('field_short_name', 'field_dataset_short_name');
     //$this->addFieldMapping('field_keywords', '9');
 
     $this->addFieldMapping('field_date','field_dataset_md_date');
@@ -119,18 +129,23 @@ field_keywords:source_type	Option: Set to 'tid' when the value is a source ID
     $this->addFieldMapping('field_language','field_dataset_lang')
      ->description('may have to use prepareRow');
 
+    $this->addFieldMapping('field_dataset_site_name_ref','field_dataset_site_name')
+     ->sourceMigration('IlterSiteMigration');
 
-    $this->addFieldMapping('field_related_links', 'field_dataset_related_links');
-    $this->addFieldMapping('field_related_links:title', 'field_dataset_related_links:title');
-    $this->addFieldMapping('field_related_links:attributes', 'field_dataset_related_links:attributes');
-    $this->addFieldMapping('field_related_sites', 'field_dataset_site_ref')
+    $this->addFieldMapping('field_related_links', 'field_dataset_method_title_url');
+    $this->addFieldMapping('field_related_links:title', 'field_dataset_method_title_url:title');
+    $this->addFieldMapping('field_related_links:attributes', 'field_dataset_method_title_url:attributes');
+
+    $this->addFieldMapping('field_related_sites', '')
       ->sourceMigration('DeimsContentResearchSite');
+
     $this->addFieldMapping('field_methods', 'field_methods');
 //    $this->addFieldMapping('field_methods:format', 'field_methods:format')
 //      ->callbacks(array($this, 'mapFormat'));
     $this->addFieldMapping('field_instrumentation', 'field_instrumentation');
 //    $this->addFieldMapping('field_instrumentation:format', 'field_instrumentation:format')
 //      ->callbacks(array($this, 'mapFormat'));
+
     $this->addFieldMapping('field_dataset_rights','field_dataset_rights');
     $this->addFieldMapping('field_dataset_legal','field_dataset_legal');
 
@@ -139,17 +154,13 @@ field_keywords:source_type	Option: Set to 'tid' when the value is a source ID
     $this->addFieldMapping('field_date_range', 'field_beg_end_date');
     $this->addFieldMapping('field_date_range:to', 'field_beg_end_date:value2');
     $this->addFieldMapping('field_publication_date', 'field_dataset_publication_date');
+
     $this->addFieldMapping('field_person_creator', 'field_dataset_owner_ref')
       ->sourceMigration('DeimsContentPerson');
     $this->addFieldMapping('field_person_contact', 'field_dataset_contact_ref')
       ->sourceMigration('DeimsContentPerson');
     $this->addFieldMapping('field_person_metadata_provider','field_dataset_mdprovider_ref')
       ->sourceMigration('DeimsContentPerson');
-
-//  need to create field
-    $this->addFieldMapping('field_url','field_dataset_keyw_env_voca');
-    $this->addFieldMapping('field_url:title','field_dataset_keyw_env_voca:title');
-    $this->addFieldMapping('field_url:attributes','field_dataset_keyw_env_voca:attributes');
 
     $this->addUnmigratedSources(array(
       'revision',
@@ -159,6 +170,12 @@ field_keywords:source_type	Option: Set to 'tid' when the value is a source ID
       'upload:description',
       'upload:list',
       'upload:weight',
+      'field_dataset_uuid',
+      'field_dataset_method_title_url:title',
+      'field_dataset_method_title_url:attributes',
+      'field_dataset_keyw_env_voca',
+      'field_dataset_keyw_env_voca:title',
+      'field_dataset_keyw_env_voca:attributes',
     ));
 
     $this->addUnmigratedDestinations(array(
@@ -206,7 +223,12 @@ field_keywords:source_type	Option: Set to 'tid' when the value is a source ID
       'field_publication_date:to',
       'field_core_areas:create_term',
       'field_core_areas:ignore_case',
+      'field_core_areas',
+      'field_core_areas:source_type',
       'field_quality_assurance',
+      'field_access_use_termref:create_term',
+      'field_access_use_termref:ignore_case',
+      'field_short_name',
     ));
   }
 
@@ -253,6 +275,4 @@ field_keywords:source_type	Option: Set to 'tid' when the value is a source ID
 
     return $field_values;
   }
-
-
 }
