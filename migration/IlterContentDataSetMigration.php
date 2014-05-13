@@ -30,77 +30,16 @@ SOURCES UNMMAPED
 
 -- this seems a good spot to use the "keywords" vocab?
 
-URLs
-
-[ vocabs ]
-
-use "field_keywords":
-field_dataset_keyw_env	Keyword originating from EnvEurope Thesaurus
+field_dataset_keyw_env	K
 
 free keys, make a field-set:
 field_dataset_keyw	  Keyword
 field_dataset_keyw_voca	  Vocabulary identification
 
-create vocab:
-1	EnvEurope_datapolicy
-
-[ end vocabs ]
-
-create field OR reuse related-links:
-field_dataset_online_locator	Web address  255 nids
-field_dataset_online_locator:title	Web address subfield
-field_dataset_online_locator:attributes	Web address subfield
-
-create OR reuse field:
-field_dataset_online_function	Web address function  123 nids
-
-=------...Real research site....can/should it be saved ----------
-field_dataset_bbox	Bounding polygon coordinates 217 distinct nids
-
-field_dataset_bbox_nc	North bound coordinate  125 nodes
-field_dataset_bbox_sc	South bound coordinate  121  
-field_dataset_bbox_wc	West bound coordinate  121
-field_dataset_bbox_ec	East bound coordinate  125
-
-field_dataset_altit_min	Minimum altitude 106  ( cardin. 1)
-field_dataset_altit_max	Maximum altitude  119 
-
-Create fields:
-field_dataset_taxa_rankname	Level  50 nids
-field_dataset_taxa_common	Common name 18 nids
-field_dataset_taxa_scientific	Scientific name  23 nids 
-
-create fields: this is taxonomy
-field_dataset_access_use  Principal and granted permission  179 nids
-
 create fields:
 field_dataset_samp_freq	Sampling time span  (cardinlty 1)
 field_dataset_sam_area_txt	Textual description (cardinlty 1)
 
-method also has a URL create field:
-
-field_dataset_method_title_url	Method
-field_dataset_method_title_url:title	Method subfield
-field_dataset_method_title_url:attributes	Method subfield
-
----woot-------------------------------------------
-field_dataset_uuid	Metadata UUID
-
--- file field -> usually this goes in DataSource, but create field ------
-field_dataset_uploaddata	Data file   9 paltry instances where fid>0
-field_dataset_uploaddata:list	Data file subfield
-
---??--
-field_dataset_site_name	Site name  599 nids?
-
-
-DESTINATION UNMMAPED
-
-field_core_areas	Core Areas (taxonomy_term_reference)
-field_core_areas:source_type	Option: Set to 'tid' when the value is a source ID
---  we have no use for them Core Areas --   
-field_keywords	Keywords (taxonomy_term_reference)
-field_keywords:source_type	Option: Set to 'tid' when the value is a source ID
 
     $this->addFieldMapping('field_data_sources', 'field_dataset_datafile_ref')
       ->sourceMigration('DeimsContentDataFile')
@@ -121,8 +60,9 @@ field_keywords:source_type	Option: Set to 'tid' when the value is a source ID
     $this->addFieldMapping('field_abstract', 'field_dataset_abstract');
     $this->addFieldMapping('field_abstract:format', 'field_dataset_abstract:format')
       ->callbacks(array($this, 'mapFormat'));
-    //$this->addFieldMapping('field_core_areas', '1');
-    //$this->addFieldMapping('field_keywords', '9');
+
+    //  $this->addFieldMapping('field_keywords', '9');  this got more interesting than usual
+    
 
     $this->addFieldMapping('field_date','field_dataset_md_date');
   
@@ -136,8 +76,9 @@ field_keywords:source_type	Option: Set to 'tid' when the value is a source ID
     $this->addFieldMapping('field_related_links:title', 'field_dataset_method_title_url:title');
     $this->addFieldMapping('field_related_links:attributes', 'field_dataset_method_title_url:attributes');
 
-    $this->addFieldMapping('field_related_sites', '')
-      ->sourceMigration('DeimsContentResearchSite');
+    $this->addFieldMapping('field_related_sites',NULL)
+     ->description('Migrate in prepare()');
+//      ->sourceMigration('DeimsContentResearchSite');
 
     $this->addFieldMapping('field_methods', 'field_methods');
 //    $this->addFieldMapping('field_methods:format', 'field_methods:format')
@@ -162,6 +103,17 @@ field_keywords:source_type	Option: Set to 'tid' when the value is a source ID
     $this->addFieldMapping('field_person_metadata_provider','field_dataset_mdprovider_ref')
       ->sourceMigration('DeimsContentPerson');
 
+    $this->addFieldMapping('field_dataset_taxa_ref','nid')
+      ->sourceMigration('IlterEntityTaxa');
+  
+/**
+      ->description('Handled in prepare()');
+    $this->addFieldMapping('field_free_keywords_ref',NULL)
+      ->description('Handled in prepare()');
+
+    $this->addFieldMapping('field_area_sampling_ref',NULL)
+      ->description('Handled in prepare()');
+**/
     $this->addUnmigratedSources(array(
       'revision',
       'log',
@@ -239,6 +191,9 @@ field_keywords:source_type	Option: Set to 'tid' when the value is a source ID
   public function prepare($node, $row) {
     // Fetch and prepare the variables field.
     $node->field_project_roles[LANGUAGE_NONE] = $this->getProjectRoles($node, $row);
+ 
+   // Fetch and prepare the 
+   // $node->field_dataset_taxa_ref[LANGUAGE_NONE] = $this->getTaxa($node, $row);
 
     // Remove any empty or illegal delta field values.
     EntityHelper::removeInvalidFieldDeltas('node', $node);
@@ -275,4 +230,25 @@ field_keywords:source_type	Option: Set to 'tid' when the value is a source ID
 
     return $field_values;
   }
+
+/**
+  public function getTaxa($node, $row) {
+    $field_values = array();
+
+    // Search for an already migrated organization entity with the same title
+    // and link value.
+    if (!empty($row->field_person_organization)) {
+      $query = new EntityFieldQuery();
+      $query->entityCondition('entity_type', 'taxa');
+      $query->entityCondition('bundle', 'taxa');
+      $query->propertyCondition('title', $row->field_person_organization);
+      $results = $query->execute();
+      if (!empty($results['node'])) {
+        $field_values[] = array('target_id' => reset($results['node'])->nid);
+      }
+    }
+
+    return $field_values;
+  }
+**/
 }
