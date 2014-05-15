@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the ILTER Protection Program feature.
+ */
+
+include_once 'ilter_protection_program.features.inc';
