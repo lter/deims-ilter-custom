@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the ILTER Site feature.
+ */
+
+include_once 'ilter_site.features.inc';
