@@ -13,14 +13,32 @@ function ilter_migrate_api() {
       'IlterContentCommittee' => array(
         'class_name' => 'IlterContentCommitteeMigration',
       ),
-      'IlterContentILTERNationalNetwork' => array(
-        'class_name' => 'IlterContentILTERNationalNetworkMigration',
+      'IlterContentDataSet' => array(
+        'class_name' => 'IlterContentDataSetMigration',
+      ),
+      'IlterEntityFreeKeyword' => array(
+        'class_name' => 'IlterEntityFreeKeywordMigration',
+      ),
+      'IlterEntitySampling' => array(
+        'class_name' => 'IlterEntitySamplingMigration',
+      ),
+      'IlterEntityTaxa' => array(
+        'class_name' => 'IlterEntityTaxaMigration',
       ),
       'IlterContentForum' => array(
         'class_name' => 'IlterContentForumMigration',
       ),
-      'IlterFieldsCoordDataset' => array(
+      'IlterContentProtectionProgram' => array(
+        'class_name' => 'IlterContentProtectionProgramMigration',
+      ),
+      'IlterFieldCoordDataset' => array(
         'class_name' => 'IlterFieldsCoordDatasetMigration',
+      ),
+      'IlterContentILTERNationalNetwork' => array(
+        'class_name' => 'IlterContentILTERNationalNetworkMigration',
+      ),
+      'IlterContentSite' => array(
+        'class_name' => 'IlterContentSiteMigration',
       ),
       'IlterTaxonomyForums' => array(
         'class_name' => 'DrupalTerm6Migration',
@@ -52,7 +70,7 @@ function ilter_migrate_api() {
         'source_connection' => 'drupal6',
         'source_version' => 6,
         'source_vocabulary' => '5',
-        'destination_vocabulary' => 'networks',
+        'destination_vocabulary' => 'network',
       ),
     ),
   );
@@ -69,6 +87,7 @@ function ilter_migrate_api() {
  */
 function ilter_deims_migration_overrides() {
   return array(
+//    'DeimsContentDataSet' => array('class_name' => 'IlterContentDataSetMigration'),
     'DeimsContentOrganization' => array('class_name' => 'IlterContentOrganizationMigration'),
     'DeimsContentPage' => array('class_name' => 'IlterContentPageMigration'),
     'DeimsContentPerson' => array('class_name' => 'IlterContentPersonMigration'),
