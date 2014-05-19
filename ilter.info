@@ -15,4 +15,5 @@ files[] = migration/IlterEntityFreeKeywordMigration.php
 files[] = migration/IlterEntityTaxaMigration.php
 files[] = migration/IlterEntitySamplingMigration.php
 files[] = migration/IlterFieldsCoordDatasetMigration.php
+files[] = migration/IlterFieldsCoordSiteMigration.php
 files[] = migration/IlterFileMigration.php
