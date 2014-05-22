@@ -48,3 +48,6 @@ instance. For example, you can copy them in the _modules_ folder, like this:
 ## Notes ##
 
 Please enable the Forum core module before you attempt the migration.
+
+In the folder "misc", you will find some miscellaneous files that you'll find
+interesting. "color.inc" contains a custom palette for ILTER.
