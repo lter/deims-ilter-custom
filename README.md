@@ -45,9 +45,19 @@ instance. For example, you can copy them in the _modules_ folder, like this:
 
 * `cp -r deims-ilter-custom/features/ilter_* DEIMSROOT/sites/default/modules/`
 
+### Feature Dependencies
+
+You need to instal the  _Views Data Export_ contributed module.  One way to do this is
+issue the following drush command:
+
+`drush dl --destination=profiles/deims/modules/contrib  views_data_export`
+
+
 ## Notes ##
 
 Please enable the Forum core module before you attempt the migration.
 
 In the folder "misc", you will find some miscellaneous files that you'll find
 interesting. "color.inc" contains a custom palette for ILTER.
+
+
