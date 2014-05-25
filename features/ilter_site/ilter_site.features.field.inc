@@ -1776,6 +1776,1150 @@ function ilter_site_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-site-field_site_data_notes'.
+  $fields['node-site-field_site_data_notes'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_site_data_notes',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'site',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Please enter any other information about data management not covered',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 92,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_site_data_notes',
+      'label' => 'Data Notes',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '3',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '97',
+      ),
+      'workbench_access_field' => 0,
+    ),
+  );
+
+  // Exported field: 'node-site-field_site_dataacced'.
+  $fields['node-site-field_site_dataacced'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_site_dataacced',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'site',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Free: free use under the specified terms of use 
+Free upon request : terms of use are negotiated case by case, but the data are in principal free to use
+Restricted: use of the data is only for either a restricted group or for restricted purposes. Terms of use are specified.
+No: data are not free to use or fees are charged
+other: please describe briefly',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 85,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_site_dataacced',
+      'label' => 'Data Access Policy Education',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'select_or_other',
+        'settings' => array(
+          'apply_chosen' => '',
+          'available_options' => 'Free
+Free upon request
+Restricted
+No',
+          'available_options_php' => '',
+          'markup_available_options_php' => '&lt;none&gt;',
+          'other' => 'Other',
+          'other_size' => '60',
+          'other_title' => '',
+          'other_unknown_defaults' => 'other',
+          'sort_options' => 0,
+        ),
+        'type' => 'select_or_other',
+        'weight' => '91',
+      ),
+      'workbench_access_field' => 0,
+    ),
+  );
+
+  // Exported field: 'node-site-field_site_dataccadmin'.
+  $fields['node-site-field_site_dataccadmin'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_site_dataccadmin',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'site',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 83,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_site_dataccadmin',
+      'label' => 'Data Access Administration [Europe Mandatory for 2013 Recognition]',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'select_or_other',
+        'settings' => array(
+          'apply_chosen' => '',
+          'available_options' => 'Free
+Free upon request
+Restricted
+No',
+          'available_options_php' => '',
+          'markup_available_options_php' => '&lt;none&gt;',
+          'other' => 'Other',
+          'other_size' => '60',
+          'other_title' => '',
+          'other_unknown_defaults' => 'other',
+          'sort_options' => 0,
+        ),
+        'type' => 'select_or_other',
+        'weight' => '89',
+      ),
+      'workbench_access_field' => 0,
+    ),
+  );
+
+  // Exported field: 'node-site-field_site_dataccres'.
+  $fields['node-site-field_site_dataccres'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_site_dataccres',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'site',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Free: free use under the specified terms of use 
+Free upon request : terms of use are negotiated case by case, but the data are in principal free to use
+Restricted: use of the data is only for either a restricted group or for restricted purposes. Terms of use are specified.
+No: data are not free to use or fees are charged	
+other: describe briefly',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 86,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_site_dataccres',
+      'label' => 'Data Access Policy Research [Europe Mandatory for 2013 Recognition]',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'select_or_other',
+        'settings' => array(
+          'apply_chosen' => '',
+          'available_options' => 'Free
+Free upon request
+Restricted
+No',
+          'available_options_php' => '',
+          'markup_available_options_php' => '&lt;none&gt;',
+          'other' => 'Other',
+          'other_size' => '60',
+          'other_title' => '',
+          'other_unknown_defaults' => 'other',
+          'sort_options' => 0,
+        ),
+        'type' => 'select_or_other',
+        'weight' => '88',
+      ),
+      'workbench_access_field' => 0,
+    ),
+  );
+
+  // Exported field: 'node-site-field_site_datacosted'.
+  $fields['node-site-field_site_datacosted'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_site_datacosted',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'site',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'indicate how the data costs are expected to be reimbursed
+No cost: no costs are charged for the data exchange
+Data manipulation cost: only data manipulation costs are charged to the user
+Data creation costs: also costs of the data generation are charged to the user
+other: please describe',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 89,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_site_datacosted',
+      'label' => 'Data Cost Education',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'select_or_other',
+        'settings' => array(
+          'apply_chosen' => '',
+          'available_options' => 'No cost
+Data manipulation costs
+Data creation costs
+No',
+          'available_options_php' => '',
+          'markup_available_options_php' => '&lt;none&gt;',
+          'other' => 'Other',
+          'other_size' => '60',
+          'other_title' => '',
+          'other_unknown_defaults' => 'other',
+          'sort_options' => 0,
+        ),
+        'type' => 'select_or_other',
+        'weight' => '95',
+      ),
+      'workbench_access_field' => 0,
+    ),
+  );
+
+  // Exported field: 'node-site-field_site_datacostres'.
+  $fields['node-site-field_site_datacostres'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_site_datacostres',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'site',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'other: please describe	
+',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 90,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_site_datacostres',
+      'label' => 'Data Cost Research  [Europe Mandatory]',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'select_or_other',
+        'settings' => array(
+          'apply_chosen' => '',
+          'available_options' => 'No cost
+Data manipulation costs
+Data creation costs
+No',
+          'available_options_php' => '',
+          'markup_available_options_php' => '&lt;none&gt;',
+          'other' => 'Other',
+          'other_size' => '60',
+          'other_title' => '',
+          'other_unknown_defaults' => 'other',
+          'sort_options' => 0,
+        ),
+        'type' => 'select_or_other',
+        'weight' => '96',
+      ),
+      'workbench_access_field' => 0,
+    ),
+  );
+
+  // Exported field: 'node-site-field_site_datacstadmin'.
+  $fields['node-site-field_site_datacstadmin'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_site_datacstadmin',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'site',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 87,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_site_datacstadmin',
+      'label' => 'Data Cost Administration [Europe Mandatory]',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'select_or_other',
+        'settings' => array(
+          'apply_chosen' => '',
+          'available_options' => 'Data manipulation costs
+Data creation costs
+No cost
+',
+          'available_options_php' => '',
+          'markup_available_options_php' => '&lt;none&gt;',
+          'other' => 'Other',
+          'other_size' => '60',
+          'other_title' => '',
+          'other_unknown_defaults' => 'other',
+          'sort_options' => 0,
+        ),
+        'type' => 'select_or_other',
+        'weight' => '93',
+      ),
+      'workbench_access_field' => 0,
+    ),
+  );
+
+  // Exported field: 'node-site-field_site_datacstpub'.
+  $fields['node-site-field_site_datacstpub'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_site_datacstpub',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'site',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Indicate how the data costs are expected to be reimbursed
+No: no costs are charged for the data exchange
+Data manipulation cost: only data manipulation costs are charged to the user
+Data creation costs: also costs of the data generation are charged to the user
+Other: please describe',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 88,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_site_datacstpub',
+      'label' => 'Data Cost Public [Europe Mandatory]',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'select_or_other',
+        'settings' => array(
+          'apply_chosen' => '',
+          'available_options' => 'No cost
+Data manipulation costs
+Data creation costs
+No',
+          'available_options_php' => '',
+          'markup_available_options_php' => '&lt;none&gt;',
+          'other' => 'Other',
+          'other_size' => '60',
+          'other_title' => '',
+          'other_unknown_defaults' => 'other',
+          'sort_options' => 0,
+        ),
+        'type' => 'select_or_other',
+        'weight' => '94',
+      ),
+      'workbench_access_field' => 0,
+    ),
+  );
+
+  // Exported field: 'node-site-field_site_dataformat'.
+  $fields['node-site-field_site_dataformat'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_site_dataformat',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'Paper' => 'Paper',
+          'Prioprietary file format' => 'Prioprietary file format',
+          'Relational Database' => 'Relational Database',
+          'Spatial data file (GIS)' => 'Spatial data file (GIS)',
+          'Spatial database (GIS)' => 'Spatial database (GIS)',
+          'Structured file or spreadsheet' => 'Structured file or spreadsheet',
+          'unstructured file' => 'unstructured file',
+          'XML Database' => 'XML Database',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'site',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 94,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_site_dataformat',
+      'label' => 'Data Storage Format [Europe Mandatory for 2013 Recognition]',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'apply_chosen' => '0',
+        ),
+        'type' => 'options_select',
+        'weight' => '85',
+      ),
+      'workbench_access_field' => 0,
+    ),
+  );
+
+  // Exported field: 'node-site-field_site_datapolpubl'.
+  $fields['node-site-field_site_datapolpubl'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_site_datapolpubl',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'site',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Free: free use under the specified terms of use 
+Free upon request : terms of use are negotiated case by case, but the data are in principal free to use
+Restricted: use of the data is only for either a restricted group or for restricted purposes. Terms of use are specified.
+No: data are not free to use or fees are charged
+Other: please describe ',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 84,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_site_datapolpubl',
+      'label' => 'Data Access Policy Public [Europe Mandatory for 2013 Recognition]',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'select_or_other',
+        'settings' => array(
+          'apply_chosen' => '',
+          'available_options' => 'Free
+Free upon request
+Restricted
+No',
+          'available_options_php' => '',
+          'markup_available_options_php' => '&lt;none&gt;',
+          'other' => 'Other',
+          'other_size' => '60',
+          'other_title' => '',
+          'other_unknown_defaults' => 'other',
+          'sort_options' => 0,
+        ),
+        'type' => 'select_or_other',
+        'weight' => '90',
+      ),
+      'workbench_access_field' => 0,
+    ),
+  );
+
+  // Exported field: 'node-site-field_site_datareq'.
+  $fields['node-site-field_site_datareq'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_site_datareq',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'site',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 93,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_site_datareq',
+      'label' => 'Data Request Format [Europe Mandatory for 2013 Recognition]',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'select_or_other',
+        'settings' => array(
+          'apply_chosen' => '',
+          'available_options' => 'Offline (Mail or Telephone)
+Online (Reference for access)',
+          'available_options_php' => '',
+          'markup_available_options_php' => '&lt;none&gt;',
+          'other' => 'Other',
+          'other_size' => '60',
+          'other_title' => '',
+          'other_unknown_defaults' => 'other',
+          'sort_options' => 0,
+        ),
+        'type' => 'select_or_other',
+        'weight' => '98',
+      ),
+      'workbench_access_field' => 0,
+    ),
+  );
+
+  // Exported field: 'node-site-field_site_dataservi'.
+  $fields['node-site-field_site_dataservi'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '7',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_site_dataservi',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'Data portal' => 'Data portal',
+          'Web Catalog Service (CSW)' => 'Web Catalog Service (CSW)',
+          'Web Feature Service (WFS)' => 'Web Feature Service (WFS)',
+          'Web Map Service (WMS)' => 'Web Map Service (WMS)',
+          'Web Coverage Service (WCS)' => 'Web Coverage Service (WCS)',
+          'Sensor Web Enablement (SWE)' => 'Sensor Web Enablement (SWE)',
+          'Other data service' => 'Other data service',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'site',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Please select the services, if any, that your site uses, even if the data services are managed centrally (not at the physical site location). If you are using some other service, please describe it briefly. ',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 95,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_site_dataservi',
+      'label' => 'Data services [Europe Mandatory]',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'apply_chosen' => '',
+        ),
+        'type' => 'options_select',
+        'weight' => '86',
+      ),
+      'workbench_access_field' => 0,
+    ),
+  );
+
+  // Exported field: 'node-site-field_site_datastorloc'.
+  $fields['node-site-field_site_datastorloc'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_site_datastorloc',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'site',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Chose the relevant location type',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 96,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_site_datastorloc',
+      'label' => 'Data Storage Location [Europe Mandatory for 2013 Recognition]',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'select_or_other',
+        'settings' => array(
+          'apply_chosen' => '',
+          'available_options' => 'Central
+Distributed within institution
+Distributed over multiple institutions',
+          'available_options_php' => '',
+          'markup_available_options_php' => '&lt;none&gt;',
+          'other' => 'Other',
+          'other_size' => '60',
+          'other_title' => '',
+          'other_unknown_defaults' => 'other',
+          'sort_options' => 0,
+        ),
+        'type' => 'select_or_other',
+        'weight' => '87',
+      ),
+      'workbench_access_field' => 0,
+    ),
+  );
+
+  // Exported field: 'node-site-field_site_datastornum'.
+  $fields['node-site-field_site_datastornum'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_site_datastornum',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'number',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'number_integer',
+    ),
+    'field_instance' => array(
+      'bundle' => 'site',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Please indicate the number of storage locations. Examples: 3',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'number',
+          'settings' => array(
+            'decimal_separator' => '.',
+            'prefix_suffix' => TRUE,
+            'scale' => 0,
+            'thousand_separator' => ' ',
+          ),
+          'type' => 'number_integer',
+          'weight' => 97,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_site_datastornum',
+      'label' => 'Number of data storage locations [Europe Mandatory]',
+      'required' => 0,
+      'settings' => array(
+        'max' => '',
+        'min' => '1',
+        'prefix' => '',
+        'suffix' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'number',
+        'settings' => array(),
+        'type' => 'number',
+        'weight' => '92',
+      ),
+      'workbench_access_field' => 0,
+    ),
+  );
+
   // Exported field: 'node-site-field_site_description'.
   $fields['node-site-field_site_description'] = array(
     'field_config' => array(
@@ -2311,7 +3455,7 @@ function ilter_site_field_default_fields() {
           'apply_chosen' => '',
         ),
         'type' => 'options_select',
-        'weight' => '6',
+        'weight' => '17',
       ),
       'workbench_access_field' => 0,
     ),
@@ -2382,7 +3526,7 @@ function ilter_site_field_default_fields() {
           'apply_chosen' => '',
         ),
         'type' => 'options_select',
-        'weight' => '89',
+        'weight' => '90',
       ),
       'workbench_access_field' => 0,
     ),
@@ -2522,7 +3666,7 @@ function ilter_site_field_default_fields() {
           'apply_chosen' => '',
         ),
         'type' => 'options_select',
-        'weight' => '90',
+        'weight' => '98',
       ),
       'workbench_access_field' => 0,
     ),
@@ -2593,7 +3737,7 @@ function ilter_site_field_default_fields() {
           'apply_chosen' => '',
         ),
         'type' => 'options_select',
-        'weight' => '88',
+        'weight' => '96',
       ),
       'workbench_access_field' => 0,
     ),
@@ -2665,7 +3809,7 @@ function ilter_site_field_default_fields() {
           'apply_chosen' => '',
         ),
         'type' => 'options_select',
-        'weight' => '87',
+        'weight' => '95',
       ),
       'workbench_access_field' => 0,
     ),
@@ -2735,7 +3879,7 @@ function ilter_site_field_default_fields() {
           'apply_chosen' => '',
         ),
         'type' => 'options_select',
-        'weight' => '90',
+        'weight' => '91',
       ),
       'workbench_access_field' => 0,
     ),
@@ -2807,7 +3951,7 @@ function ilter_site_field_default_fields() {
           'apply_chosen' => '',
         ),
         'type' => 'options_select',
-        'weight' => '8',
+        'weight' => '19',
       ),
       'workbench_access_field' => 0,
     ),
@@ -2887,7 +4031,7 @@ function ilter_site_field_default_fields() {
           'apply_chosen' => '',
         ),
         'type' => 'options_select',
-        'weight' => '7',
+        'weight' => '18',
       ),
       'workbench_access_field' => 0,
     ),
@@ -2960,7 +4104,7 @@ function ilter_site_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '9',
+        'weight' => '20',
       ),
       'workbench_access_field' => 0,
     ),
@@ -3031,7 +4175,7 @@ function ilter_site_field_default_fields() {
           'apply_chosen' => '',
         ),
         'type' => 'options_select',
-        'weight' => '89',
+        'weight' => '97',
       ),
       'workbench_access_field' => 0,
     ),
@@ -3104,7 +4248,7 @@ function ilter_site_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '10',
+        'weight' => '21',
       ),
       'workbench_access_field' => 0,
     ),
@@ -3177,7 +4321,7 @@ function ilter_site_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '91',
+        'weight' => '92',
       ),
       'workbench_access_field' => 0,
     ),
@@ -3254,7 +4398,7 @@ Plot - observation plot within a site',
           'apply_chosen' => '',
         ),
         'type' => 'options_select',
-        'weight' => '88',
+        'weight' => '89',
       ),
       'workbench_access_field' => 0,
     ),
@@ -3323,7 +4467,7 @@ Plot - observation plot within a site',
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '8',
+        'weight' => '105',
       ),
       'workbench_access_field' => 0,
     ),
@@ -3434,7 +4578,7 @@ Plot - observation plot within a site',
           'apply_chosen' => '',
         ),
         'type' => 'options_select',
-        'weight' => '9',
+        'weight' => '106',
       ),
       'workbench_access_field' => 0,
     ),
@@ -3501,7 +4645,7 @@ Plot - observation plot within a site',
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '6',
+        'weight' => '102',
       ),
       'workbench_access_field' => 0,
     ),
@@ -3605,7 +4749,7 @@ Plot - observation plot within a site',
           'apply_chosen' => '',
         ),
         'type' => 'options_select',
-        'weight' => '7',
+        'weight' => '103',
       ),
       'workbench_access_field' => 0,
     ),
@@ -3677,7 +4821,7 @@ Plot - observation plot within a site',
           'apply_chosen' => '',
         ),
         'type' => 'options_select',
-        'weight' => '7',
+        'weight' => '102',
       ),
       'workbench_access_field' => 0,
     ),
@@ -6535,11 +7679,25 @@ power supply provided by the national compagny EDF on the whole region',
   t('Average annual temperature in degree Celcius');
   t('Biogeographic Region [Europe Mandatory for 2013 Recognition]');
   t('Check all of the biomes that are represented in your site.');
+  t('Chose the relevant location type');
   t('Collected Datasets');
   t('Corine Land Classification');
   t('Country [ILTER/Europe Mandatory]');
+  t('Data Access Administration [Europe Mandatory for 2013 Recognition]');
+  t('Data Access Policy Education');
+  t('Data Access Policy Public [Europe Mandatory for 2013 Recognition]');
+  t('Data Access Policy Research [Europe Mandatory for 2013 Recognition]');
+  t('Data Cost Administration [Europe Mandatory]');
+  t('Data Cost Education');
+  t('Data Cost Public [Europe Mandatory]');
+  t('Data Cost Research  [Europe Mandatory]');
+  t('Data Notes');
+  t('Data Request Format [Europe Mandatory for 2013 Recognition]');
+  t('Data Storage Format [Europe Mandatory for 2013 Recognition]');
+  t('Data Storage Location [Europe Mandatory for 2013 Recognition]');
   t('Data Transmission From Site Type [Europe Mandatory]');
   t('Data Transmission Type (within site)');
+  t('Data services [Europe Mandatory]');
   t('Declaration Status requested by site holder [Europe Mandatory for 2013 Recognition]');
   t('Declaration status accredited by LTER-Europe (Read only)');
   t('Design Scale [Europe Mandatory for 2013 Recognition]	');
@@ -6558,6 +7716,21 @@ power supply provided by the national compagny EDF on the whole region',
   t('ExpeER Network');
   t('ExpeER Site Name');
   t('Experiment scale  [Europe Mandatory for 2013 Recognition]');
+  t('Free: free use under the specified terms of use 
+Free upon request : terms of use are negotiated case by case, but the data are in principal free to use
+Restricted: use of the data is only for either a restricted group or for restricted purposes. Terms of use are specified.
+No: data are not free to use or fees are charged	
+other: describe briefly');
+  t('Free: free use under the specified terms of use 
+Free upon request : terms of use are negotiated case by case, but the data are in principal free to use
+Restricted: use of the data is only for either a restricted group or for restricted purposes. Terms of use are specified.
+No: data are not free to use or fees are charged
+Other: please describe ');
+  t('Free: free use under the specified terms of use 
+Free upon request : terms of use are negotiated case by case, but the data are in principal free to use
+Restricted: use of the data is only for either a restricted group or for restricted purposes. Terms of use are specified.
+No: data are not free to use or fees are charged
+other: please describe briefly');
   t('GEO-BON Biome');
   t('General Site Description [ILTER Core/Europe Mandatory 2013 Recognition]	');
   t('Geo, soils, fauna, history, etc');
@@ -6569,6 +7742,11 @@ power supply provided by the national compagny EDF on the whole region',
   t('If you have snow clearing on a regular schedule, indicate the frequency');
   t('Image');
   t('Include general information about your site that would be of interest to others.');
+  t('Indicate how the data costs are expected to be reimbursed
+No: no costs are charged for the data exchange
+Data manipulation cost: only data manipulation costs are charged to the user
+Data creation costs: also costs of the data generation are charged to the user
+Other: please describe');
   t('Infrastructure notes');
   t('Is snow clearing equipment available at the site?');
   t('Is the site in permanent operation?');
@@ -6593,6 +7771,7 @@ power supply provided by the national compagny EDF on the whole region',
   t('Minimum monthly temperature in degrees Celsius');
   t('Networks (In addition to / Other than ILTER)');
   t('Number of beds at site');
+  t('Number of data storage locations [Europe Mandatory]');
   t('Operation Notes');
   t('Operational Budget in Euros.  Non European countries that want to use this field may enter an amount in another currency.');
   t('Operations Cost [Europe Mandatory]');
@@ -6601,10 +7780,13 @@ power supply provided by the national compagny EDF on the whole region',
   t('Permanent Power Produced');
   t('Permanent Power Supply Location');
   t('Permanent Power Supply [Europe Mandatory for 2013 Recognition]');
+  t('Please enter any other information about data management not covered');
   t('Please enter the number of beds at the site, examples: 1, 5, 10');
   t('Please include any relevant infrastructure information not covered.');
+  t('Please indicate the number of storage locations. Examples: 3');
   t('Please note here any additional information about operations');
   t('Please provide the BEST ESTIMATION of the current value of the site\'s infrastructure. How much would all of the built infrastructure, equipment, etc. currently cost  to replace? A rough estimate is better than no information. Provide the value in euros.');
+  t('Please select the services, if any, that your site uses, even if the data services are managed centrally (not at the physical site location). If you are using some other service, please describe it briefly. ');
   t('Power supply: Maximum continuous power');
   t('Precipitation Annual [ILTER Core/Europe Mandatory 2013 Recognition]	');
   t('Precipitation Maximum Monthly ');
@@ -6667,6 +7849,13 @@ Plot - observation plot within a site');
   t('What kind of vehicle is required to access the site?');
   t('Year Established [ILTER Core/Europe Mandatory 2013 Recognition]');
   t('Year Site Closed');
+  t('indicate how the data costs are expected to be reimbursed
+No cost: no costs are charged for the data exchange
+Data manipulation cost: only data manipulation costs are charged to the user
+Data creation costs: also costs of the data generation are charged to the user
+other: please describe');
+  t('other: please describe	
+');
 
   return $fields;
 }
