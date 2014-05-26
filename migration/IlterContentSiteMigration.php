@@ -54,6 +54,18 @@ class IlterContentSiteMigration extends DrupalNode6Migration {
       'field_site_inf_perm_power_prod:language',
       'field_site_inf_data_transm_type:language',
       'field_site_inf_notes:language',
+      'field_site_inf_dat_trans_fro_typ:language',
+      'field_site_dataccadmin:language',
+      'field_site_datapolpubl:language',
+      'field_site_dataacced:language',
+      'field_site_dataccres:language',
+      'field_site_datacstadmin:language',
+      'field_site_datacstpub:language',
+      'field_site_datacosted:language',
+      'field_site_datacostres:language',
+      'field_site_data_notes:language',
+      'field_site_datareq:language',
+      'field_site_datastorloc:language',
       'field_site_ops_cost:language',
       'field_site_ops_notes:language',
       'field_site_eu_notes:language',
@@ -151,6 +163,20 @@ $this->addFieldMapping('field_images:title,'
     $this->addFieldMapping('field_site_inf_lodging','field_research_site_lodging');
     $this->addFieldMapping('field_site_inf_numbr_of_beds','field_research_site_lodgnum');
     $this->addFieldMapping('field_site_inf_notes','field_research_site_infranote');
+    $this->addFieldMapping('field_site_dataccadmin','field_research_site_dataccadmin');
+    $this->addFieldMapping('field_site_datapolpubl','field_research_site_datapolpub');
+    $this->addFieldMapping('field_site_dataacced','field_research_site_dataacced');
+    $this->addFieldMapping('field_site_dataccres','field_research_site_dataccres');
+    $this->addFieldMapping('field_site_datacstadmin','field_research_site_datacstadmin');
+    $this->addFieldMapping('field_site_datacstpub','field_research_site_datacostpub');
+    $this->addFieldMapping('field_site_datacosted','field_research_site_datacosted');
+    $this->addFieldMapping('field_site_datacostres','field_research_site_datacostres');
+    $this->addFieldMapping('field_site_data_notes','field_research_site_datanotes');
+    $this->addFieldMapping('field_site_datareq','field_research_site_datareq');
+    $this->addFieldMapping('field_site_dataformat','field_research_site_dataformat');
+    $this->addFieldMapping('field_site_dataservi','field_research_site_dataserv');
+    $this->addFieldMapping('field_site_datastorloc','field_research_site_datastorloc');
+    $this->addFieldMapping('field_site_datastornum','field_research_site_datastrnum');
     $this->addFieldMapping('field_site_ops_cost','field_research_site_budget');
     $this->addFieldMapping('field_site_ops_ispermanent','field_research_site_operation');
     $this->addFieldMapping('field_site_ops_sampling_intr','field_research_site_samplingdays');

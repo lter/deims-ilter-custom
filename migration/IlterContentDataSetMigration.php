@@ -103,7 +103,7 @@ field_dataset_sam_area_txt	Textual description (cardinlty 1)
     $this->addFieldMapping('field_person_metadata_provider','field_dataset_mdprovider_ref')
       ->sourceMigration('DeimsContentPerson');
 
-    $this->addFieldMapping('field_dataset_taxa_ref','nid')
+    $this->addFieldMapping('field_taxa_ref','nid')
       ->sourceMigration('IlterEntityTaxa');
   
 /**
@@ -134,7 +134,6 @@ field_dataset_sam_area_txt	Textual description (cardinlty 1)
       'field_data_sources',
       'field_data_set_id:language',
       'field_abstract:language',
-      'field_short_name:language',
       'field_purpose:language',
       'field_additional_information:language',
       'field_related_links:language',
@@ -180,7 +179,6 @@ field_dataset_sam_area_txt	Textual description (cardinlty 1)
       'field_quality_assurance',
       'field_access_use_termref:create_term',
       'field_access_use_termref:ignore_case',
-      'field_short_name',
     ));
   }
 
