@@ -52,7 +52,6 @@ class IlterContentILTERNationalNetworkMigration extends DrupalNode6Migration {
       'field_ilter_network_url:title',
       'field_ilter_network_status',
       'field_ilter_network_num_mbrs',
-      'field_ilter_network_listrec',
     ));
 
 // Network Coordinator NRef 
@@ -63,9 +62,16 @@ class IlterContentILTERNationalNetworkMigration extends DrupalNode6Migration {
     $this->AddFieldMapping('field_ilter_network_im','field_ilter_im')
       ->sourceMigration('DeimsContentPerson');
 
+    $this->AddFieldMapping('field_ilter_network_listrec','field_ilter_network_listrec')
+      ->description('Tweaked in prepareRow');
+
   }
   public function prepareRow($row) {
     parent::prepareRow($row);
+
+    //Convert Yes and No to integers 1 and 0
+    $row->field_ilter_network_listrec_value = (!empty($row->field_ilter_network_listrec_value) && $row->field_ilter_network_listrec_value == 'Yes' ? 1 : 0);
+
   }
   public function prepare($node, $row) {
     // Remove any empty or illegal delta field values.

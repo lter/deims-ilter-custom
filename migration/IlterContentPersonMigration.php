@@ -7,7 +7,7 @@
 
 class IlterContentPersonMigration extends DeimsContentPersonMigration {
 
-  protected $dependencies = array('DeimsFile','IlterTaxonomyILTERDiscipline','IlterTaxonomyNetwork','IlterTaxonomyEnvThesOLD');
+//  protected $dependencies = array('DeimsFile','IlterTaxonomyILTERDiscipline','IlterTaxonomyNetwork','IlterTaxonomyEnvThesOLD');
 
   public function __construct(array $arguments) {
     parent::__construct($arguments);
