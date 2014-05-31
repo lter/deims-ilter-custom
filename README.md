@@ -60,4 +60,33 @@ Please enable the Forum core module before you attempt the migration.
 In the folder "misc", you will find some miscellaneous files that you'll find
 interesting. "color.inc" contains a custom palette for ILTER.
 
+### Migration Notes ###
+
+This is a very large migration, do not attempt it yourself if you do not really
+know what you are doing.
+
+ - Chichen-and-egg issues (that is, many circular dependencies).  
+
+ - Some default migrations go unused, including:
+   - The Core Areas Taxonomy
+   - The Controlled Keywords taxonomies.  
+   - The Book migration
+   - The Research Project 
+   - The DataSet (so different, needs to change completely)
+
+ - The order matters, we cannot build the perfect order due to the circular dependencies.
+   - First, the Organizations
+   - Users
+   - Taxonomies (non empty ones)
+   - Light, independent content type nodes.
+   - Person (begin chicken-n-egg)
+   - Research Sites ? and Fields
+   - Data FIles
+   - Data Set
+   - Sites
+
+It is advisable to tweak the core deimsd6migration accordingly, to remove already loaded
+migrations.
+
+
 
