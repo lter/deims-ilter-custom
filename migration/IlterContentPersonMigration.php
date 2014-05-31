@@ -7,6 +7,8 @@
 
 class IlterContentPersonMigration extends DeimsContentPersonMigration {
 
+  protected $dependencies = array('DeimsFile','IlterTaxonomyILTERDiscipline','IlterTaxonomyNetwork','IlterTaxonomyEnvThesOLD');
+
   public function __construct(array $arguments) {
     parent::__construct($arguments);
 
@@ -33,7 +35,7 @@ class IlterContentPersonMigration extends DeimsContentPersonMigration {
     $this->addFieldMapping('field_person_specialty_term:source_type')
       ->defaultValue('tid');
 
-    $this->addFieldMapping('field_networks_term_ref','field_research_site_network')
+    $this->addFieldMapping('field_networks_term_ref','field_person_network')
      ->sourceMigration('IlterTaxonomyNetwork');
     $this->addFieldMapping('field_networks_term_ref:source_type')
       ->defaultValue('tid');
