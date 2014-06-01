@@ -102,13 +102,15 @@ class IlterContentPersonMigration extends DeimsContentPersonMigration {
 
 
   public function prepareRow($row) {
+
+    parent::prepareRow($row);
+
     // Fix empty email values used on SEV.
     switch ($row->field_person_email) {
       case 'none@none.com':
         $row->field_person_email = NULL;
     }
 
-    parent::prepareRow($row);
   }
 
   public function getOrganization($node, $row) {
@@ -128,5 +130,11 @@ class IlterContentPersonMigration extends DeimsContentPersonMigration {
     }
 
     return $field_values;
+  }
+
+  public function prepare($node, $row) {
+    // Remove any empty or illegal delta field values.
+    EntityHelper::removeInvalidFieldDeltas('node', $node);
+    EntityHelper::removeEmptyFieldValues('node', $node);
   }
 }

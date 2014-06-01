@@ -70,7 +70,15 @@ class IlterContentILTERNationalNetworkMigration extends DrupalNode6Migration {
     parent::prepareRow($row);
 
     //Convert Yes and No to integers 1 and 0
-    $row->field_ilter_network_listrec_value = (!empty($row->field_ilter_network_listrec_value) && $row->field_ilter_network_listrec_value == 'Yes' ? 1 : 0);
+    switch ($row->field_ilter_network_listrec) {
+      case 'Yes':
+        $row->field_ilter_network_listrec = 1;
+        break;
+      case 'No':
+      default:
+        $row->field_ilter_network_listrec = 0;
+        break;
+    }
 
   }
   public function prepare($node, $row) {
