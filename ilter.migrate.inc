@@ -19,6 +19,9 @@ function ilter_migrate_api() {
       'IlterEntityFreeKeyword' => array(
         'class_name' => 'IlterEntityFreeKeywordMigration',
       ),
+      'IlterEntityNitrogen' => array(
+        'class_name' => 'IlterEntityNitrogenMigration',
+      ),
       'IlterEntitySampling' => array(
         'class_name' => 'IlterEntitySamplingMigration',
       ),
