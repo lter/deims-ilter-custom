@@ -16,7 +16,7 @@ class IlterEntityNitrogenMigration extends Migration {
     $query = $this->connection->select('content_type_nitrogen_data', 'ctn');
     $query->fields('ctn', array('nid','field_ilter_network_country',
     'field_ilter_network_country','field_research_site_long',
-    'field_research_site_elevavg','field_nitrogen_data_yearstart'
+    'field_research_site_elevavg','field_nitrogen_data_yearstart',
     'field_nitrogen_data_yearend','field_nitrogen_data_measource',
     'field_nitrogen_data_trends','field_nitrogen_data_unit',
     'field_nitrogen_data_mean','field_nitrogen_data_min',
@@ -25,7 +25,7 @@ class IlterEntityNitrogenMigration extends Migration {
 
     $this->source = new MigrateSourceSQL($query);
 
-    $this->destination = new MigrateDestinationEntityAPI('ilter_nitrogen','ilter_nitrogen');
+    $this->destination = new MigrateDestinationEntityAPI('nitrogen_data_collection','nitrogen_data_collection');
 
     // Tell Migrate where the IDs for this migration live, and
     // where they should go.
