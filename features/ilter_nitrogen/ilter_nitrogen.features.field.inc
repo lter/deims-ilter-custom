@@ -29,10 +29,10 @@ function ilter_nitrogen_field_default_fields() {
         'cache_count' => '4',
         'cache_enabled' => 0,
         'granularity' => array(
-          'day' => 0,
+          'day' => 'day',
           'hour' => 0,
           'minute' => 0,
-          'month' => 0,
+          'month' => 'month',
           'second' => 0,
           'year' => 'year',
         ),

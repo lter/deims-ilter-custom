@@ -5,6 +5,13 @@
  */
 
 /**
+ * Implements hook_views_api().
+ */
+function ilter_nitrogen_views_api() {
+  return array("version" => "3.0");
+}
+
+/**
  * Implements hook_eck_bundle_info().
  */
 function ilter_nitrogen_eck_bundle_info() {
