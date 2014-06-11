@@ -14,8 +14,7 @@ class IlterEntityNitrogenMigration extends Migration {
 
     // Build the query for where this data is coming from.
 
-    //'field_ilter_network_country',  need a jpoint
-   // 'field_research_site_long',
+    // 'field_research_site_long',
     //'field_research_site_elevavg',
 
     $query = $this->connection->select('content_type_nitrogen_data', 'ctn');
@@ -25,7 +24,9 @@ class IlterEntityNitrogenMigration extends Migration {
     'field_nitrogen_data_trends_value','field_nitrogen_data_unit_value',
     'field_nitrogen_data_mean_value','field_nitrogen_data_min_value',
     'field_nitrogen_data_max_value','field_nitrogen_data_median_value',
-    'field_nitrogen_data_atndep_value','field_nitrogen_data_fertilizer_value'));
+    'field_nitrogen_data_atndep_value','field_nitrogen_data_fertilizer_value',));
+    $query->join('content_field_ilter_network_country', 'cfc', 'cfc.vid = ctn.vid');
+    $query->fields('cfc', array('field_ilter_network_country_value'));
 
     $this->source = new MigrateSourceSQL($query);
 
@@ -48,12 +49,12 @@ class IlterEntityNitrogenMigration extends Migration {
 //    $this->addFieldMapping('','field_research_site_elevavg');
 
 //   these should go to field_date_range
-//   $this->addFieldMapping('field_nitrogen_data_yearstart');
-//   $this->addFieldMapping('field_nitrogen_data_yearend');
+   $this->addFieldMapping('field_date_range','field_nitrogen_data_yearstart_value');
+   $this->addFieldMapping('field_date_range:to','field_nitrogen_data_yearend');
 
 //   there is a destination on 'creator' (field_related_site) and 'site' (field_related_site)
 //
-//    $this->addFieldMapping('field_ilter_network_country','field_ilter_network_country');
+    $this->addFieldMapping('field_ilter_network_country','field_ilter_network_country_value');
 
     $this->addFieldMapping('field_person_creator','field_nitrogen_data_person_nid')
       ->sourceMigration('DeimsContentPerson');
