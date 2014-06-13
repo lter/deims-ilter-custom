@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the ILTER Views feature.
+ */
+
+include_once 'ilter_views.features.inc';
