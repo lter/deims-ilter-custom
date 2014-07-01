@@ -408,6 +408,7 @@ function deims_data_set_field_group_info() {
       3 => 'field_dataset_rights',
       4 => 'field_dataset_legal',
       5 => 'field_access_use_termref',
+      6 => 'field_coordinates',
     ),
     'format_type' => 'htab',
     'format_settings' => array(

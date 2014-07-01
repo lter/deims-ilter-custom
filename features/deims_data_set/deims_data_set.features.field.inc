@@ -239,7 +239,7 @@ function deims_data_set_field_default_fields() {
           'track_list' => 0,
         ),
         'type' => 'term_reference_tree',
-        'weight' => '45',
+        'weight' => '53',
       ),
       'workbench_access_field' => 0,
     ),
@@ -477,6 +477,100 @@ function deims_data_set_field_default_fields() {
         ),
         'type' => 'inline_entity_form_single',
         'weight' => '64',
+      ),
+      'workbench_access_field' => 0,
+    ),
+  );
+
+  // Exported field: 'node-data_set-field_coordinates'.
+  $fields['node-data_set-field_coordinates'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_coordinates',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'geofield',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'geofield',
+    ),
+    'field_instance' => array(
+      'bundle' => 'data_set',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'bdp' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'above',
+          'module' => 'geofield',
+          'settings' => array(
+            'data' => 'full',
+          ),
+          'type' => 'geofield_wkt',
+          'weight' => 35,
+        ),
+        'eml' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'eml_hl' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'iso' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'search_result' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_coordinates',
+      'label' => 'Coordinates',
+      'required' => 1,
+      'settings' => array(
+        'local_solr' => array(
+          'enabled' => FALSE,
+          'lat_field' => 'lat',
+          'lng_field' => 'lng',
+        ),
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'geofield',
+        'settings' => array(),
+        'type' => 'geofield_bounds',
+        'weight' => '49',
       ),
       'workbench_access_field' => 0,
     ),
@@ -1012,7 +1106,7 @@ Council directive 2008/56/EC of the European Parliament and of the Council of 17
           'sort_options' => 0,
         ),
         'type' => 'select_or_other',
-        'weight' => '47',
+        'weight' => '55',
       ),
       'workbench_access_field' => 0,
     ),
@@ -1133,7 +1227,7 @@ The data provider is given and agrees to a statement of uses to which the datase
           'sort_options' => 0,
         ),
         'type' => 'select_or_other_buttons',
-        'weight' => '46',
+        'weight' => '54',
       ),
       'workbench_access_field' => 0,
     ),
@@ -1516,10 +1610,10 @@ The data provider is given and agrees to a statement of uses to which the datase
         'cache_count' => '4',
         'cache_enabled' => 0,
         'granularity' => array(
-          'day' => 'day',
+          'day' => 0,
           'hour' => 0,
           'minute' => 0,
-          'month' => 'month',
+          'month' => 0,
           'second' => 0,
           'year' => 'year',
         ),
@@ -1746,7 +1840,7 @@ The data provider is given and agrees to a statement of uses to which the datase
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '97',
+        'weight' => '104',
       ),
       'workbench_access_field' => 0,
     ),
@@ -1856,7 +1950,7 @@ The data provider is given and agrees to a statement of uses to which the datase
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '94',
+        'weight' => '101',
       ),
       'workbench_access_field' => 0,
     ),
@@ -1958,7 +2052,7 @@ The data provider is given and agrees to a statement of uses to which the datase
         'module' => 'token_field',
         'settings' => array(),
         'type' => 'token_field',
-        'weight' => '96',
+        'weight' => '103',
       ),
       'workbench_access_field' => 0,
     ),
@@ -2072,7 +2166,7 @@ The data provider is given and agrees to a statement of uses to which the datase
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '93',
+        'weight' => '100',
       ),
       'workbench_access_field' => 0,
     ),
@@ -2179,7 +2273,7 @@ The data provider is given and agrees to a statement of uses to which the datase
           'apply_chosen' => 0,
         ),
         'type' => 'options_select',
-        'weight' => '95',
+        'weight' => '102',
       ),
       'workbench_access_field' => 0,
     ),
@@ -3161,7 +3255,7 @@ zza|Zaza; Dimili; Dimli; Kirdki; Kirmanjki; Zazaki
           'sort_options' => 0,
         ),
         'type' => 'select_or_other',
-        'weight' => '43',
+        'weight' => '52',
       ),
       'workbench_access_field' => 0,
     ),
@@ -3550,7 +3644,7 @@ zza|Zaza; Dimili; Dimli; Kirdki; Kirmanjki; Zazaki
   $fields['node-data_set-field_person_creator'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '-1',
+      'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_person_creator',
@@ -4283,6 +4377,9 @@ zza|Zaza; Dimili; Dimli; Kirdki; Kirmanjki; Zazaki
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_purpose',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -4647,6 +4744,9 @@ zza|Zaza; Dimili; Dimli; Kirdki; Kirmanjki; Zazaki
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_related_publications',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(
         'node' => array(
           'columns' => array(
@@ -4663,6 +4763,7 @@ zza|Zaza; Dimili; Dimli; Kirdki; Kirmanjki; Zazaki
       'locked' => '0',
       'module' => 'entityreference',
       'settings' => array(
+        'delete_on_parent_delete' => '',
         'handler' => 'base',
         'handler_settings' => array(
           'behaviors' => array(
@@ -4775,7 +4876,7 @@ zza|Zaza; Dimili; Dimli; Kirdki; Kirmanjki; Zazaki
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '41',
+        'weight' => '51',
       ),
     ),
   );
@@ -4934,7 +5035,7 @@ zza|Zaza; Dimili; Dimli; Kirdki; Kirmanjki; Zazaki
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '42',
+        'weight' => '50',
       ),
       'workbench_access_field' => 0,
     ),
@@ -5072,6 +5173,7 @@ Provide information about the Ecosystem type, Observed parameters, EUNIS habitat
   t('Allows for a text-based/human readable description of the actual sampling procedures used within the dataset collection. This element shall include information about dataset lineage - general explanation of the data producer’s knowledge about the lineage of a dataset. This element shall also provide a description or geographical definition of the representative area of sampling.');
   t('Any additional information about this data set you may need to provide.');
   t('Contact');
+  t('Coordinates');
   t('Core Areas');
   t('DOI');
   t('Data set ID');
