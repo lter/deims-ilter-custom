@@ -195,6 +195,8 @@ field_dataset_sam_area_txt	Textual description (cardinlty 1)
    // Fetch and prepare the 
    // $node->field_dataset_taxa_ref[LANGUAGE_NONE] = $this->getTaxa($node, $row);
 
+   $node->field_coordinates[LANGUAGE_NONE] = $this->getCoordinates($node, $row);
+
     // Remove any empty or illegal delta field values.
     EntityHelper::removeInvalidFieldDeltas('node', $node);
     EntityHelper::removeEmptyFieldValues('node', $node);
@@ -227,6 +229,36 @@ field_dataset_sam_area_txt	Textual description (cardinlty 1)
         }
       }
     }
+
+    return $field_values;
+  }
+
+  public function getCoordinates($node, $row) {
+    $field_values = array();
+
+   if (!empty($row->field_dataset_bbox)){
+
+     $wkt = $row->field_dataset_bbox;
+
+    // Force the geo module to accept our field value as they come
+      $field_values[] = array(
+       'geo_type' => 'geometrycollection',
+       'wkt' => $wkt,
+       'master_column' => 'wkt',
+      );
+   }
+
+   $nc = $row->field_dataset_bbox_nc ;
+   $sc = $row->field_dataset_bbox_sc ; 
+   $ec = $row->field_dataset_bbox_ec ;
+   $wc = $row->field_dataset_bbox_wc ;
+   $wkt = "($sc $ec, $sc $wc, $nc $ec, $nc $wc)"; 
+ 
+   $field_values[] = array(
+     'geo_type' => 'geometrycollection',
+     'wkt' => $wkt,
+     'master_column' => 'wkt',
+   );
 
     return $field_values;
   }
