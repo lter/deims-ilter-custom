@@ -111,7 +111,7 @@ class IlterContentSiteMigration extends DrupalNode6Migration {
     // another self ref.
     $this->addFieldMapping('field_site_subsite_code_ref','field_research_site_subcode');
     $this->addFieldMapping('field_networks_term_ref','field_research_site_network')
-      ->sourceMigration('IlterTaxonomyNationalNetwork');
+      ->sourceMigration('IlterTaxonomyNetwork');
     $this->addFieldMapping('field_networks_term_ref:source_type')
       ->defaultValue('tid');
     $this->addFieldMapping('field_person_metadata_provider','field_dataset_mdprovider_ref')
