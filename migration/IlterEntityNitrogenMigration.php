@@ -50,7 +50,7 @@ class IlterEntityNitrogenMigration extends Migration {
 
 //   these should go to field_date_range
    $this->addFieldMapping('field_date_range','field_nitrogen_data_yearstart_value');
-   $this->addFieldMapping('field_date_range:to','field_nitrogen_data_yearend');
+   $this->addFieldMapping('field_date_range:to','field_nitrogen_data_yearend_value');
 
 //   there is a destination on 'creator' (field_related_site) and 'site' (field_related_site)
 //
