@@ -44,7 +44,6 @@ class IlterEntityTaxaMigration extends Migration {
 
     $this->addUnmigratedDestinations(array(
       'field_taxa_authority',
-      'field_taxa_internal_id',
       'field_taxa_authority:title',
       'field_taxa_authority:attributes',
       'field_taxa_id',
