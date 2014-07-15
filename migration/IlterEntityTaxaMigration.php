@@ -48,7 +48,6 @@ class IlterEntityTaxaMigration extends Migration {
       'field_taxa_authority:attributes',
       'field_taxa_id',
       'field_taxa_id:language',
-      'field_taxa_internal_id:language',
       'path',
       'field_taxa_common:language',	
       'field_taxa_scientific:language',	
