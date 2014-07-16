@@ -55,7 +55,7 @@ class IlterContentPersonMigration extends DeimsContentPersonMigration {
 
     // Node Red to "site".
     $this->addFieldMapping('field_related_sites','field_dataset_site_name')
-      ->sourceMigration('DeimsContentResearchSite');
+      ->sourceMigration('IlterContentSite');
 
     $this->addFieldMapping('field_address:postal_code','field_person_postalcode');
 
