@@ -35,7 +35,7 @@ class IlterContentForumMigration extends DrupalNode6Migration {
     ));
 
     $this->addFieldMapping('taxonomy_forums','7')
-     ->sourceMigration('IlterTaxonomyForum');
+     ->sourceMigration('IlterTaxonomyForums');
     $this->addFieldMapping('taxonomy_forums:source_type')
      ->defaultValue('tid');
 
