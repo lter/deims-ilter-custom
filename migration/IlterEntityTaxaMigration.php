@@ -20,7 +20,9 @@ class IlterEntityTaxaMigration extends Migration {
     $query->join('content_field_dataset_taxa_scientific', 'cfs', 'cfc.vid = cfs.vid');
     $query->fields('cfs', array('field_dataset_taxa_scientific_value'));
     // Title of the common name must not be empty.
-    $query->condition('cfc.field_dataset_taxa_common_value', '', '<>');
+    $or = db_or()->condition('cfs.field_dataset_taxa_scientific_value', '', '<>')->condition('cfc.field_dataset_taxa_common_value', '', '<>');
+
+    $query->condition($or);
 
     $this->source = new MigrateSourceSQL($query);
 
