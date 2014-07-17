@@ -62,7 +62,7 @@ function ilter_site_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Details',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'group_data_mgmnt',
       1 => 'group_purpose',
@@ -97,7 +97,7 @@ function ilter_site_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'LTER-Europe Specific',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'group_site_design_status',
       1 => 'group_site_eu_class',
@@ -127,10 +127,8 @@ function ilter_site_field_group_info() {
   $field_group->parent_name = 'group_site_coreinfo';
   $field_group->data = array(
     'label' => 'Geo Reference',
-    'weight' => '40',
-    'children' => array(
-      0 => 'field_site_resch_site_ref',
-    ),
+    'weight' => '41',
+    'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
       'formatter' => 'collapsible',
@@ -154,7 +152,7 @@ function ilter_site_field_group_info() {
   $field_group->parent_name = 'group_site_coreinfo';
   $field_group->data = array(
     'label' => 'Networks and Contacts',
-    'weight' => '44',
+    'weight' => '45',
     'children' => array(
       0 => 'field_date',
       1 => 'field_ilter_network_country',
@@ -376,7 +374,7 @@ function ilter_site_field_group_info() {
   $field_group->parent_name = 'group_site_coreinfo';
   $field_group->data = array(
     'label' => 'Ecosystem and Habitat',
-    'weight' => '43',
+    'weight' => '44',
     'children' => array(
       0 => 'field_site_biomeplus',
       1 => 'field_site_ecostype1',
@@ -597,7 +595,7 @@ function ilter_site_field_group_info() {
   $field_group->parent_name = 'group_site_coreinfo';
   $field_group->data = array(
     'label' => 'Precipitation',
-    'weight' => '42',
+    'weight' => '43',
     'children' => array(
       0 => 'field_precipitation_annual_ilter',
       1 => 'field_site_precip_max',
@@ -626,7 +624,7 @@ function ilter_site_field_group_info() {
   $field_group->parent_name = 'group_site_coreinfo';
   $field_group->data = array(
     'label' => 'Temperature',
-    'weight' => '41',
+    'weight' => '42',
     'children' => array(
       0 => 'field_site_temp_max',
       1 => 'field_site_temp_min',
