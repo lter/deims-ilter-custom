@@ -52,7 +52,9 @@ class IlterContentCommitteeMigration extends DrupalNode6Migration {
     $this->addFieldMapping('field_committee_chair_ref','field_committee_chair')
      ->sourceMigration('DeimsContentPerson');
 
-//    $this->addFieldMapping('field_committee_members_ref','');
+    $this->addFieldMapping('field_committee_members_ref','field_committee_member')
+     ->sourceMigration('DeimsContentPerson');
+
     $this->addFieldMapping('field_email','field_person_email');
     $this->addFieldMapping('field_committee_purpose','field_committee_purpose');
 
