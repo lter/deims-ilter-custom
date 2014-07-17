@@ -25,6 +25,26 @@ function deims_person_ds_field_settings_info() {
   );
   $export['node|person|full'] = $ds_fieldsetting;
 
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|person|person_in_committee';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'person';
+  $ds_fieldsetting->view_mode = 'person_in_committee';
+  $ds_fieldsetting->settings = array(
+    'title' => array(
+      'weight' => '0',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '1',
+        'wrapper' => 'strong',
+        'class' => '',
+      ),
+    ),
+  );
+  $export['node|person|person_in_committee'] = $ds_fieldsetting;
+
   return $export;
 }
 
@@ -104,6 +124,58 @@ function deims_person_ds_layout_settings_info() {
     'layout_attributes_merge' => 1,
   );
   $export['node|person|full'] = $ds_layout;
+
+  $ds_layout = new stdClass();
+  $ds_layout->api_version = 1;
+  $ds_layout->id = 'node|person|person_in_committee';
+  $ds_layout->entity_type = 'node';
+  $ds_layout->bundle = 'person';
+  $ds_layout->view_mode = 'person_in_committee';
+  $ds_layout->layout = 'ds_1col';
+  $ds_layout->settings = array(
+    'regions' => array(
+      'ds_content' => array(
+        0 => 'title',
+        1 => 'field_pers_comm_participation',
+        2 => 'field_pers_comm_skills',
+        3 => 'field_pers_comm_time',
+        4 => 'field_pers_comm_active',
+      ),
+    ),
+    'fields' => array(
+      'title' => 'ds_content',
+      'field_pers_comm_participation' => 'ds_content',
+      'field_pers_comm_skills' => 'ds_content',
+      'field_pers_comm_time' => 'ds_content',
+      'field_pers_comm_active' => 'ds_content',
+    ),
+    'classes' => array(),
+    'wrappers' => array(
+      'ds_content' => 'div',
+    ),
+    'layout_wrapper' => 'div',
+    'layout_attributes' => '',
+    'layout_attributes_merge' => 1,
+  );
+  $export['node|person|person_in_committee'] = $ds_layout;
+
+  return $export;
+}
+
+/**
+ * Implements hook_ds_view_modes_info().
+ */
+function deims_person_ds_view_modes_info() {
+  $export = array();
+
+  $ds_view_mode = new stdClass();
+  $ds_view_mode->api_version = 1;
+  $ds_view_mode->view_mode = 'person_in_committee';
+  $ds_view_mode->label = 'person-in-committee';
+  $ds_view_mode->entities = array(
+    'node' => 'node',
+  );
+  $export['person_in_committee'] = $ds_view_mode;
 
   return $export;
 }
