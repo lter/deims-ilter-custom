@@ -38,7 +38,9 @@ class IlterFieldsCoordDataSetMigration extends DrupalNode6Migration {
 
 //  is this really OK?
     $this->addFieldMapping('field_site_id', 'field_dataset_id')
-      ->description('in prepareRow');
+      ->description('in prepareRow')
+      ->defaultValue(NULL);
+
     $this->addFieldMapping('field_elevation', 'field_dataset_altit_max');
 
 //  create this field!
@@ -128,10 +130,17 @@ class IlterFieldsCoordDataSetMigration extends DrupalNode6Migration {
     if (! is_int($row->field_dataset_id)){
       $row->field_dataset_id = NULL;
     }
+
+    if (empty($row->field_dataset_bbox[0])){
+      return FALSE;
+    }
+
   }
 
   public function prepare($node, $row) {
-     $node->title = 'From Dataset: ' . $row->title;
+
+//     Leave the title alone....
+//     $node->title = 'From Dataset: ' . $row->title;
 
     $node->field_coordinates[LANGUAGE_NONE] = $this->getCoordinates($node, $row);
 
@@ -144,18 +153,21 @@ class IlterFieldsCoordDataSetMigration extends DrupalNode6Migration {
   public function getCoordinates($node, $row) {
     $field_values = array();
 
-   if (!empty($row->field_dataset_bbox)){
- 
-     $wkt= $row->field_dataset_bbox;    
+//    $debg = dpm($row->field_dataset_bbox);
+//    $debg2 = print_r($row->field_dataset_bbox);
+//     $this->queueMessage("Here is my WKT object {$debg} and also {$debg2} .", MigrationBase::MESSAGE_INFORMATIONAL);
 
+   if (!empty($row->field_dataset_bbox[0])){
+ 
+     $wkt= $row->field_dataset_bbox;
+       
     // Force the geo module to accept our field value as they come
       $field_values[] = array(
        'geo_type' => 'geometrycollection',
-       'top' => $top_c,
        'wkt' => $wkt,
        'master_column' => 'wkt',
       );
-    }
+   }
 
     return $field_values;
   }
