@@ -239,7 +239,7 @@ function deims_data_set_field_default_fields() {
           'track_list' => 0,
         ),
         'type' => 'term_reference_tree',
-        'weight' => '53',
+        'weight' => '14',
       ),
       'workbench_access_field' => 0,
     ),
@@ -375,7 +375,14 @@ function deims_data_set_field_default_fields() {
       'field_permissions' => array(
         'type' => '0',
       ),
-      'foreign keys' => array(),
+      'foreign keys' => array(
+        'eck_sampling_description' => array(
+          'columns' => array(
+            'target_id' => 'id',
+          ),
+          'table' => 'eck_sampling_description',
+        ),
+      ),
       'indexes' => array(
         'target_id' => array(
           0 => 'target_id',
@@ -477,100 +484,6 @@ function deims_data_set_field_default_fields() {
         ),
         'type' => 'inline_entity_form_single',
         'weight' => '64',
-      ),
-      'workbench_access_field' => 0,
-    ),
-  );
-
-  // Exported field: 'node-data_set-field_coordinates'.
-  $fields['node-data_set-field_coordinates'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '-1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_coordinates',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'locked' => '0',
-      'module' => 'geofield',
-      'settings' => array(),
-      'translatable' => '0',
-      'type' => 'geofield',
-    ),
-    'field_instance' => array(
-      'bundle' => 'data_set',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'bdp' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'default' => array(
-          'label' => 'above',
-          'module' => 'geofield',
-          'settings' => array(
-            'data' => 'full',
-          ),
-          'type' => 'geofield_wkt',
-          'weight' => 35,
-        ),
-        'eml' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'eml_hl' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'iso' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_coordinates',
-      'label' => 'Coordinates',
-      'required' => 1,
-      'settings' => array(
-        'local_solr' => array(
-          'enabled' => FALSE,
-          'lat_field' => 'lat',
-          'lng_field' => 'lng',
-        ),
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'geofield',
-        'settings' => array(),
-        'type' => 'geofield_bounds',
-        'weight' => '49',
       ),
       'workbench_access_field' => 0,
     ),
@@ -707,7 +620,7 @@ function deims_data_set_field_default_fields() {
           'apply_chosen' => 1,
         ),
         'type' => 'options_select',
-        'weight' => '14',
+        'weight' => '17',
       ),
       'workbench_access_field' => 0,
     ),
@@ -1106,7 +1019,7 @@ Council directive 2008/56/EC of the European Parliament and of the Council of 17
           'sort_options' => 0,
         ),
         'type' => 'select_or_other',
-        'weight' => '55',
+        'weight' => '16',
       ),
       'workbench_access_field' => 0,
     ),
@@ -1227,7 +1140,7 @@ The data provider is given and agrees to a statement of uses to which the datase
           'sort_options' => 0,
         ),
         'type' => 'select_or_other_buttons',
-        'weight' => '54',
+        'weight' => '15',
       ),
       'workbench_access_field' => 0,
     ),
@@ -1349,124 +1262,6 @@ The data provider is given and agrees to a statement of uses to which the datase
         ),
         'type' => 'entityreference_autocomplete',
         'weight' => '1',
-      ),
-      'workbench_access_field' => 0,
-    ),
-  );
-
-  // Exported field: 'node-data_set-field_dataset_taxa_ref'.
-  $fields['node-data_set-field_dataset_taxa_ref'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '-1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_dataset_taxa_ref',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(),
-      'indexes' => array(
-        'target_id' => array(
-          0 => 'target_id',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'entityreference',
-      'settings' => array(
-        'delete_on_parent_delete' => '',
-        'handler' => 'base',
-        'handler_settings' => array(
-          'behaviors' => array(
-            'views-select-list' => array(
-              'status' => 0,
-            ),
-          ),
-          'sort' => array(
-            'type' => 'none',
-          ),
-          'target_bundles' => array(
-            'taxa' => 'taxa',
-          ),
-        ),
-        'target_type' => 'taxa',
-      ),
-      'translatable' => '0',
-      'type' => 'entityreference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'data_set',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'bdp' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'default' => array(
-          'label' => 'above',
-          'module' => 'entityreference',
-          'settings' => array(
-            'link' => FALSE,
-          ),
-          'type' => 'entityreference_label',
-          'weight' => 30,
-        ),
-        'eml' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'eml_hl' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'iso' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_dataset_taxa_ref',
-      'label' => 'Taxa',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'inline_entity_form',
-        'settings' => array(
-          'fields' => array(),
-          'type_settings' => array(
-            'allow_existing' => 1,
-            'clone_button' => 1,
-            'delete_references' => 0,
-            'match_operator' => 'CONTAINS',
-          ),
-        ),
-        'type' => 'inline_entity_form',
-        'weight' => '10',
       ),
       'workbench_access_field' => 0,
     ),
@@ -1610,10 +1405,10 @@ The data provider is given and agrees to a statement of uses to which the datase
         'cache_count' => '4',
         'cache_enabled' => 0,
         'granularity' => array(
-          'day' => 0,
+          'day' => 'day',
           'hour' => 0,
           'minute' => 0,
-          'month' => 0,
+          'month' => 'month',
           'second' => 0,
           'year' => 'year',
         ),
@@ -1840,7 +1635,7 @@ The data provider is given and agrees to a statement of uses to which the datase
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '104',
+        'weight' => '97',
       ),
       'workbench_access_field' => 0,
     ),
@@ -1950,7 +1745,7 @@ The data provider is given and agrees to a statement of uses to which the datase
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '101',
+        'weight' => '94',
       ),
       'workbench_access_field' => 0,
     ),
@@ -2052,7 +1847,7 @@ The data provider is given and agrees to a statement of uses to which the datase
         'module' => 'token_field',
         'settings' => array(),
         'type' => 'token_field',
-        'weight' => '103',
+        'weight' => '96',
       ),
       'workbench_access_field' => 0,
     ),
@@ -2166,7 +1961,7 @@ The data provider is given and agrees to a statement of uses to which the datase
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '100',
+        'weight' => '93',
       ),
       'workbench_access_field' => 0,
     ),
@@ -2273,7 +2068,7 @@ The data provider is given and agrees to a statement of uses to which the datase
           'apply_chosen' => 0,
         ),
         'type' => 'options_select',
-        'weight' => '102',
+        'weight' => '95',
       ),
       'workbench_access_field' => 0,
     ),
@@ -2290,7 +2085,14 @@ The data provider is given and agrees to a statement of uses to which the datase
       'field_permissions' => array(
         'type' => '0',
       ),
-      'foreign keys' => array(),
+      'foreign keys' => array(
+        'eck_free_keyword' => array(
+          'columns' => array(
+            'target_id' => 'id',
+          ),
+          'table' => 'eck_free_keyword',
+        ),
+      ),
       'indexes' => array(
         'target_id' => array(
           0 => 'target_id',
@@ -2384,14 +2186,17 @@ The data provider is given and agrees to a statement of uses to which the datase
         'settings' => array(
           'fields' => array(),
           'type_settings' => array(
-            'allow_existing' => 0,
+            'allow_existing' => 1,
             'clone_button' => 0,
             'delete_references' => 0,
+            'label_plural' => 'entities',
+            'label_singular' => 'entity',
             'match_operator' => 'CONTAINS',
+            'override_labels' => 0,
           ),
         ),
         'type' => 'inline_entity_form',
-        'weight' => '11',
+        'weight' => '15',
       ),
       'workbench_access_field' => 0,
     ),
@@ -2654,7 +2459,7 @@ Provide information about the Ecosystem type, Observed parameters, EUNIS habitat
           'track_list' => 1,
         ),
         'type' => 'term_reference_tree',
-        'weight' => '13',
+        'weight' => '16',
       ),
       'workbench_access_field' => 0,
     ),
@@ -3255,7 +3060,7 @@ zza|Zaza; Dimili; Dimli; Kirdki; Kirmanjki; Zazaki
           'sort_options' => 0,
         ),
         'type' => 'select_or_other',
-        'weight' => '52',
+        'weight' => '13',
       ),
       'workbench_access_field' => 0,
     ),
@@ -4876,7 +4681,7 @@ zza|Zaza; Dimili; Dimli; Kirdki; Kirmanjki; Zazaki
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '51',
+        'weight' => '11',
       ),
     ),
   );
@@ -5021,142 +4826,162 @@ zza|Zaza; Dimili; Dimli; Kirdki; Kirmanjki; Zazaki
       'ds_extras_field_template' => '',
       'entity_type' => 'node',
       'field_name' => 'field_related_sites',
-      'label' => 'Related sites',
+      'label' => 'Bounding Box, Elev, etc',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'entityreference',
+        'module' => 'inline_entity_form',
         'settings' => array(
-          'match_operator' => 'CONTAINS',
-          'path' => '',
-          'size' => '60',
+          'fields' => array(),
+          'type_settings' => array(
+            'allow_existing' => 0,
+            'clone_button' => 0,
+            'delete_references' => 0,
+            'label_plural' => 'nodes',
+            'label_singular' => 'node',
+            'match_operator' => 'CONTAINS',
+            'override_labels' => 0,
+          ),
         ),
-        'type' => 'entityreference_autocomplete',
-        'weight' => '50',
+        'type' => 'inline_entity_form',
+        'weight' => '12',
       ),
       'workbench_access_field' => 0,
     ),
   );
 
-  // Exported field: 'node-data_set-field_short_name'.
-  $fields['node-data_set-field_short_name'] = array(
+  // Exported field: 'node-data_set-field_taxa_ref'.
+  $fields['node-data_set-field_taxa_ref'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '3',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_short_name',
+      'field_name' => 'field_taxa_ref',
       'field_permissions' => array(
         'type' => '0',
       ),
       'foreign keys' => array(
-        'format' => array(
+        'eck_taxa' => array(
           'columns' => array(
-            'format' => 'format',
+            'target_id' => 'id',
           ),
-          'table' => 'filter_format',
+          'table' => 'eck_taxa',
         ),
       ),
       'indexes' => array(
-        'format' => array(
-          0 => 'format',
+        'target_id' => array(
+          0 => 'target_id',
         ),
       ),
       'locked' => '0',
-      'module' => 'text',
+      'module' => 'entityreference',
       'settings' => array(
-        'max_length' => '100',
+        'delete_on_parent_delete' => '',
+        'handler' => 'base',
+        'handler_settings' => array(
+          'behaviors' => array(
+            'views-select-list' => array(
+              'status' => 0,
+            ),
+          ),
+          'sort' => array(
+            'type' => 'none',
+          ),
+          'target_bundles' => array(
+            'taxa' => 'taxa',
+          ),
+        ),
+        'target_type' => 'taxa',
       ),
       'translatable' => '0',
-      'type' => 'text',
+      'type' => 'entityreference',
     ),
     'field_instance' => array(
       'bundle' => 'data_set',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'A short name is usually the name used to refer in short to your dataset. Example: meteo_2010',
+      'description' => '',
       'display' => array(
         'bdp' => array(
-          'label' => 'inline',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_plain',
-          'weight' => '9',
-        ),
-        'default' => array(
-          'label' => 'inline',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '8',
-        ),
-        'eml' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '25',
+          'weight' => 0,
+        ),
+        'default' => array(
+          'label' => 'inline',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => '6',
+        ),
+        'eml' => array(
+          'label' => 'above',
+          'module' => 'eml',
+          'settings' => array(
+            'element' => '',
+            'multiple' => 0,
+          ),
+          'type' => 'entityreference_eml_element',
+          'weight' => '17',
         ),
         'eml_hl' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '8',
-        ),
-        'full' => array(
-          'label' => 'inline',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '5',
+          'weight' => 0,
         ),
         'iso' => array(
-          'label' => 'inline',
-          'module' => 'iso',
-          'settings' => array(),
-          'type' => 'iso_text',
-          'weight' => '10',
-        ),
-        'search_result' => array(
-          'label' => 'inline',
+          'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '26',
+          'weight' => 0,
+        ),
+        'search_result' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'teaser' => array(
-          'label' => 'inline',
-          'module' => 'text',
+          'label' => 'above',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '5',
-        ),
-        'token' => array(
-          'label' => 'inline',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '8',
+          'type' => 'hidden',
+          'weight' => 0,
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_short_name',
-      'label' => 'Short name',
+      'field_name' => 'field_taxa_ref',
+      'label' => 'Taxa',
       'required' => 0,
       'settings' => array(
-        'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'text',
+        'module' => 'inline_entity_form',
         'settings' => array(
-          'size' => '40',
+          'fields' => array(),
+          'type_settings' => array(
+            'allow_existing' => 1,
+            'clone_button' => 1,
+            'delete_references' => 0,
+            'label_plural' => 'entities',
+            'label_singular' => 'entity',
+            'match_operator' => 'CONTAINS',
+            'override_labels' => 0,
+          ),
         ),
-        'type' => 'text_textfield',
-        'weight' => '3',
+        'type' => 'inline_entity_form',
+        'weight' => '14',
       ),
+      'workbench_access_field' => 0,
     ),
   );
 
@@ -5166,14 +4991,13 @@ zza|Zaza; Dimili; Dimli; Kirdki; Kirmanjki; Zazaki
   t('<p>Define keywords from the <a href="http://vocabs.lter-europe.net/EnvThes3" title="Opens EnvEurope Thesaurus Main Web Page" target="_new"><b>EnvEurope Thesaurus</b></a> describing your dataset. 
 Provide information about the Ecosystem type, Observed parameters, EUNIS habitat type, related INSPIRE Spatial Data Theme, or any other keyword you might find important to describe your data.</p>
 <p>Type keywords you have in your mind and the system will provide you matching ones to be selected if appropriate. For multiple keywords, select first, type coma and write another one.</p> ');
-  t('A short name is usually the name used to refer in short to your dataset. Example: meteo_2010');
   t('Abstract');
   t('Additional Project roles');
   t('Additional information');
   t('Allows for a text-based/human readable description of the actual sampling procedures used within the dataset collection. This element shall include information about dataset lineage - general explanation of the data producer’s knowledge about the lineage of a dataset. This element shall also provide a description or geographical definition of the representative area of sampling.');
   t('Any additional information about this data set you may need to provide.');
+  t('Bounding Box, Elev, etc');
   t('Contact');
-  t('Coordinates');
   t('Core Areas');
   t('DOI');
   t('Data set ID');
@@ -5203,10 +5027,8 @@ Provide information about the Ecosystem type, Observed parameters, EUNIS habitat
   t('Purpose');
   t('Quality Assurance');
   t('Related publications');
-  t('Related sites');
   t('Representative Area of Sampling');
   t('Select a group of user and permission granted to them.');
-  t('Short name');
   t('Site name');
   t('Taxa');
   t('The date which specifies when the metadata record was created or updated. If you create a new metadata record, default value "today" is predefined.
