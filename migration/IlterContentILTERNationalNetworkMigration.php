@@ -54,6 +54,8 @@ class IlterContentILTERNationalNetworkMigration extends DrupalNode6Migration {
       'field_ilter_network_num_mbrs',
     ));
 
+/**
+  The content for these is messed up at source.
 // Network Coordinator NRef 
     $this->AddFieldMapping('field_ilter_network_coordinator','field_ilter_network_coordinator')
       ->sourceMigration('DeimsContentPerson');
@@ -61,7 +63,7 @@ class IlterContentILTERNationalNetworkMigration extends DrupalNode6Migration {
 // Information Manager (field_ilter_im)  *person ref*
     $this->AddFieldMapping('field_ilter_network_im','field_ilter_im')
       ->sourceMigration('DeimsContentPerson');
-
+*/
     $this->AddFieldMapping('field_ilter_network_listrec','field_ilter_network_listrec')
       ->description('Tweaked in prepareRow');
 
