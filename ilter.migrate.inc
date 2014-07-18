@@ -37,9 +37,9 @@ function ilter_migrate_api() {
       'IlterFieldCoordDataset' => array(
         'class_name' => 'IlterFieldsCoordDatasetMigration',
       ),
-      'IlterFieldCoordSite' => array(
-        'class_name' => 'IlterFieldsCoordSiteMigration',
-      ),
+//      'IlterFieldCoordSite' => array(
+//        'class_name' => 'IlterFieldsCoordSiteMigration',
+//      ),
       'IlterContentILTERNationalNetwork' => array(
         'class_name' => 'IlterContentILTERNationalNetworkMigration',
       ),
