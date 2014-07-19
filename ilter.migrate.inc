@@ -70,6 +70,14 @@ function ilter_migrate_api() {
         'source_vocabulary' => '3',
         'destination_vocabulary' => 'envthesold',
       ),
+      'IlterTaxonomyEnvThes3' => array(
+        'class_name' => 'DrupalTerm6Migration',
+        'description' => "Taxonomy migration for the 'EnvThesOld' vocabulary.",
+        'source_connection' => 'drupal6',
+        'source_version' => 6,
+        'source_vocabulary' => '11',
+        'destination_vocabulary' => 'lter_controlled_vocabulary',
+      ),
       'IlterTaxonomyEnvEuropeDataPolicy' => array(
         'class_name' => 'DrupalTerm6Migration',
         'description' => "Taxonomy migration for the 'Env Eu. Policy' vocabulary.",
