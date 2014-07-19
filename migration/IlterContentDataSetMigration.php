@@ -4,7 +4,7 @@
  * Definition of IlterContentDataSetMigration.
  */
 class IlterContentDataSetMigration extends DrupalNode6Migration {
-  protected $dependencies = array('DeimsContentDataFile', 'DeimsContentPerson', 'DeimsContentResearchSite');
+  protected $dependencies = array('DeimsContentPerson','IlterFieldCoordDataset','DeimsContentDataFile');
 
   public function __construct(array $arguments) {
     $arguments += array(
@@ -70,15 +70,15 @@ field_dataset_sam_area_txt	Textual description (cardinlty 1)
      ->description('may have to use prepareRow');
 
     $this->addFieldMapping('field_dataset_site_name_ref','field_dataset_site_name')
-     ->sourceMigration('IlterSiteMigration');
+     ->sourceMigration('IlterContentSite');
 
     $this->addFieldMapping('field_related_links', 'field_dataset_method_title_url');
     $this->addFieldMapping('field_related_links:title', 'field_dataset_method_title_url:title');
     $this->addFieldMapping('field_related_links:attributes', 'field_dataset_method_title_url:attributes');
 
     $this->addFieldMapping('field_related_sites',NULL)
-     ->description('Migrate in prepare()');
-//      ->sourceMigration('DeimsContentResearchSite');
+//     ->description('Migrate in prepare()');
+     ->sourceMigration('IlterFieldCoordDataset');
 
     $this->addFieldMapping('field_methods', 'field_methods');
 //    $this->addFieldMapping('field_methods:format', 'field_methods:format')
@@ -103,7 +103,7 @@ field_dataset_sam_area_txt	Textual description (cardinlty 1)
     $this->addFieldMapping('field_person_metadata_provider','field_dataset_mdprovider_ref')
       ->sourceMigration('DeimsContentPerson');
 
-    $this->addFieldMapping('field_dataset_taxa_ref','nid')
+    $this->addFieldMapping('field_taxa_ref','nid')
       ->sourceMigration('IlterEntityTaxa');
   
 /**
@@ -134,7 +134,6 @@ field_dataset_sam_area_txt	Textual description (cardinlty 1)
       'field_data_sources',
       'field_data_set_id:language',
       'field_abstract:language',
-      'field_short_name:language',
       'field_purpose:language',
       'field_additional_information:language',
       'field_related_links:language',
@@ -180,7 +179,6 @@ field_dataset_sam_area_txt	Textual description (cardinlty 1)
       'field_quality_assurance',
       'field_access_use_termref:create_term',
       'field_access_use_termref:ignore_case',
-      'field_short_name',
     ));
   }
 
@@ -194,8 +192,6 @@ field_dataset_sam_area_txt	Textual description (cardinlty 1)
  
    // Fetch and prepare the 
    // $node->field_dataset_taxa_ref[LANGUAGE_NONE] = $this->getTaxa($node, $row);
-
-   $node->field_coordinates[LANGUAGE_NONE] = $this->getCoordinates($node, $row);
 
     // Remove any empty or illegal delta field values.
     EntityHelper::removeInvalidFieldDeltas('node', $node);
@@ -229,36 +225,6 @@ field_dataset_sam_area_txt	Textual description (cardinlty 1)
         }
       }
     }
-
-    return $field_values;
-  }
-
-  public function getCoordinates($node, $row) {
-    $field_values = array();
-
-   if (!empty($row->field_dataset_bbox)){
-
-     $wkt = $row->field_dataset_bbox;
-
-    // Force the geo module to accept our field value as they come
-      $field_values[] = array(
-       'geo_type' => 'geometrycollection',
-       'wkt' => $wkt,
-       'master_column' => 'wkt',
-      );
-   }
-
-   $nc = $row->field_dataset_bbox_nc ;
-   $sc = $row->field_dataset_bbox_sc ; 
-   $ec = $row->field_dataset_bbox_ec ;
-   $wc = $row->field_dataset_bbox_wc ;
-   $wkt = "($sc $ec, $sc $wc, $nc $ec, $nc $wc)"; 
- 
-   $field_values[] = array(
-     'geo_type' => 'geometrycollection',
-     'wkt' => $wkt,
-     'master_column' => 'wkt',
-   );
 
     return $field_values;
   }
