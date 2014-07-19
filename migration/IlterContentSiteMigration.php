@@ -86,6 +86,9 @@ class IlterContentSiteMigration extends DrupalNode6Migration {
     // this the fields res. site
     // $this->addFieldMapping('field_site_resch_site_ref,'
 
+    $this->addFieldMapping('field_coordinates','field_research_site_lat')
+     ->description('Handled in prepare()');
+
     $this->addFieldMapping('field_temperature_average_annual','field_research_site_temp_ann');
     $this->addFieldMapping('field_precipitation_annual_ilter','field_research_site_precip_ann');
     $this->addFieldMapping('field_site_temp_max','field_research_site_temp_max');
@@ -146,21 +149,35 @@ $this->addFieldMapping('field_images:title,'
     $this->addFieldMapping('field_site_mgmnt_res_percent','field_research_site_mgtprcnt');
     $this->addFieldMapping('field_site_mgtres_notes','field_research_site_mgtnotes');
     $this->addFieldMapping('field_site_inf_val','field_research_site_infvalue');
-    $this->addFieldMapping('field_site_access_allyear','field_research_site_accyr');
-    $this->addFieldMapping('field_site_allparts_access','field_research_site_accparts');
+
+    $this->addFieldMapping('field_site_access_allyear','field_research_site_accyr')
+     ->description('Tweaked in prepareRow()');
+
+    $this->addFieldMapping('field_site_allparts_access','field_research_site_accparts')
+     ->description('Tweaked in prepareRow()');
+   
     $this->addFieldMapping('field_site_access_type','field_research_site_acctype');
-    $this->addFieldMapping('field_site_infr_snow_clearng','field_research_site_snowclr');
+    $this->addFieldMapping('field_site_infr_snow_clearng','field_research_site_snowclr')
+     ->description('Tweaked in prepareRow()');
     $this->addFieldMapping('field_site_snow_clrng_freq','field_research_site_snowclrfr');
-    $this->addFieldMapping('field_site_inf_perm_powersup','field_research_site_power');
+    $this->addFieldMapping('field_site_inf_perm_powersup','field_research_site_power')
+     ->description('Tweaked in prepareRow()');
     $this->addFieldMapping('field_site_inf_perm_power_prod','field_research_site_poweramt');
     $this->addFieldMapping('field_perm_power_loc','field_research_site_powerloc');
     $this->addFieldMapping('field_site_inf_data_transm_type','field_research_site_datatrtype');
     $this->addFieldMapping('field_site_inf_dat_trans_fro_typ','field_research_site_datatrfrtp');
-    $this->addFieldMapping('field_site_inf_temp_control_cont','field_research_site_container');
+    $this->addFieldMapping('field_site_inf_temp_control_cont','field_research_site_container')
+     ->description('Tweaked in prepareRow()');
     $this->addFieldMapping('field_site_inf_meas_towr_loc','field_research_site_meastowloc');
-    $this->addFieldMapping('field_site_inf_marine_platfm','field_research_site_marineplt');
-    $this->addFieldMapping('field_site_inf_staff_room','field_research_site_staffrm');
-    $this->addFieldMapping('field_site_inf_lodging','field_research_site_lodging');
+    $this->addFieldMapping('field_site_inf_marine_platfm','field_research_site_marineplt')
+     ->description('Tweaked in prepareRow()');
+
+    $this->addFieldMapping('field_site_inf_staff_room','field_research_site_staffrm')
+     ->description('Tweaked in prepareRow()');
+
+    $this->addFieldMapping('field_site_inf_lodging','field_research_site_lodging')
+     ->description('Tweaked in prepareRow()');
+
     $this->addFieldMapping('field_site_inf_numbr_of_beds','field_research_site_lodgnum');
     $this->addFieldMapping('field_site_inf_notes','field_research_site_infranote');
     $this->addFieldMapping('field_site_dataccadmin','field_research_site_dataccadmin');
@@ -178,12 +195,17 @@ $this->addFieldMapping('field_images:title,'
     $this->addFieldMapping('field_site_datastorloc','field_research_site_datastorloc');
     $this->addFieldMapping('field_site_datastornum','field_research_site_datastrnum');
     $this->addFieldMapping('field_site_ops_cost','field_research_site_budget');
-    $this->addFieldMapping('field_site_ops_ispermanent','field_research_site_operation');
+    $this->addFieldMapping('field_site_ops_ispermanent','field_research_site_operation')
+     ->description('Boolean tweaked');
+
     $this->addFieldMapping('field_site_ops_sampling_intr','field_research_site_samplingdays');
     $this->addFieldMapping('field_site_ops_maint_freq','field_research_site_maintenadays');
     $this->addFieldMapping('field_site_ops_notes','field_research_site_opernotes');
-    $this->addFieldMapping('field_collected_datasets_ref','field_research_site_dataset')
-     ->sourceMigration('IlterContentDataSet');
+
+//  Do not create a stub, there'll be a ref in the DS as well.
+//    $this->addFieldMapping('field_collected_datasets_ref','field_research_site_dataset')
+//     ->sourceMigration('IlterContentDataSet');
+
     $this->addFieldMapping('field_site_eu_declaration_status','field_research_site_declarations');
     $this->addFieldMapping('field_site_eu__status_accred','field_research_site_ltereur_acrd');
     $this->addFieldMapping('field_site_eu_design_scale','field_research_site_scale');
@@ -200,7 +222,8 @@ $this->addFieldMapping('field_images:title,'
     $this->addFieldMapping('field_site_eu_environ_zone_econ','field_research_site_metzenzeco');
     $this->addFieldMapping('field_site_eu_infobase_sitecode','field_research_site_infcode');
     $this->addFieldMapping('field_site_geobon_biome','field_research_site_biome');
-    $this->addFieldMapping('field_site_expeer_netmem','field_research_site_expeersite');
+    $this->addFieldMapping('field_site_expeer_netmem','field_research_site_expeersite')
+      ->description('Tweaked in prepareRow()');
     $this->addFieldMapping('field_site_expeer_sitename','field_ressearch_site_expeer_name');
     $this->addFieldMapping('field_site_expeer_classif','field_research_site_expeer');
     $this->addFieldMapping('field_site_expeer_corine_class','field_research_site_corine');
@@ -208,11 +231,166 @@ $this->addFieldMapping('field_images:title,'
   }
   public function prepareRow($row) {
     parent::prepareRow($row);
+
+    //Convert Yes and No to integers 1 and 0
+    switch ($row->field_research_site_expeersite) {
+      case 'Yes':
+        $row->field_research_site_expeersite = 1;
+        break;
+      case 'No':
+      default:
+        $row->field_research_site_expeersite = 0;
+        break;
+    }
+
+    switch ($row->field_research_site_accyr) {
+      case 'Yes':
+        $row->field_research_site_accyr = 1;
+        break;
+      case 'No':
+      default:
+        $row->field_research_site_accyr = 0;
+        break;
+    }
+
+    switch ($row->field_research_site_accparts) {
+      case 'Yes':
+        $row->field_research_site_accparts = 1;
+        break;
+      case 'No':
+      default:
+        $row->field_research_site_accparts = 0;
+        break;
+    }
+
+    switch ($row->field_research_site_lodging) {
+      case 'Yes':
+        $row->field_research_site_lodging = 1;
+        break;
+      case 'No':
+      default:
+        $row->field_research_site_lodging = 0;
+        break;
+    }
+
+    switch ($row->field_research_site_power) {
+      case 'Yes':
+        $row->field_research_site_power = 1;
+        break;
+      case 'No':
+      default:
+        $row->field_research_site_power = 0;
+        break;
+    }
+
+    switch ($row->field_research_site_mgtres) {
+      case 'Yes':
+        $row->field_research_site_mgtres = 1;
+        break;
+      case 'No':
+      default:
+        $row->field_research_site_mgtres = 0;
+        break;
+    }
+
+    switch ($row->field_research_site_snowclr) {
+      case 'Yes':
+        $row->field_research_site_snowclr = 1;
+        break;
+      case 'No':
+      default:
+        $row->field_research_site_snowclr = 0;
+        break;
+    }
+
+    switch ($row->field_research_site_container) {
+      case 'Yes':
+        $row->field_research_site_container = 1;
+        break;
+      case 'No':
+      default:
+        $row->field_research_site_container = 0;
+        break;
+    }
+
+    switch ($row->field_research_site_marineplt) {
+      case 'Yes':
+        $row->field_research_site_marineplt = 1;
+        break;
+      case 'No':
+      default:
+        $row->field_research_site_marineplt = 0;
+        break;
+    }
+
+    switch ($row->field_research_site_staffrm) {
+      case 'Yes':
+        $row->field_research_site_staffrm = 1;
+        break;
+      case 'No':
+      default:
+        $row->field_research_site_staffrm = 0;
+        break;
+    }
+
+    switch ($row->field_research_site_opearation) {
+      case 'Yes':
+        $row->field_research_site_operation = 1;
+        break;
+      case 'No':
+      default:
+        $row->field_research_site_operation = 0;
+        break;
+    }
+
   }
   public function prepare($node, $row) {
+
+    $node->field_coordinates[LANGUAGE_NONE] = $this->getLatLong($node, $row);
+    
+    $node->field_geo_bounding_box[LANGUAGE_NONE] = $this->getCoordinates($node, $row);
+
     // Remove any empty or illegal delta field values.
     EntityHelper::removeInvalidFieldDeltas('node', $node);
     EntityHelper::removeEmptyFieldValues('node', $node);
+  }
+
+  public function getLatLong($node, $row) {
+    $field_values = array();
+
+   if (!empty($row->field_research_site_lat[0]) and !empty($row->field_research_site_long[0]) ){
+ 
+     $lat = $row->field_research_site_lat[0];
+     $long = $row->field_research_site_long[0];
+     
+     $wkt = "POINT($long $lat)";
+
+    // Force the geo module to accept our field value as they come
+      $field_values[] = array(
+       'geo_type' => 'point',
+       'wkt' => $wkt,
+       'master_column' => 'wkt',
+      );
+   }
+
+    return $field_values;
+  }
+
+   public function getCoordinates($node, $row) {
+    $field_values = array();
+
+   if (!empty($row->field_research_site_boundary[0])){
+ 
+     $wkt= $row->field_research_site_boundary; 
+    // Force the geo module to accept our field value as they come
+      $field_values[] = array(
+       'geo_type' => 'geometrycollection',
+       'wkt' => $wkt,
+       'master_column' => 'wkt',
+      );
+   }
+
+    return $field_values;
   }
    
 }
