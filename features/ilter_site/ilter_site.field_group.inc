@@ -21,7 +21,7 @@ function ilter_site_field_group_info() {
   $field_group->parent_name = 'group_details';
   $field_group->data = array(
     'label' => 'Data Management',
-    'weight' => '10',
+    'weight' => '11',
     'children' => array(
       0 => 'field_collected_datasets_ref',
       1 => 'field_site_dataccadmin',
@@ -70,6 +70,7 @@ function ilter_site_field_group_info() {
       3 => 'group_site_infrstrctr_group',
       4 => 'group_site_ops',
       5 => 'group_site_otherdetail',
+      6 => 'group_site_geo_coordinates',
     ),
     'format_type' => 'html-element',
     'format_settings' => array(
@@ -282,11 +283,12 @@ function ilter_site_field_group_info() {
       0 => 'field_ilter_national_network_nam',
       1 => 'field_site_description',
       2 => 'field_site_size',
-      3 => 'group_geographic',
-      4 => 'group_networks',
-      5 => 'group_site_ecosystem',
-      6 => 'group_site_precip',
-      7 => 'group_site_temp',
+      3 => 'field_coordinates',
+      4 => 'group_geographic',
+      5 => 'group_networks',
+      6 => 'group_site_ecosystem',
+      7 => 'group_site_precip',
+      8 => 'group_site_temp',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -344,7 +346,7 @@ function ilter_site_field_group_info() {
   $field_group->parent_name = 'group_site_design_status';
   $field_group->data = array(
     'label' => 'Site Design',
-    'weight' => '88',
+    'weight' => '94',
     'children' => array(
       0 => 'field_site_eu_design_experiments',
       1 => 'field_site_eu_design_observ',
@@ -457,6 +459,33 @@ function ilter_site_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_site_geo_coordinates|node|site|form';
+  $field_group->group_name = 'group_site_geo_coordinates';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'site';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_details';
+  $field_group->data = array(
+    'label' => 'Site Geographic Coordinates',
+    'weight' => '7',
+    'children' => array(
+      0 => 'field_geo_bounding_box',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-site-geo-coordinates field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_site_geo_coordinates|node|site|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_site_geobon|node|site|form';
   $field_group->group_name = 'group_site_geobon';
   $field_group->entity_type = 'node';
@@ -492,7 +521,7 @@ function ilter_site_field_group_info() {
   $field_group->parent_name = 'group_details';
   $field_group->data = array(
     'label' => 'Infrastructure',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(
       0 => 'field_perm_power_loc',
       1 => 'field_site_access_allyear',
@@ -536,7 +565,7 @@ function ilter_site_field_group_info() {
   $field_group->parent_name = 'group_details';
   $field_group->data = array(
     'label' => 'Operations',
-    'weight' => '9',
+    'weight' => '10',
     'children' => array(
       0 => 'field_site_ops_cost',
       1 => 'field_site_ops_ispermanent',
@@ -567,7 +596,7 @@ function ilter_site_field_group_info() {
   $field_group->parent_name = 'group_details';
   $field_group->data = array(
     'label' => 'Detailed Categories (Europe required, others optional)',
-    'weight' => '7',
+    'weight' => '8',
     'children' => array(
       0 => 'group_protection_status',
       1 => 'group_resource_mgmnt',
