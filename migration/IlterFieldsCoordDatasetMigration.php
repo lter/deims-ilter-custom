@@ -28,8 +28,10 @@ class IlterFieldsCoordDataSetMigration extends DrupalNode6Migration {
     $this->addUnmigratedSources(array('teaser'));
 
 //  should we also re-map the title?
-//
-
+//   bring the title of the correspondonding Site.
+//   try  field_dataset_site_name
+    $this->removeFieldMapping('title');
+    $this->addFieldMapping('field_title', 'field_dataset_site_name');
 //  where do we get the description from?
 //
     $this->addFieldMapping('field_description', 'body');
@@ -86,7 +88,6 @@ class IlterFieldsCoordDataSetMigration extends DrupalNode6Migration {
       'field_dataset_uuid',
       'field_dataset_uploaddata',
       'field_dataset_uploaddata:list',
-      'field_dataset_site_name',
       'field_dataset_owner_ref',
       'field_dataset_contact_ref',
       'field_dataset_mdprovider_ref',
