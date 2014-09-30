@@ -134,9 +134,4 @@ class IlterContentPersonMigration extends DeimsContentPersonMigration {
     return $field_values;
   }
 
-  public function prepare($node, $row) {
-    // Remove any empty or illegal delta field values.
-    EntityHelper::removeInvalidFieldDeltas('node', $node);
-    EntityHelper::removeEmptyFieldValues('node', $node);
-  }
 }
