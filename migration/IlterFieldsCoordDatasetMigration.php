@@ -27,11 +27,13 @@ class IlterFieldsCoordDataSetMigration extends DrupalNode6Migration {
     $this->removeFieldMapping('body:format');
     $this->addUnmigratedSources(array('teaser'));
 
-//  should we also re-map the title?
 //   bring the title of the correspondonding Site.
-//   try  field_dataset_site_name
+//   this may be a chicken-n-egg situation
+
     $this->removeFieldMapping('title');
-    $this->addFieldMapping('field_title', 'field_dataset_site_name');
+    $this->addFieldMapping('title', 'field_dataset_site_name')
+     ->sourceMigration('IlterContentSite');
+
 //  where do we get the description from?
 //
     $this->addFieldMapping('field_description', 'body');
