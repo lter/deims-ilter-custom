@@ -34,11 +34,8 @@ class IlterFieldsCoordDataSetMigration extends DrupalNode6Migration {
     $this->addFieldMapping('title', 'field_dataset_site_name')
      ->sourceMigration('IlterContentSite');
 
-//  where do we get the description from?
-//
-    $this->addFieldMapping('field_description', 'body');
     $this->addFieldMapping('field_description:format', 'format')
-      ->callbacks(array($this, 'mapFormat'));
+      ->description('in prepare()');
 
 //  is this really OK?
     $this->addFieldMapping('field_site_id', 'field_dataset_id')
@@ -142,8 +139,23 @@ class IlterFieldsCoordDataSetMigration extends DrupalNode6Migration {
 
   public function prepare($node, $row) {
 
-//     Leave the title alone....
-//     $node->title = 'From Dataset: ' . $row->title;
+//  Grab the title from the D6RS cct. body too.
+//
+    $connection = Database::getConnection('default', $this->sourceConnection);
+    $query = $connection->select('node', 'n');
+    $query->condition('n.type', 'research_site');
+    $query->join('node_revisions', 'nr', 'n.vid = nr.vid');
+    $query->fields('nr', array('title', 'body', 'format'));
+
+    if ($result = $query->execute()->fetch()) {
+      if (!empty($result->title)) {
+        $node->title = $result->title;
+      }
+      if (!empty($result->body)) {
+        $node->field_description[LANGUAGE_NONE][0] = $result->body;
+        $row->format = $result->format;
+      }
+    }
 
     $node->field_coordinates[LANGUAGE_NONE] = $this->getCoordinates($node, $row);
 
