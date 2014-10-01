@@ -31,8 +31,11 @@ class IlterFieldsCoordDataSetMigration extends DrupalNode6Migration {
 //   this may be a chicken-n-egg situation
 
     $this->removeFieldMapping('title');
+
     $this->addFieldMapping('title', 'field_dataset_site_name')
      ->sourceMigration('IlterContentSite');
+//   Should we try dedupe?
+//     ->dedupe('');
 
     $this->addFieldMapping('field_description:format', 'format')
       ->description('in prepare()');
@@ -146,6 +149,7 @@ class IlterFieldsCoordDataSetMigration extends DrupalNode6Migration {
     $query->condition('n.type', 'research_site');
     $query->join('node_revisions', 'nr', 'n.vid = nr.vid');
     $query->fields('nr', array('title', 'body', 'format'));
+    $query->condition('n.nid', $row->field_dataset_site_name);
 
     if ($result = $query->execute()->fetch()) {
       if (!empty($result->title)) {
