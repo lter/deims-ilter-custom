@@ -183,7 +183,8 @@ $this->addFieldMapping('field_images:title,'
 
     $this->addFieldMapping('field_research_topics','field_research_site_resrchtopic');
 
-    $this->addFieldMapping('field_associated_dataset
+    $this->addFieldMapping('field_associated_dataset','field_research_site_dataset')
+     ->sourceMigration('IlterContentDataSet');
 
     $this->addFieldMapping('field_site_inf_staff_room','field_research_site_staffrm')
      ->description('Tweaked in prepareRow()');
