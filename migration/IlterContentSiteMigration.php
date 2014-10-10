@@ -172,6 +172,19 @@ $this->addFieldMapping('field_images:title,'
     $this->addFieldMapping('field_site_inf_marine_platfm','field_research_site_marineplt')
      ->description('Tweaked in prepareRow()');
 
+    $this->addFieldMapping('field_eunis_habitat','field_research_site_habitat');
+
+    $this->addFieldMapping('field_elevation_lowest','field_research_site_elemin');
+    $this->addFieldMapping('field_elevation_maximum_','field_research_site_elemax');
+    $this->addFieldMapping('field_elevation_average','field_research_site_elevavg');
+
+    $this->addFieldMapping('field_upload_shapefile','field_research_site_upshp')
+     ->sourceMigration('DeimsFile');
+
+    $this->addFieldMapping('field_research_topics','field_research_site_resrchtopic');
+
+    $this->addFieldMapping('field_associated_dataset
+
     $this->addFieldMapping('field_site_inf_staff_room','field_research_site_staffrm')
      ->description('Tweaked in prepareRow()');
 
@@ -350,6 +363,8 @@ $this->addFieldMapping('field_images:title,'
     
     $node->field_geo_bounding_box[LANGUAGE_NONE] = $this->getCoordinates($node, $row);
 
+    $node->field_site_details[LANGUAGE_NONE] = $this->getSiteDetails($node, $row);
+
     // Remove any empty or illegal delta field values.
     EntityHelper::removeInvalidFieldDeltas('node', $node);
     EntityHelper::removeEmptyFieldValues('node', $node);
@@ -392,5 +407,31 @@ $this->addFieldMapping('field_images:title,'
 
     return $field_values;
   }
-   
+
+  public function getSiteDetails($node, $row) {
+    $details = array(
+      'landform' => 'Landform',
+      'geology' => 'Geology',
+      'soils' => 'Soils',
+      'hydrology' => 'Hydrology',
+      'vegetation' => 'Vegetation',
+      'climate' => 'Climate',
+      'history' => 'History',
+    );
+    $field_values = array();
+
+    foreach ($details as $detail => $label) {
+      $detail_value = trim($row->{'field_research_site_' . $detail});
+      if (!empty($detail_value)) {
+        $entity = entity_create('site_details', array('type' => 'site_details', 'language' => $node->language));
+        $wrapper = entity_metadata_wrapper('site_details', $entity);
+        $wrapper->field_label = $label;
+        $wrapper->field_description->value = $detail_value;
+        entity_save('site_details', $entity);
+        $field_values[] = array('target_id' => $entity->id);
+      }
+    }
+
+    return $field_values;
+  }   
 }
