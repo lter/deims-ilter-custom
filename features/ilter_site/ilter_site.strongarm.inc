@@ -13,6 +13,27 @@ function ilter_site_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'auto_entitylabel_node_site';
+  $strongarm->value = '1';
+  $export['auto_entitylabel_node_site'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'auto_entitylabel_pattern_node_site';
+  $strongarm->value = '[field_site_sitelong-raw]: [field_site_sitecode-raw]';
+  $export['auto_entitylabel_pattern_node_site'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'auto_entitylabel_php_node_site';
+  $strongarm->value = 0;
+  $export['auto_entitylabel_php_node_site'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_site';
   $strongarm->value = 0;
   $export['comment_anonymous_site'] = $strongarm;
@@ -71,7 +92,7 @@ function ilter_site_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '5',
+          'weight' => '10',
         ),
       ),
       'display' => array(),

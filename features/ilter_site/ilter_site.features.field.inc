@@ -64,9 +64,19 @@ function ilter_site_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field__site_sitecode',
-      'label' => 'Site Code [ILTER Core/Europe Mandatory 2013 Recognition]',
+      'label' => 'Site Code ',
       'required' => 1,
       'settings' => array(
+        'required_by_role' => array(
+          1 => 0,
+          3 => 0,
+          4 => 0,
+          5 => 0,
+          6 => 0,
+          7 => 0,
+          8 => 0,
+          9 => 0,
+        ),
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -78,6 +88,107 @@ function ilter_site_field_default_fields() {
         ),
         'type' => 'text_textfield',
         'weight' => '2',
+      ),
+      'workbench_access_field' => 0,
+    ),
+  );
+
+  // Exported field: 'node-site-field_associated_dataset'.
+  $fields['node-site-field_associated_dataset'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_associated_dataset',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'node' => array(
+          'columns' => array(
+            'target_id' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'target_id' => array(
+          0 => 'target_id',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'entityreference',
+      'settings' => array(
+        'delete_on_parent_delete' => '',
+        'handler' => 'base',
+        'handler_settings' => array(
+          'behaviors' => array(
+            'views-select-list' => array(
+              'status' => 0,
+            ),
+          ),
+          'sort' => array(
+            'type' => 'none',
+          ),
+          'target_bundles' => array(
+            'data_set' => 'data_set',
+          ),
+        ),
+        'target_type' => 'node',
+      ),
+      'translatable' => '0',
+      'type' => 'entityreference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'site',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => 114,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_associated_dataset',
+      'label' => 'Associated Dataset',
+      'required' => 0,
+      'settings' => array(
+        'required_by_role' => array(
+          1 => 0,
+          3 => 0,
+          4 => 0,
+          5 => 0,
+          6 => 0,
+          7 => 0,
+          8 => 0,
+          9 => 0,
+        ),
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'entityreference',
+        'settings' => array(
+          'match_operator' => 'CONTAINS',
+          'path' => '',
+          'size' => '60',
+        ),
+        'type' => 'entityreference_autocomplete',
+        'weight' => '136',
       ),
       'workbench_access_field' => 0,
     ),
@@ -157,6 +268,7 @@ function ilter_site_field_default_fields() {
       'label' => 'Collected Datasets',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -168,7 +280,7 @@ function ilter_site_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '91',
+        'weight' => '121',
       ),
       'workbench_access_field' => 0,
     ),
@@ -225,6 +337,7 @@ function ilter_site_field_default_fields() {
           'lat_field' => 'lat',
           'lng_field' => 'lng',
         ),
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -232,7 +345,7 @@ function ilter_site_field_default_fields() {
         'module' => 'geofield',
         'settings' => array(),
         'type' => 'geofield_latlon',
-        'weight' => '40',
+        'weight' => '142',
       ),
       'workbench_access_field' => 0,
     ),
@@ -305,6 +418,7 @@ function ilter_site_field_default_fields() {
         'default_value2' => 'same',
         'default_value_code' => '',
         'default_value_code2' => '',
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -321,6 +435,428 @@ function ilter_site_field_default_fields() {
         ),
         'type' => 'date_popup',
         'weight' => '30',
+      ),
+      'workbench_access_field' => 0,
+    ),
+  );
+
+  // Exported field: 'node-site-field_elevation_average'.
+  $fields['node-site-field_elevation_average'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_elevation_average',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'number',
+      'settings' => array(
+        'decimal_separator' => '.',
+      ),
+      'translatable' => '0',
+      'type' => 'number_float',
+    ),
+    'field_instance' => array(
+      'bundle' => 'site',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'In meters. above sea level is positive, below sea level is negative. For example: Mt Everest: 8848; Dead Sea: -423. Enter numbers only.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'number',
+          'settings' => array(
+            'decimal_separator' => '.',
+            'prefix_suffix' => TRUE,
+            'scale' => 2,
+            'thousand_separator' => ' ',
+          ),
+          'type' => 'number_decimal',
+          'weight' => 101,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_elevation_average',
+      'label' => 'Elevation - Average',
+      'required' => 0,
+      'settings' => array(
+        'max' => '',
+        'min' => '',
+        'prefix' => '',
+        'required_by_role' => array(
+          1 => 0,
+          3 => 0,
+          4 => 0,
+          5 => '5',
+          6 => '6',
+          7 => 0,
+          8 => '8',
+        ),
+        'suffix' => 'msl',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'number',
+        'settings' => array(),
+        'type' => 'number',
+        'weight' => '33',
+      ),
+      'workbench_access_field' => 0,
+    ),
+  );
+
+  // Exported field: 'node-site-field_elevation_lowest'.
+  $fields['node-site-field_elevation_lowest'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_elevation_lowest',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'number',
+      'settings' => array(
+        'decimal_separator' => '.',
+      ),
+      'translatable' => '0',
+      'type' => 'number_float',
+    ),
+    'field_instance' => array(
+      'bundle' => 'site',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'This is the lowest elevation in the site in meters.  Positive for meters above sea level, negative for meters below sea level. Examples: elevations at  mountain site - <b>8800</b>, 8820, 8848</b>; Dead Sea, -400, -410, -<b>424</b>,
+Lowest Mountain: <b>8800</b>; Lowest Dead Sea: <b>-424</b>',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'number',
+          'settings' => array(
+            'decimal_separator' => '.',
+            'prefix_suffix' => TRUE,
+            'scale' => 2,
+            'thousand_separator' => ' ',
+          ),
+          'type' => 'number_decimal',
+          'weight' => 103,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_elevation_lowest',
+      'label' => 'Elevation Range FROM',
+      'required' => 0,
+      'settings' => array(
+        'max' => '',
+        'min' => '',
+        'prefix' => '',
+        'required_by_role' => array(
+          1 => 0,
+          3 => 0,
+          4 => 0,
+          5 => 0,
+          6 => 0,
+          7 => 0,
+          8 => 0,
+        ),
+        'suffix' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'number',
+        'settings' => array(),
+        'type' => 'number',
+        'weight' => '31',
+      ),
+      'workbench_access_field' => 0,
+    ),
+  );
+
+  // Exported field: 'node-site-field_elevation_maximum_'.
+  $fields['node-site-field_elevation_maximum_'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_elevation_maximum_',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'number',
+      'settings' => array(
+        'decimal_separator' => '.',
+      ),
+      'translatable' => '0',
+      'type' => 'number_float',
+    ),
+    'field_instance' => array(
+      'bundle' => 'site',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'This is the highest elevation in the site in meters.  Positive for meters above sea level, negative for meters below sea level. Examples: elevations at  mountain site - 8800, 8820, <b>8848</b>; Dead Sea, <b>-400</b>, -410, -424,
+Highest Mountain: <b>8848</b>; Hightest Dead Sea: <b>-400</b>',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'number',
+          'settings' => array(
+            'decimal_separator' => '.',
+            'prefix_suffix' => TRUE,
+            'scale' => 2,
+            'thousand_separator' => ' ',
+          ),
+          'type' => 'number_decimal',
+          'weight' => 102,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_elevation_maximum_',
+      'label' => 'Elevation Range TO',
+      'required' => 0,
+      'settings' => array(
+        'max' => '',
+        'min' => '',
+        'prefix' => '',
+        'required_by_role' => array(
+          1 => 0,
+          3 => 0,
+          4 => 0,
+          5 => 0,
+          6 => 0,
+          7 => 0,
+          8 => 0,
+        ),
+        'suffix' => 'msl',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'number',
+        'settings' => array(),
+        'type' => 'number',
+        'weight' => '32',
+      ),
+      'workbench_access_field' => 0,
+    ),
+  );
+
+  // Exported field: 'node-site-field_eunis_habitat'.
+  $fields['node-site-field_eunis_habitat'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_eunis_habitat',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'site',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 106,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_eunis_habitat',
+      'label' => 'Eunis Habitat',
+      'required' => 0,
+      'settings' => array(
+        'required_by_role' => array(
+          1 => 0,
+          3 => 0,
+          4 => 0,
+          5 => 0,
+          6 => 0,
+          7 => 0,
+          8 => 0,
+          9 => 0,
+        ),
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'select_or_other',
+        'settings' => array(
+          'apply_chosen' => '',
+          'available_options' => '[Abies] and [Picea] woodland
+[Fagus] woodland
+[Phragmites australis] beds normally without free-standing water
+[Populus] plantations
+[Quercus caliprinus] woodland
+[Robinia] plantations
+[Sphagnum fuscum] hummocks
+[Sphagnum magellanicum] hummocks
+[Sphagnum rubellum] hummocks
+[Vaccinium] shrub hummocks
+
+Acidophile montane inner Alpine spruce forests
+Alpigenic high mountain [Empetrum - Vaccinium] heaths
+Apennine [Pinus mugo] scrub
+Apennine naked-rush swards
+Arable land and market gardens
+Atlantic and sub-Atlantic humid meadows
+Bare tilled land
+Bare tilled, fallow or recently abandoned arable land
+Bilberry spruce forests
+Blanket bog complexes
+Boreo-alpine herb-rich acid snowbed communities
+Broadleaved deciduous woodland
+Broadleaved swamp woodland not on acid peat
+Coastal habitats
+Coastal meadows
+Coniferous woodland
+Constructed, industrial and other artificial habitats
+Coppice
+Dry or moist agriculturally-improved grassland
+Dwarf birch hummocks
+Eastern Alpine siliceous [Larix] and [Pinus cembra] forests
+Epipotamal streams
+Eutrophic vegetation of slow-flowing rivers
+Exotic pine plantations
+Fallow un-inundated fields with annual and perennial weed commun
+Fenno-Scandian boreo-alpine heaths
+Fruit and nut tree orchards
+Grasslands and lands dominated by forbs, mosses or lichens
+Habitat complexes
+Heathland, scrub and tundra
+Hiberno-Britannic [Eriophorum]-[Calluna] blanket bogs
+Highly artificial broadleaved deciduous forestry plantations
+Inland dune mixed thickets
+Inland surface waters
+Inland unvegetated or sparsely vegetated habitats
+Inner Alpine mountain pine forests
+Intensive unmixed crops
+Large-scale market gardens and horticulture
+Lines of trees
+Man-made reservoir
+Marine habitats
+Meadows of the steppe zone
+Medio-European montane woodrush beech forests
+Mediterraneo-montane [Sesleria] steppes
+Medium-scale intensive unmixed crops (1-25ha)
+Mesotrophic vegetation of slow-flowing rivers
+Middle European [Pinus sylvestris] forests
+Mires, bogs and fens
+Mixed [Abies] - [Picea] - [Fagus] woodland
+Mixed deciduous and coniferous woodland
+Mixed forestry plantations
+Moss and lichen fjell fields
+Oroboreal [Carex bigelowii]-[Racomitrium] moss-heaths
+Oroboreal moss-dwarf willow snowbed communities
+Pannonian [Quercus pubescens] woods
+Pannonic [Juniperus] - [Populus] steppe woods
+Pannonic [Quercus] - [Carpinus betulus] forests
+Pannonic neutrophile collinar beech forests
+Pannonic salt steppes and saltmarshes
+Pannonic sand steppe oak woods
+Pannonic sand steppes
+Pannonic turkey oak-sessile oak woods
+Partially mixed water column with reduced salinity and medium re
+Permanent eutrophic lakes, ponds and pools
+Permanent mesotrophic pastures and aftermath-grazed meadows
+Posidonia oceanica meadows on seafloor
+Ravine and slope woodland
+Regularly or recently cultivated agricultural, horticultural and
+Residential buildings of villages and urban peripheries
+Small-scale intensive unmixed crops (<1ha)
+Small-scale market gardens and horticulture, including allotment
+Snow patches
+Steppe [Quercus] woods
+Subalpine [Sorbus] brush
+Subalpine birch brush
+Sub-Atlantic acidophilous beech forests
+Sub-Atlantic xerophile [Anthericum] oak-hornbeam forests
+Subcontinental bilberry western spruce taiga
+Sudeten summital mat-grass swards
+Surface running waters
+Surface standing waters
+Temporary running waters
+Thermophilous deciduous woodland
+Water column with seasonal thermal stratification and full salin
+Water-fringing reedbeds and tall helophytes other than canes
+Western shrub tundra
+Wooded tundra
+Woodland, forest and other wooded land',
+          'available_options_php' => '',
+          'markup_available_options_php' => '&lt;none&gt;',
+          'other' => 'Other',
+          'other_size' => '60',
+          'other_title' => '',
+          'other_unknown_defaults' => 'other',
+          'sort_options' => 0,
+        ),
+        'type' => 'select_or_other',
+        'weight' => '174',
       ),
       'workbench_access_field' => 0,
     ),
@@ -377,6 +913,7 @@ function ilter_site_field_default_fields() {
           'lat_field' => 'lat',
           'lng_field' => 'lng',
         ),
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -384,7 +921,7 @@ function ilter_site_field_default_fields() {
         'module' => 'geofield',
         'settings' => array(),
         'type' => 'geofield_bounds',
-        'weight' => '52',
+        'weight' => '144',
       ),
       'workbench_access_field' => 0,
     ),
@@ -427,8 +964,8 @@ function ilter_site_field_default_fields() {
           ),
           'sort' => array(
             'direction' => 'ASC',
-            'field' => 'field_ilter_national_network_nam:target_id',
-            'type' => 'field',
+            'property' => 'title',
+            'type' => 'property',
           ),
           'target_bundles' => array(
             'ilter_national_network' => 'ilter_national_network',
@@ -463,9 +1000,19 @@ function ilter_site_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_ilter_national_network_nam',
-      'label' => 'ILTER National Network Name [ILTER Core/Europe Mandatory 2013 Recognition]',
+      'label' => 'ILTER National Network',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(
+          1 => 0,
+          3 => 0,
+          4 => 0,
+          5 => 0,
+          6 => 0,
+          7 => 0,
+          8 => '8',
+          9 => '9',
+        ),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -475,7 +1022,7 @@ function ilter_site_field_default_fields() {
           'apply_chosen' => '',
         ),
         'type' => 'options_select',
-        'weight' => '37',
+        'weight' => '4',
       ),
       'workbench_access_field' => 0,
     ),
@@ -777,6 +1324,7 @@ function ilter_site_field_default_fields() {
       'label' => 'Country [ILTER/Europe Mandatory]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -862,6 +1410,7 @@ function ilter_site_field_default_fields() {
         ),
         'enable_tokens' => 1,
         'rel_remove' => 'default',
+        'required_by_role' => array(),
         'title' => 'optional',
         'title_maxlength' => '128',
         'title_value' => '',
@@ -948,6 +1497,7 @@ function ilter_site_field_default_fields() {
         'max_filesize' => '',
         'max_resolution' => '',
         'min_resolution' => '',
+        'required_by_role' => array(),
         'title_field' => 0,
         'user_register_form' => FALSE,
       ),
@@ -979,7 +1529,7 @@ function ilter_site_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'image_image',
-        'weight' => '51',
+        'weight' => '53',
       ),
       'workbench_access_field' => 0,
     ),
@@ -1048,6 +1598,7 @@ function ilter_site_field_default_fields() {
       'label' => 'Networks (In addition to / Other than ILTER)',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -1126,6 +1677,7 @@ function ilter_site_field_default_fields() {
       'label' => 'Permanent Power Supply Location',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -1214,6 +1766,7 @@ function ilter_site_field_default_fields() {
       'label' => 'Site Contact',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -1308,6 +1861,7 @@ function ilter_site_field_default_fields() {
       'label' => 'Metadata provider',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -1385,6 +1939,7 @@ function ilter_site_field_default_fields() {
         'max' => '',
         'min' => '',
         'prefix' => '',
+        'required_by_role' => array(),
         'suffix' => 'mm',
         'user_register_form' => FALSE,
       ),
@@ -1454,6 +2009,7 @@ function ilter_site_field_default_fields() {
       'label' => 'Protection Program Notes',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -1464,7 +2020,7 @@ function ilter_site_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '70',
+        'weight' => '55',
       ),
       'workbench_access_field' => 0,
     ),
@@ -1525,6 +2081,7 @@ function ilter_site_field_default_fields() {
       'label' => 'Purpose of site [Europe Mandatory]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -1535,7 +2092,90 @@ function ilter_site_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '50',
+        'weight' => '52',
+      ),
+      'workbench_access_field' => 0,
+    ),
+  );
+
+  // Exported field: 'node-site-field_research_topics'.
+  $fields['node-site-field_research_topics'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_research_topics',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'site',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 113,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_research_topics',
+      'label' => 'Research Topics',
+      'required' => 0,
+      'settings' => array(
+        'required_by_role' => array(
+          1 => 0,
+          3 => 0,
+          4 => 0,
+          5 => 0,
+          6 => 0,
+          7 => 0,
+          8 => 0,
+          9 => '9',
+        ),
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '47',
       ),
       'workbench_access_field' => 0,
     ),
@@ -1598,6 +2238,7 @@ function ilter_site_field_default_fields() {
       'label' => 'Short name [Europe Mandatory for 2013 Recognition]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -1668,6 +2309,7 @@ function ilter_site_field_default_fields() {
       'label' => 'Accessible All Year [Europe Mandatory]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -1737,6 +2379,7 @@ function ilter_site_field_default_fields() {
       'label' => 'Access Type  [Europe Mandatory]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -1806,6 +2449,7 @@ function ilter_site_field_default_fields() {
       'label' => 'All parts of Site Accessible',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -1889,6 +2533,7 @@ function ilter_site_field_default_fields() {
       'label' => 'ILTER Biome [ILTER Core/Europe Mandatory 2013 Recognition]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -1959,6 +2604,7 @@ function ilter_site_field_default_fields() {
       'label' => 'Data Notes',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -1969,7 +2615,7 @@ function ilter_site_field_default_fields() {
           'rows' => '3',
         ),
         'type' => 'text_textarea',
-        'weight' => '105',
+        'weight' => '134',
       ),
       'workbench_access_field' => 0,
     ),
@@ -2036,6 +2682,7 @@ other: please describe briefly',
       'label' => 'Data Access Policy Education',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -2057,7 +2704,7 @@ No',
           'sort_options' => 0,
         ),
         'type' => 'select_or_other',
-        'weight' => '98',
+        'weight' => '128',
       ),
       'workbench_access_field' => 0,
     ),
@@ -2120,6 +2767,7 @@ No',
       'label' => 'Data Access Administration [Europe Mandatory for 2013 Recognition]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -2141,7 +2789,7 @@ No',
           'sort_options' => 0,
         ),
         'type' => 'select_or_other',
-        'weight' => '96',
+        'weight' => '126',
       ),
       'workbench_access_field' => 0,
     ),
@@ -2208,6 +2856,7 @@ other: describe briefly',
       'label' => 'Data Access Policy Research [Europe Mandatory for 2013 Recognition]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -2229,7 +2878,7 @@ No',
           'sort_options' => 0,
         ),
         'type' => 'select_or_other',
-        'weight' => '95',
+        'weight' => '125',
       ),
       'workbench_access_field' => 0,
     ),
@@ -2296,6 +2945,7 @@ other: please describe',
       'label' => 'Data Cost Education',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -2317,7 +2967,7 @@ No',
           'sort_options' => 0,
         ),
         'type' => 'select_or_other',
-        'weight' => '103',
+        'weight' => '132',
       ),
       'workbench_access_field' => 0,
     ),
@@ -2381,6 +3031,7 @@ No',
       'label' => 'Data Cost Research  [Europe Mandatory]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -2402,7 +3053,7 @@ No',
           'sort_options' => 0,
         ),
         'type' => 'select_or_other',
-        'weight' => '104',
+        'weight' => '133',
       ),
       'workbench_access_field' => 0,
     ),
@@ -2465,6 +3116,7 @@ No',
       'label' => 'Data Cost Administration [Europe Mandatory]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -2486,7 +3138,7 @@ No cost
           'sort_options' => 0,
         ),
         'type' => 'select_or_other',
-        'weight' => '101',
+        'weight' => '130',
       ),
       'workbench_access_field' => 0,
     ),
@@ -2553,6 +3205,7 @@ Other: please describe',
       'label' => 'Data Cost Public [Europe Mandatory]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -2574,7 +3227,7 @@ No',
           'sort_options' => 0,
         ),
         'type' => 'select_or_other',
-        'weight' => '102',
+        'weight' => '131',
       ),
       'workbench_access_field' => 0,
     ),
@@ -2640,6 +3293,7 @@ No',
       'label' => 'Data Storage Format [Europe Mandatory for 2013 Recognition]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -2649,7 +3303,7 @@ No',
           'apply_chosen' => '0',
         ),
         'type' => 'options_select',
-        'weight' => '92',
+        'weight' => '122',
       ),
       'workbench_access_field' => 0,
     ),
@@ -2716,6 +3370,7 @@ Other: please describe ',
       'label' => 'Data Access Policy Public [Europe Mandatory for 2013 Recognition]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -2737,7 +3392,7 @@ No',
           'sort_options' => 0,
         ),
         'type' => 'select_or_other',
-        'weight' => '97',
+        'weight' => '127',
       ),
       'workbench_access_field' => 0,
     ),
@@ -2800,6 +3455,7 @@ No',
       'label' => 'Data Request Format [Europe Mandatory for 2013 Recognition]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -2819,7 +3475,7 @@ Online (Reference for access)',
           'sort_options' => 0,
         ),
         'type' => 'select_or_other',
-        'weight' => '106',
+        'weight' => '135',
       ),
       'workbench_access_field' => 0,
     ),
@@ -2884,6 +3540,7 @@ Online (Reference for access)',
       'label' => 'Data services [Europe Mandatory]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -2893,7 +3550,7 @@ Online (Reference for access)',
           'apply_chosen' => '',
         ),
         'type' => 'options_select',
-        'weight' => '93',
+        'weight' => '123',
       ),
       'workbench_access_field' => 0,
     ),
@@ -2956,6 +3613,7 @@ Online (Reference for access)',
       'label' => 'Data Storage Location [Europe Mandatory for 2013 Recognition]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -2976,7 +3634,7 @@ Distributed over multiple institutions',
           'sort_options' => 0,
         ),
         'type' => 'select_or_other',
-        'weight' => '94',
+        'weight' => '124',
       ),
       'workbench_access_field' => 0,
     ),
@@ -3034,6 +3692,7 @@ Distributed over multiple institutions',
         'max' => '',
         'min' => '1',
         'prefix' => '',
+        'required_by_role' => array(),
         'suffix' => '',
         'user_register_form' => FALSE,
       ),
@@ -3042,7 +3701,7 @@ Distributed over multiple institutions',
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '99',
+        'weight' => '129',
       ),
       'workbench_access_field' => 0,
     ),
@@ -3100,9 +3759,19 @@ Distributed over multiple institutions',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_site_description',
-      'label' => 'General Site Description [ILTER Core/Europe Mandatory 2013 Recognition]	',
-      'required' => 0,
+      'label' => 'General Site Description',
+      'required' => 1,
       'settings' => array(
+        'required_by_role' => array(
+          1 => 0,
+          3 => 0,
+          4 => 0,
+          5 => 0,
+          6 => 0,
+          7 => 0,
+          8 => 0,
+          9 => 0,
+        ),
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -3113,7 +3782,112 @@ Distributed over multiple institutions',
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '38',
+        'weight' => '3',
+      ),
+      'workbench_access_field' => 0,
+    ),
+  );
+
+  // Exported field: 'node-site-field_site_details'.
+  $fields['node-site-field_site_details'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_site_details',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'eck_site_details' => array(
+          'columns' => array(
+            'target_id' => 'id',
+          ),
+          'table' => 'eck_site_details',
+        ),
+      ),
+      'indexes' => array(
+        'target_id' => array(
+          0 => 'target_id',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'entityreference',
+      'settings' => array(
+        'delete_on_parent_delete' => 'if-unused',
+        'handler' => 'base',
+        'handler_settings' => array(
+          'behaviors' => array(
+            'views-select-list' => array(
+              'status' => 0,
+            ),
+          ),
+          'sort' => array(
+            'type' => 'none',
+          ),
+          'target_bundles' => array(
+            'site_details' => 'site_details',
+          ),
+        ),
+        'target_type' => 'site_details',
+      ),
+      'translatable' => '0',
+      'type' => 'entityreference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'site',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => 115,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_site_details',
+      'label' => 'Site Details',
+      'required' => 0,
+      'settings' => array(
+        'required_by_role' => array(
+          1 => 0,
+          3 => 0,
+          4 => 0,
+          5 => 0,
+          6 => 0,
+          7 => 0,
+          8 => 0,
+          9 => 0,
+        ),
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'inline_entity_form',
+        'settings' => array(
+          'fields' => array(),
+          'type_settings' => array(
+            'allow_existing' => 1,
+            'clone_button' => 0,
+            'delete_references' => 0,
+            'match_operator' => 'CONTAINS',
+          ),
+        ),
+        'type' => 'inline_entity_form',
+        'weight' => '173',
       ),
       'workbench_access_field' => 0,
     ),
@@ -3176,6 +3950,7 @@ Distributed over multiple institutions',
       'label' => 'Dominant Ecosystem Type within site [Europe Mandatory for 2013 Recognition]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -3283,6 +4058,7 @@ Distributed over multiple institutions',
       'label' => 'Additional Ecosystem Type 2 [Europe Mandatory]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -3327,7 +4103,7 @@ Distributed over multiple institutions',
           'sort_options' => 0,
         ),
         'type' => 'select_or_other',
-        'weight' => '30',
+        'weight' => '34',
       ),
       'workbench_access_field' => 0,
     ),
@@ -3390,6 +4166,7 @@ Distributed over multiple institutions',
       'label' => 'Additional Ecosystem Type 1 [Europe Mandatory]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -3434,7 +4211,7 @@ Distributed over multiple institutions',
           'sort_options' => 0,
         ),
         'type' => 'select_or_other',
-        'weight' => '29',
+        'weight' => '33',
       ),
       'workbench_access_field' => 0,
     ),
@@ -3449,7 +4226,7 @@ Distributed over multiple institutions',
       'entity_types' => array(),
       'field_name' => 'field_site_eu__status_accred',
       'field_permissions' => array(
-        'type' => '0',
+        'type' => '2',
       ),
       'foreign keys' => array(),
       'indexes' => array(
@@ -3494,6 +4271,15 @@ Distributed over multiple institutions',
       'label' => 'Declaration status accredited by LTER-Europe (Read only)',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(
+          1 => 0,
+          3 => 0,
+          4 => 0,
+          5 => 0,
+          6 => 0,
+          7 => 0,
+          8 => 0,
+        ),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -3574,6 +4360,7 @@ Distributed over multiple institutions',
       'label' => 'Biogeographic Region [Europe Mandatory for 2013 Recognition]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -3583,7 +4370,7 @@ Distributed over multiple institutions',
           'apply_chosen' => '',
         ),
         'type' => 'options_select',
-        'weight' => '17',
+        'weight' => '98',
       ),
       'workbench_access_field' => 0,
     ),
@@ -3645,6 +4432,7 @@ Distributed over multiple institutions',
       'label' => 'Site Classification/Category  [Europe Mandatory for 2013 Recognition]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -3654,7 +4442,7 @@ Distributed over multiple institutions',
           'apply_chosen' => '',
         ),
         'type' => 'options_select',
-        'weight' => '96',
+        'weight' => '97',
       ),
       'workbench_access_field' => 0,
     ),
@@ -3715,6 +4503,7 @@ Distributed over multiple institutions',
       'label' => 'Declaration Status requested by site holder [Europe Mandatory for 2013 Recognition]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -3722,7 +4511,7 @@ Distributed over multiple institutions',
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '91',
+        'weight' => '96',
       ),
       'workbench_access_field' => 0,
     ),
@@ -3785,6 +4574,7 @@ Distributed over multiple institutions',
       'label' => 'Design of Experiments',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -3794,7 +4584,7 @@ Distributed over multiple institutions',
           'apply_chosen' => '',
         ),
         'type' => 'options_select',
-        'weight' => '94',
+        'weight' => '98',
       ),
       'workbench_access_field' => 0,
     ),
@@ -3856,6 +4646,7 @@ Distributed over multiple institutions',
       'label' => 'Design of Observation  [Europe Mandatory]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -3865,7 +4656,7 @@ Distributed over multiple institutions',
           'apply_chosen' => '',
         ),
         'type' => 'options_select',
-        'weight' => '92',
+        'weight' => '95',
       ),
       'workbench_access_field' => 0,
     ),
@@ -3928,6 +4719,7 @@ Distributed over multiple institutions',
       'label' => 'Design Scale [Europe Mandatory for 2013 Recognition]	',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -3937,7 +4729,7 @@ Distributed over multiple institutions',
           'apply_chosen' => '',
         ),
         'type' => 'options_select',
-        'weight' => '91',
+        'weight' => '94',
       ),
       'workbench_access_field' => 0,
     ),
@@ -3998,6 +4790,7 @@ Distributed over multiple institutions',
       'label' => 'Documentation Status  [Europe Mandatory for 2013 Recognition]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -4007,79 +4800,7 @@ Distributed over multiple institutions',
           'apply_chosen' => '',
         ),
         'type' => 'options_select',
-        'weight' => '97',
-      ),
-      'workbench_access_field' => 0,
-    ),
-  );
-
-  // Exported field: 'node-site-field_site_eu_economic_density'.
-  $fields['node-site-field_site_eu_economic_density'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_site_eu_economic_density',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(),
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'list',
-      'settings' => array(
-        'allowed_values' => array(
-          1 => '1',
-          2 => '2',
-          3 => '3',
-          4 => '4',
-          'unknown' => 'unknown',
-        ),
-        'allowed_values_function' => '',
-      ),
-      'translatable' => '0',
-      'type' => 'list_text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'site',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'list',
-          'settings' => array(),
-          'type' => 'list_default',
-          'weight' => 75,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_site_eu_economic_density',
-      'label' => 'Economic Density (Metzger)',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(
-          'apply_chosen' => '',
-        ),
-        'type' => 'options_select',
-        'weight' => '20',
+        'weight' => '98',
       ),
       'workbench_access_field' => 0,
     ),
@@ -4150,6 +4871,7 @@ Distributed over multiple institutions',
       'label' => 'Environmental Zone',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -4159,80 +4881,7 @@ Distributed over multiple institutions',
           'apply_chosen' => '',
         ),
         'type' => 'options_select',
-        'weight' => '19',
-      ),
-      'workbench_access_field' => 0,
-    ),
-  );
-
-  // Exported field: 'node-site-field_site_eu_environ_zone_econ'.
-  $fields['node-site-field_site_eu_environ_zone_econ'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_site_eu_environ_zone_econ',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'text',
-      'settings' => array(
-        'max_length' => '255',
-      ),
-      'translatable' => '0',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'site',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 76,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_site_eu_environ_zone_econ',
-      'label' => 'Environmental Zone Economic Density (Metzger)',
-      'required' => 0,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '21',
+        'weight' => '99',
       ),
       'workbench_access_field' => 0,
     ),
@@ -4294,6 +4943,7 @@ Distributed over multiple institutions',
       'label' => 'Experiment scale  [Europe Mandatory for 2013 Recognition]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -4303,7 +4953,7 @@ Distributed over multiple institutions',
           'apply_chosen' => '',
         ),
         'type' => 'options_select',
-        'weight' => '93',
+        'weight' => '96',
       ),
       'workbench_access_field' => 0,
     ),
@@ -4366,6 +5016,7 @@ Distributed over multiple institutions',
       'label' => 'Europe Infobase Sitecode  [for reference only]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -4376,7 +5027,7 @@ Distributed over multiple institutions',
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '22',
+        'weight' => '102',
       ),
       'workbench_access_field' => 0,
     ),
@@ -4439,6 +5090,7 @@ Distributed over multiple institutions',
       'label' => 'Site Notes',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -4449,7 +5101,7 @@ Distributed over multiple institutions',
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '98',
+        'weight' => '99',
       ),
       'workbench_access_field' => 0,
     ),
@@ -4517,6 +5169,7 @@ Plot - observation plot within a site',
       'label' => 'Site Type  [Europe Mandatory for 2013 Recognition]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -4588,6 +5241,7 @@ Plot - observation plot within a site',
       'label' => 'ExpeER Classification  [Europe Mandatory]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -4595,7 +5249,7 @@ Plot - observation plot within a site',
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '116',
+        'weight' => '97',
       ),
       'workbench_access_field' => 0,
     ),
@@ -4697,6 +5351,7 @@ Plot - observation plot within a site',
       'label' => 'Corine Land Classification',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -4766,6 +5421,7 @@ Plot - observation plot within a site',
       'label' => 'ExpeER Network',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -4868,6 +5524,7 @@ Plot - observation plot within a site',
       'label' => 'ExpeER Site Name',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -4940,6 +5597,7 @@ Plot - observation plot within a site',
       'label' => 'GEO-BON Biome',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -4949,7 +5607,7 @@ Plot - observation plot within a site',
           'apply_chosen' => '',
         ),
         'type' => 'options_select',
-        'weight' => '110',
+        'weight' => '149',
       ),
       'workbench_access_field' => 0,
     ),
@@ -5012,6 +5670,7 @@ Plot - observation plot within a site',
       'label' => 'Data Transmission From Site Type [Europe Mandatory]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -5100,6 +5759,7 @@ others',
       'label' => 'Data Transmission Type (within site)',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -5185,6 +5845,7 @@ cable based',
       'label' => 'Lodging at site',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -5252,6 +5913,7 @@ cable based',
       'label' => 'Marine Platform [Europe Mandatory]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -5325,6 +5987,7 @@ cable based',
       'label' => 'Measuring Tower Location',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -5393,6 +6056,7 @@ cable based',
       'label' => 'Infrastructure notes',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -5461,6 +6125,7 @@ cable based',
         'max' => '',
         'min' => '0',
         'prefix' => '',
+        'required_by_role' => array(),
         'suffix' => '',
         'user_register_form' => FALSE,
       ),
@@ -5532,6 +6197,7 @@ cable based',
       'label' => 'Permanent Power Produced',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -5626,6 +6292,7 @@ power supply provided by the national compagny EDF on the whole region',
       'label' => 'Permanent Power Supply [Europe Mandatory for 2013 Recognition]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -5693,6 +6360,7 @@ power supply provided by the national compagny EDF on the whole region',
       'label' => 'Staff room at site',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -5760,6 +6428,7 @@ power supply provided by the national compagny EDF on the whole region',
       'label' => 'Temperature Controlled Container',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -5831,6 +6500,7 @@ power supply provided by the national compagny EDF on the whole region',
       'label' => 'Value of the Infrastructure  [Europe Mandatory]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -5900,6 +6570,7 @@ power supply provided by the national compagny EDF on the whole region',
       'label' => 'Snow clearing Equipment [Europe Mandatory]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -5970,6 +6641,7 @@ power supply provided by the national compagny EDF on the whole region',
       'label' => 'Management of Resources - Percent of Site',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -6051,6 +6723,7 @@ power supply provided by the national compagny EDF on the whole region',
       'label' => 'Management of Resources [Europe Mandatory for 2013 Recognition]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -6119,6 +6792,7 @@ power supply provided by the national compagny EDF on the whole region',
       'label' => 'Management of Resources - Notes',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -6192,6 +6866,7 @@ power supply provided by the national compagny EDF on the whole region',
       'label' => 'Operations Cost [Europe Mandatory]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -6215,7 +6890,7 @@ power supply provided by the national compagny EDF on the whole region',
           'sort_options' => 0,
         ),
         'type' => 'select_or_other',
-        'weight' => '79',
+        'weight' => '121',
       ),
       'workbench_access_field' => 0,
     ),
@@ -6275,6 +6950,7 @@ power supply provided by the national compagny EDF on the whole region',
       'label' => 'Permanent Operation [Europe Mandatory for 2013 Recognition]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -6282,7 +6958,7 @@ power supply provided by the national compagny EDF on the whole region',
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '80',
+        'weight' => '122',
       ),
       'workbench_access_field' => 0,
     ),
@@ -6340,6 +7016,7 @@ power supply provided by the national compagny EDF on the whole region',
         'max' => '',
         'min' => '0',
         'prefix' => 'Every',
+        'required_by_role' => array(),
         'suffix' => 'days',
         'user_register_form' => FALSE,
       ),
@@ -6348,7 +7025,7 @@ power supply provided by the national compagny EDF on the whole region',
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '82',
+        'weight' => '124',
       ),
       'workbench_access_field' => 0,
     ),
@@ -6409,6 +7086,7 @@ power supply provided by the national compagny EDF on the whole region',
       'label' => 'Operation Notes',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -6419,7 +7097,7 @@ power supply provided by the national compagny EDF on the whole region',
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '83',
+        'weight' => '125',
       ),
       'workbench_access_field' => 0,
     ),
@@ -6477,6 +7155,7 @@ power supply provided by the national compagny EDF on the whole region',
         'max' => '',
         'min' => '0',
         'prefix' => 'Every',
+        'required_by_role' => array(),
         'suffix' => 'days',
         'user_register_form' => FALSE,
       ),
@@ -6485,7 +7164,7 @@ power supply provided by the national compagny EDF on the whole region',
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '81',
+        'weight' => '123',
       ),
       'workbench_access_field' => 0,
     ),
@@ -6580,6 +7259,7 @@ power supply provided by the national compagny EDF on the whole region',
       'label' => 'Site Parameters Observed [Europe Mandatory for 2013 Recognition]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -6589,7 +7269,7 @@ power supply provided by the national compagny EDF on the whole region',
           'apply_chosen' => '1',
         ),
         'type' => 'options_select',
-        'weight' => '46',
+        'weight' => '48',
       ),
       'workbench_access_field' => 0,
     ),
@@ -6666,9 +7346,18 @@ power supply provided by the national compagny EDF on the whole region',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_site_parentsite_ref',
-      'label' => 'Parent Site ID',
+      'label' => 'Parent Site Name',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(
+          1 => 0,
+          3 => 0,
+          4 => 0,
+          5 => 0,
+          6 => 0,
+          7 => 0,
+          8 => 0,
+        ),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -6680,7 +7369,7 @@ power supply provided by the national compagny EDF on the whole region',
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '25',
+        'weight' => '5',
       ),
       'workbench_access_field' => 0,
     ),
@@ -6742,6 +7431,7 @@ power supply provided by the national compagny EDF on the whole region',
         'max' => '',
         'min' => '0',
         'prefix' => '',
+        'required_by_role' => array(),
         'suffix' => 'mm',
         'user_register_form' => FALSE,
       ),
@@ -6750,7 +7440,7 @@ power supply provided by the national compagny EDF on the whole region',
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '39',
+        'weight' => '40',
       ),
       'workbench_access_field' => 0,
     ),
@@ -6812,6 +7502,7 @@ power supply provided by the national compagny EDF on the whole region',
         'max' => '',
         'min' => '0',
         'prefix' => '',
+        'required_by_role' => array(),
         'suffix' => 'mm',
         'user_register_form' => FALSE,
       ),
@@ -6820,7 +7511,7 @@ power supply provided by the national compagny EDF on the whole region',
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '40',
+        'weight' => '41',
       ),
       'workbench_access_field' => 0,
     ),
@@ -6900,6 +7591,7 @@ power supply provided by the national compagny EDF on the whole region',
       'label' => 'Protection Program ',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -6909,7 +7601,7 @@ power supply provided by the national compagny EDF on the whole region',
           'apply_chosen' => '',
         ),
         'type' => 'options_select',
-        'weight' => '67',
+        'weight' => '53',
       ),
       'workbench_access_field' => 0,
     ),
@@ -6971,6 +7663,7 @@ power supply provided by the national compagny EDF on the whole region',
       'label' => 'Program Cover %',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -6980,7 +7673,7 @@ power supply provided by the national compagny EDF on the whole region',
           'apply_chosen' => '',
         ),
         'type' => 'options_select',
-        'weight' => '68',
+        'weight' => '54',
       ),
       'workbench_access_field' => 0,
     ),
@@ -7040,9 +7733,19 @@ power supply provided by the national compagny EDF on the whole region',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_site_sitelong',
-      'label' => 'Site Name [ILTER Core/Europe Mandatory 2013 Recognition]',
+      'label' => 'Site Name ',
       'required' => 1,
       'settings' => array(
+        'required_by_role' => array(
+          1 => 0,
+          3 => 0,
+          4 => 0,
+          5 => 0,
+          6 => 0,
+          7 => 0,
+          8 => 0,
+          9 => 0,
+        ),
         'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
@@ -7107,12 +7810,22 @@ power supply provided by the national compagny EDF on the whole region',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_site_size',
-      'label' => 'Size (in hectares) [ILTER Core/Europe Mandatory 2013 Recognition]	',
+      'label' => 'Size (in hectares)',
       'required' => 0,
       'settings' => array(
         'max' => '',
         'min' => '0',
         'prefix' => '',
+        'required_by_role' => array(
+          1 => 0,
+          3 => 0,
+          4 => 0,
+          5 => 0,
+          6 => 0,
+          7 => 0,
+          8 => 0,
+          9 => '9',
+        ),
         'suffix' => 'ha',
         'user_register_form' => FALSE,
       ),
@@ -7121,7 +7834,7 @@ power supply provided by the national compagny EDF on the whole region',
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '39',
+        'weight' => '145',
       ),
       'workbench_access_field' => 0,
     ),
@@ -7182,6 +7895,7 @@ power supply provided by the national compagny EDF on the whole region',
       'label' => 'Snow Clearing Frequency',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -7252,6 +7966,7 @@ power supply provided by the national compagny EDF on the whole region',
       'label' => 'Site Status [Europe Mandatory for 2013 Recognition]',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -7259,7 +7974,7 @@ power supply provided by the national compagny EDF on the whole region',
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '48',
+        'weight' => '50',
       ),
       'workbench_access_field' => 0,
     ),
@@ -7316,7 +8031,7 @@ power supply provided by the national compagny EDF on the whole region',
       'bundle' => 'site',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Site code of the LTER Site(s) which belong t5o this LTER Site or LTSER Platform.',
+      'description' => 'Site name of the LTER Site(s) which belong to this LTER Site or LTSER Platform. For Platforms list only sites not sub sites',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -7336,9 +8051,18 @@ power supply provided by the national compagny EDF on the whole region',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_site_subsite_code_ref',
-      'label' => 'Subsite code',
+      'label' => 'Subsite Name',
       'required' => 0,
       'settings' => array(
+        'required_by_role' => array(
+          1 => 0,
+          3 => 0,
+          4 => 0,
+          5 => 0,
+          6 => 0,
+          7 => 0,
+          8 => 0,
+        ),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -7350,7 +8074,7 @@ power supply provided by the national compagny EDF on the whole region',
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '27',
+        'weight' => '6',
       ),
       'workbench_access_field' => 0,
     ),
@@ -7406,12 +8130,22 @@ power supply provided by the national compagny EDF on the whole region',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_site_temp_max',
-      'label' => 'Temperature Monthly Maximum	',
+      'label' => 'Temperature Range (Monthly Maximum) TO	',
       'required' => 0,
       'settings' => array(
         'max' => '',
         'min' => '',
         'prefix' => '',
+        'required_by_role' => array(
+          1 => 0,
+          3 => 0,
+          4 => 0,
+          5 => 0,
+          6 => 0,
+          7 => 0,
+          8 => 0,
+          9 => 0,
+        ),
         'suffix' => '°C',
         'user_register_form' => FALSE,
       ),
@@ -7420,7 +8154,7 @@ power supply provided by the national compagny EDF on the whole region',
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '12',
+        'weight' => '168',
       ),
       'workbench_access_field' => 0,
     ),
@@ -7476,12 +8210,22 @@ power supply provided by the national compagny EDF on the whole region',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_site_temp_min',
-      'label' => 'Temperature Monthly Minimum	',
+      'label' => 'Temperature Range (Montly Minimum) FROM',
       'required' => 0,
       'settings' => array(
         'max' => '',
         'min' => '',
         'prefix' => '',
+        'required_by_role' => array(
+          1 => 0,
+          3 => 0,
+          4 => 0,
+          5 => 0,
+          6 => 0,
+          7 => 0,
+          8 => 0,
+          9 => 0,
+        ),
         'suffix' => '°C',
         'user_register_form' => FALSE,
       ),
@@ -7490,7 +8234,7 @@ power supply provided by the national compagny EDF on the whole region',
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '13',
+        'weight' => '167',
       ),
       'workbench_access_field' => 0,
     ),
@@ -7546,12 +8290,22 @@ power supply provided by the national compagny EDF on the whole region',
       ),
       'entity_type' => 'node',
       'field_name' => 'field_temperature_average_annual',
-      'label' => 'Temperature: Average Annual [ILTER Core/Europe Mandatory 2013 Recognition]',
+      'label' => 'Temperature: Average Annual',
       'required' => 0,
       'settings' => array(
         'max' => '70',
         'min' => '-30',
         'prefix' => '',
+        'required_by_role' => array(
+          1 => 0,
+          3 => 0,
+          4 => 0,
+          5 => 0,
+          6 => 0,
+          7 => 0,
+          8 => '8',
+          9 => '9',
+        ),
         'suffix' => '°C',
         'user_register_form' => FALSE,
       ),
@@ -7560,7 +8314,116 @@ power supply provided by the national compagny EDF on the whole region',
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '11',
+        'weight' => '165',
+      ),
+      'workbench_access_field' => 0,
+    ),
+  );
+
+  // Exported field: 'node-site-field_upload_shapefile'.
+  $fields['node-site-field_upload_shapefile'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_upload_shapefile',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'fid' => array(
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+          'table' => 'file_managed',
+        ),
+      ),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'file',
+      'settings' => array(
+        'delete_on_parent_delete' => '',
+        'display_default' => 1,
+        'display_field' => 1,
+        'uri_scheme' => 'public',
+      ),
+      'translatable' => '0',
+      'type' => 'file',
+    ),
+    'field_instance' => array(
+      'bundle' => 'site',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'file',
+          'settings' => array(),
+          'type' => 'file_default',
+          'weight' => 111,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_upload_shapefile',
+      'label' => 'Upload Shapefile',
+      'required' => 0,
+      'settings' => array(
+        'description_field' => 0,
+        'file_directory' => '',
+        'file_extensions' => 'txt',
+        'max_filesize' => '',
+        'required_by_role' => array(
+          1 => 0,
+          3 => 0,
+          4 => 0,
+          5 => 0,
+          6 => 0,
+          7 => 0,
+          8 => 0,
+          9 => 0,
+        ),
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'file',
+        'settings' => array(
+          'filefield_sources' => array(
+            'filefield_sources' => array(
+              'attach' => 0,
+              'clipboard' => 0,
+              'reference' => 0,
+              'remote' => 0,
+              'upload' => 'upload',
+            ),
+            'source_attach' => array(
+              'absolute' => '0',
+              'attach_mode' => 'move',
+              'path' => 'file_attach',
+            ),
+            'source_imce' => array(
+              'imce_mode' => 0,
+            ),
+            'source_reference' => array(
+              'autocomplete' => '0',
+            ),
+          ),
+          'progress_indicator' => 'throbber',
+        ),
+        'type' => 'file_generic',
+        'weight' => '146',
       ),
       'workbench_access_field' => 0,
     ),
@@ -7618,6 +8481,7 @@ power supply provided by the national compagny EDF on the whole region',
         'max' => '',
         'min' => '1800',
         'prefix' => '',
+        'required_by_role' => array(),
         'suffix' => '',
         'user_register_form' => FALSE,
       ),
@@ -7626,7 +8490,7 @@ power supply provided by the national compagny EDF on the whole region',
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '47',
+        'weight' => '49',
       ),
       'workbench_access_field' => 0,
     ),
@@ -7684,6 +8548,7 @@ power supply provided by the national compagny EDF on the whole region',
         'max' => '',
         'min' => '',
         'prefix' => '',
+        'required_by_role' => array(),
         'suffix' => '',
         'user_register_form' => FALSE,
       ),
@@ -7692,7 +8557,7 @@ power supply provided by the national compagny EDF on the whole region',
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '49',
+        'weight' => '51',
       ),
       'workbench_access_field' => 0,
     ),
@@ -7709,6 +8574,7 @@ power supply provided by the national compagny EDF on the whole region',
   t('Additional Ecosystem Type 2 [Europe Mandatory]');
   t('All parts of Site Accessible');
   t('An image that shows the location where the research is conducted');
+  t('Associated Dataset');
   t('Average annual temperature in degree Celcius');
   t('Biogeographic Region [Europe Mandatory for 2013 Recognition]');
   t('Check all of the biomes that are represented in your site.');
@@ -7740,11 +8606,13 @@ power supply provided by the national compagny EDF on the whole region',
   t('Documentation Status  [Europe Mandatory for 2013 Recognition]');
   t('Does you site have onsite generators or other backup power?');
   t('Dominant Ecosystem Type within site [Europe Mandatory for 2013 Recognition]');
-  t('Economic Density (Metzger)');
+  t('Elevation - Average');
+  t('Elevation Range FROM');
+  t('Elevation Range TO');
   t('Enter either a site\'s short name  or acronym or other site name. These fields can be used to provide up to three names that have been used by the site in other networks or projects or are used for internal reference. Up to three can be entered. For example, in the US-LTER, the Virgina Coast Reserve site has an acronym of VCR.');
   t('Enter the Web Address for the site. The web address has two fields: <b>Web Address Title</b> and <b>Web Address URL</b>. The title might be: <b>Lago Maggiore Research Site</b> and the URL might be: <b>www.lagomaggiore.co.it</b>.  The <b>Web Address Title</b> is optional.');
   t('Environmental Zone');
-  t('Environmental Zone Economic Density (Metzger)');
+  t('Eunis Habitat');
   t('Europe Infobase Sitecode  [for reference only]');
   t('ExpeER Classification  [Europe Mandatory]');
   t('ExpeER Network');
@@ -7766,15 +8634,16 @@ Restricted: use of the data is only for either a restricted group or for restric
 No: data are not free to use or fees are charged
 other: please describe briefly');
   t('GEO-BON Biome');
-  t('General Site Description [ILTER Core/Europe Mandatory 2013 Recognition]	');
+  t('General Site Description');
   t('Geo Bounding Box');
   t('How is data transmitted from the site?');
   t('How much of the site is used for the management of resources , for example, forestry, fishery');
   t('ILTER Biome [ILTER Core/Europe Mandatory 2013 Recognition]');
   t('ILTER Extended Biome: Rough assignment at a global scale');
-  t('ILTER National Network Name [ILTER Core/Europe Mandatory 2013 Recognition]');
+  t('ILTER National Network');
   t('If you have snow clearing on a regular schedule, indicate the frequency');
   t('Image');
+  t('In meters. above sea level is positive, below sea level is negative. For example: Mt Everest: 8848; Dead Sea: -423. Enter numbers only.');
   t('Include general information about your site that would be of interest to others.');
   t('Indicate how the data costs are expected to be reimbursed
 No: no costs are charged for the data exchange
@@ -7810,7 +8679,7 @@ Other: please describe');
   t('Operation Notes');
   t('Operational Budget in Euros.  Non European countries that want to use this field may enter an amount in another currency.');
   t('Operations Cost [Europe Mandatory]');
-  t('Parent Site ID');
+  t('Parent Site Name');
   t('Permanent Operation [Europe Mandatory for 2013 Recognition]');
   t('Permanent Power Produced');
   t('Permanent Power Supply Location');
@@ -7832,6 +8701,7 @@ Other: please describe');
   t('Purpose of site [Europe Mandatory]');
   t('Reflects the level of equipment, activities and topical breadth in an integrated way (see <a href="www.lter-europe.net/" target="_blank">www.lter-europe.net</a?');
   t('Represents the determination by LTER-Europe of the status of the site. It is not modifiable by the site.');
+  t('Research Topics');
   t('Sampling Interval [Europe Mandatory]');
   t('Second most important ecosystem type');
   t('Select  the ExpeER specific Site Name
@@ -7843,27 +8713,28 @@ Other: please describe');
   t('Select the type of data transmission used at site (or enter other)');
   t('Short name [Europe Mandatory for 2013 Recognition]');
   t('Site Classification/Category  [Europe Mandatory for 2013 Recognition]');
-  t('Site Code [ILTER Core/Europe Mandatory 2013 Recognition]');
+  t('Site Code ');
   t('Site Code of the LTER Site or LTSER Platform to which your site belongs. A sub-site may be part of both a larger site which is contained in an LTSER platform.');
   t('Site Contact');
-  t('Site Name [ILTER Core/Europe Mandatory 2013 Recognition]');
+  t('Site Details');
+  t('Site Name ');
   t('Site Notes');
   t('Site Parameters Observed [Europe Mandatory for 2013 Recognition]');
   t('Site Status [Europe Mandatory for 2013 Recognition]');
   t('Site Type  [Europe Mandatory for 2013 Recognition]');
-  t('Site code of the LTER Site(s) which belong t5o this LTER Site or LTSER Platform.');
-  t('Size (in hectares) [ILTER Core/Europe Mandatory 2013 Recognition]	');
+  t('Site name of the LTER Site(s) which belong to this LTER Site or LTSER Platform. For Platforms list only sites not sub sites');
+  t('Size (in hectares)');
   t('Snow Clearing Frequency');
   t('Snow clearing Equipment [Europe Mandatory]');
   t('Staff room at site');
   t('Start type the name of the metadata provider and you will get suggestions of persons stored in the database. Start to type a name of the person you would like to insert here  If the PERSON you want is not listed, go to <a href="http://data.lter-europe.net/deims/node/add/person" target="_blank"> ADD Node</a> to add the person first before finishing the entry. Make sure to include email address and LTER National Network.');
   t('Start type the name of the metadata provider and you will get suggestions of persons stored in the database. Start to type a name of the person you would like to insert here  If the PERSON you want is not listed, go to <a href="http://data.lter-europe.net/deims/node/add/person" target="_blank"> ADD Person </a> to add the person first before finishing the entry. Make sure to include email address and LTER National Network.');
   t('Start typing a dataset title that is associated with this site. Keep adding datasets as needed.');
-  t('Subsite code');
+  t('Subsite Name');
   t('Temperature Controlled Container');
-  t('Temperature Monthly Maximum	');
-  t('Temperature Monthly Minimum	');
-  t('Temperature: Average Annual [ILTER Core/Europe Mandatory 2013 Recognition]');
+  t('Temperature Range (Monthly Maximum) TO	');
+  t('Temperature Range (Montly Minimum) FROM');
+  t('Temperature: Average Annual');
   t('The interval in days that staff visit the site to collect sampling information.  For example, every <b>30</b> days.');
   t('The interval in days that staff visit the site to perform maintenance tasks. For example, every <b>14</b> days.');
   t('These are LTER-Europe types. The definitions are:
@@ -7875,10 +8746,15 @@ Plot - observation plot within a site');
   t('Third most important ecosystem type');
   t('This field is relevant only to ExpeER sites.');
   t('This is a European infobase system site code');
+  t('This is the highest elevation in the site in meters.  Positive for meters above sea level, negative for meters below sea level. Examples: elevations at  mountain site - 8800, 8820, <b>8848</b>; Dead Sea, <b>-400</b>, -410, -424,
+Highest Mountain: <b>8848</b>; Hightest Dead Sea: <b>-400</b>');
+  t('This is the lowest elevation in the site in meters.  Positive for meters above sea level, negative for meters below sea level. Examples: elevations at  mountain site - <b>8800</b>, 8820, 8848</b>; Dead Sea, -400, -410, -<b>424</b>,
+Lowest Mountain: <b>8800</b>; Lowest Dead Sea: <b>-424</b>');
   t('This is the site\'s full name');
   t('This is the year the site was established, not the year it became part of your network. Choose the year, when substantial data series where started and/or a system approach was established.');
   t('Total annual precipitation in millimeters.');
   t('Unique code for the LTER site. For LTER-Europe, the form is : LTER_EU_XX_YY(Y); For East Asia-Pacific: LTER_AP_XX_YY(Y); for North America: LTER_NAM_XX_YY(Y);  for South America: LTER_SAM_XX_YY(Y); for Southern Africa: LTER_SAF_XX_YY(Y);  where XX is the 2-letter country code and YY(Y) represents a number. Use (Y) for a subsite. Please make sure that the number is not used for any site in your country. You can check your exisiting code at <a href="http://data.lter-europe.net/deims/sitecode" target="_blank">http://data.lter-europe.net/deims/sitecode</a> <b> If you are part of the Critical Zones or Soiltrek Network,</b> then the format for your code is: CZO_EU_XX_YY(Y);  where XX is the 2-letter country code and YY(Y) represents a number. For example:  CZO_FR_01  or CZO_DE_02 or RBV_FR_100');
+  t('Upload Shapefile');
   t('Value of the Infrastructure  [Europe Mandatory]');
   t('Web Address [Europe Mandatory]');
   t('What kind of vehicle is required to access the site?');
