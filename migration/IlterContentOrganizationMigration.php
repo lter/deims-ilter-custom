@@ -50,7 +50,7 @@ class IlterContentOrganizationMigration extends DeimsContentOrganizationMigratio
       case 'CREAF':
       case 'CREAF (Centre for Ecological Research and Forestry Applicaitons)':
         $row->field_person_organization='CREAF (Centre for Ecological Research and Forestry Applications)';
-      case 'ILTER'
+      case 'ILTER':
         $row->field_person_organization='International Long Term Ecological Research ILTER';
       case 'Retired - e-mail probably no longer valid':
         $row->field_person_organization=NULL;
