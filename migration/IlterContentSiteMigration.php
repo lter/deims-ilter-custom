@@ -75,7 +75,11 @@ class IlterContentSiteMigration extends DrupalNode6Migration {
       'field_date:timezone',
     ));
 
+    $this->removeFieldMapping('promote');
+    $this->addFieldMapping('promote')->defaultValue(0);
+
     $this->addFieldMapping('field__site_sitecode','field_research_site_sitecode');
+
     $this->addFieldMapping('field_site_sitelong','field_research_site_sitelong');
 
     $this->addFieldMapping('field_ilter_national_network_nam','field_ilter_research_site_ilter')
