@@ -138,6 +138,11 @@ class IlterFieldsCoordDataSetMigration extends DrupalNode6Migration {
       return FALSE;
     }
 
+    // if the node is already in the system, DNM or return 
+    // false, but to return false, we need to understand how would
+    // we then link up a given node.
+ 
+    // when would we know we are dealing with the same site?
   }
 
   public function prepare($node, $row) {
@@ -153,8 +158,20 @@ class IlterFieldsCoordDataSetMigration extends DrupalNode6Migration {
 
     if ($result = $query->execute()->fetch()) {
       if (!empty($result->title)) {
-        $node->title = $result->title;
+//      but query already migrated res. site nodes.
+
+        $equery = new EntityFieldQuery();
+        $equery->entityCondition('entity_type', 'node');
+        $equery->entityCondition('bundle', 'research_site');
+        $equery->propertyCondition('title', $row->field_dataset_site_name);
+        $eresults = $equery->execute();
+        if (!empty($eresults['node'])) {   // is already present
+          return FALSE;
+        } else {
+          $node->title = $result->title;
+        }
       }
+
       if (!empty($result->body)) {
         $node->field_description[LANGUAGE_NONE][0] = $result->body;
         $row->format = $result->format;
@@ -166,6 +183,7 @@ class IlterFieldsCoordDataSetMigration extends DrupalNode6Migration {
     // Remove any empty or illegal delta field values.
     EntityHelper::removeInvalidFieldDeltas('node', $node);
     EntityHelper::removeEmptyFieldValues('node', $node);
+
   }
 
 
