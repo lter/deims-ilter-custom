@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the ILTER D7 Migration module.
+ */
+
+/**
+ * Implements hook_requirements().
+ */
+function d7_migration_requirements() {
+  $requirements = array();
+  $t = get_t();
+
+  if (!Database::getConnectionInfo('drupal7')) {
+    $requirements['d7_migration_db_missing'] = array(
+      'title' => $t('Migration database connection'),
+      'value' => $t('Missing'),
+      'description' => $t('Make sure that you have a database connection with the key <em>dr
+upal7</em> added to your settings.local.php.'),
+      'severity' => REQUIREMENT_ERROR,
+    );
+  }
+  else {
+    try {
+      $connection = Database::getConnection('default', 'drupal7');
+      $connection->query("SELECT 1 FROM {system}");
+    }
+    catch (Exception $e) {
+      $requirements['d7_migration_db_missing'] = array(
+        'title' => $t('Migration database connection'),
+        'value' => check_plain($e->getMessage()),
+        'severity' => REQUIREMENT_ERROR,
+      );
+    }
+  }
+
+  return $requirements;
+}
+

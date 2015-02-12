@@ -1,0 +1,10 @@
+name = d7 Migration
+description = Custom code and migrations specific to the Pilot Survey Content type.
+core = 7.x
+;dependencies[] = deims
+dependencies[] = migrate
+dependencies[] = migrate_ui
+dependencies[] = migrate_extras
+dependencies[] = migrate_d2d
+
+;files[] = migration/IlterContentNitrogenPilotSurvey.php
