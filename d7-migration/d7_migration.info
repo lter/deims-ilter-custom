@@ -7,4 +7,4 @@ dependencies[] = migrate_ui
 dependencies[] = migrate_extras
 dependencies[] = migrate_d2d
 
-;files[] = migration/IlterContentNitrogenPilotSurvey.php
+files[] = migration/IlterNitrogenPilotSurveyMigration.php

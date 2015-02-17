@@ -10,7 +10,7 @@ function d7_migration_migrate_api() {
   $info = array(
     'api' => 2,
     'groups' => array(
-      ILTER_D7_MIGRATION_GROUP => array(
+      'ILTER_D7_MIGRATION_GROUP' => array(
         'title' => t('ILTER Drupal 7 migration'),
       ),
     ),
@@ -22,7 +22,7 @@ function d7_migration_migrate_api() {
   );
 
   foreach ($info['migrations'] as &$migration) {
-    $migration['group_name'] = ILTER_D7_MIGRATION_GROUP;
+    $migration['group_name'] = 'ILTER_D7_MIGRATION_GROUP';
   }
 
   return $info;
