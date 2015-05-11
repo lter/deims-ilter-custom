@@ -163,7 +163,7 @@ class IlterFieldsCoordDataSetMigration extends DrupalNode6Migration {
         $equery = new EntityFieldQuery();
         $equery->entityCondition('entity_type', 'node');
         $equery->entityCondition('bundle', 'research_site');
-        $equery->propertyCondition('title', $row->field_dataset_site_name);
+        $equery->propertyCondition('title', $result->title);
         $eresults = $equery->execute();
         if (!empty($eresults['node'])) {   // is already present
           return FALSE;
