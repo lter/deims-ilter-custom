@@ -76,7 +76,7 @@ field_dataset_sam_area_txt	Textual description (cardinlty 1)
     $this->addFieldMapping('field_related_links:title', 'field_dataset_method_title_url:title');
     $this->addFieldMapping('field_related_links:attributes', 'field_dataset_method_title_url:attributes');
 
-    $this->addFieldMapping('field_related_sites',NULL)
+    $this->addFieldMapping('field_related_sites','nid')
 //     ->description('Migrate in prepare()');
      ->sourceMigration('IlterFieldCoordDataset');
 
