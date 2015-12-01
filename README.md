@@ -88,5 +88,8 @@ know what you are doing.
 It is advisable to tweak the core deimsd6migration accordingly, to remove already loaded
 migrations.
 
+For example, the Site migration has a dependency on the DataSet migration.  
+But the DataSet also depends on the Site.
+
 
 
