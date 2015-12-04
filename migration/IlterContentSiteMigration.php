@@ -25,11 +25,6 @@ class IlterContentSiteMigration extends DrupalNode6Migration {
        'revision',
        'log',
        'revision_uid',
-       'upload',
-       'upload:description',
-       'upload:list',
-       'upload:weight',
-//       'field_dataset_md_date'  (range, to)
     ));
 
     $this->addUnmigratedDestinations(array(
@@ -45,9 +40,9 @@ class IlterContentSiteMigration extends DrupalNode6Migration {
       'field_date:rrule',
       'field_date:to',
       'field_purpose:language',
-      'field_images:destination_dir',
-      'field_images:destination_file',
-      'field_images:file_replace',
+//      'field_images:destination_dir',
+//      'field_images:destination_file',
+//      'field_images:file_replace',
       'field_protection_prog_notes:language',
       'field_site_mgmnt_res_percent:language',
       'field_site_mgtres_notes:language',
@@ -69,7 +64,7 @@ class IlterContentSiteMigration extends DrupalNode6Migration {
       'field_site_ops_cost:language',
       'field_site_ops_notes:language',
       'field_site_eu_notes:language',
-      'field_site_eu_environ_zone_econ:language',
+//      'field_site_eu_environ_zone_econ:language',
       'field_site_eu_infobase_sitecode:language',
       'field_ilter_network_url:language',
       'field_date:timezone',
@@ -89,6 +84,9 @@ class IlterContentSiteMigration extends DrupalNode6Migration {
     $this->addFieldMapping('field_site_size','field_research_site_size');
     // this the fields res. site
     // $this->addFieldMapping('field_site_resch_site_ref,'
+
+//  this may need to be changed -- depends whether the new fields exist or not.
+//  changed in tests, but not in the committed version (this one)
 
     $this->addFieldMapping('field_coordinates','field_research_site_lat')
      ->description('Handled in prepare()');
@@ -136,15 +134,17 @@ class IlterContentSiteMigration extends DrupalNode6Migration {
     $this->addFieldMapping('field_purpose','field_research_site_purpose');
     $this->addFieldMapping('field_images','field_research_site_image')
      ->sourceMigration('DeimsFile');
-/**   review 
-$this->addFieldMapping('field_images:file_class,'
-$this->addFieldMapping('field_images:language,'
-$this->addFieldMapping('field_images:preserve_files,'
-$this->addFieldMapping('field_images:source_dir,'
-$this->addFieldMapping('field_images:urlencode,'
-$this->addFieldMapping('field_images:alt,'
-$this->addFieldMapping('field_images:title,'
-**/
+    $this->addFieldMapping('field_images:file_class')->defaultValue('MigrateFileFid');
+    $this->addFieldMapping('field_images:preserve_files')defaultValue(TRUE);
+
+//  seems to me that this is a duplicate field.  If NEEDED, uncomment to migrate to it.
+//  IF not needed, delete field.
+
+//    $this->addFieldMapping('field_research_site_image','field_research_site_image')
+//     ->sourceMigration('DeimsFile');
+//    $this->addFieldMapping('field_research_site_image:file_class')->defaultValue('MigrateFileFid');
+//    $this->addFieldMapping('field_research_site_image:preserve_files')->defaultValue(TRUE);
+
     $this->addFieldMapping('field_site_protprgcover','field_research_site_protprgcover');
     $this->addFieldMapping('field_site_protection_prog_ref','field_research_site_protprg')
      ->sourceMigration('IlterContentProtectionProgram');
@@ -182,8 +182,12 @@ $this->addFieldMapping('field_images:title,'
     $this->addFieldMapping('field_elevation_maximum_','field_research_site_elemax');
     $this->addFieldMapping('field_elevation_average','field_research_site_elevavg');
 
+//  these may be erased.
+//
     $this->addFieldMapping('field_upload_shapefile','field_research_site_upshp')
      ->sourceMigration('DeimsFile');
+    $this->addFieldMapping('field_upload_shapefile:file_class')->defaultValue('MigrateFileFid');
+    $this->addFieldMapping('field_upload_shapefile:preserve_files')->defaultValue(TRUE);   
 
     $this->addFieldMapping('field_research_topics','field_research_site_resrchtopic');
 
@@ -236,8 +240,10 @@ $this->addFieldMapping('field_images:title,'
     $this->addFieldMapping('field_site_eu_notes','field_research_site_eu_notes');
     $this->addFieldMapping('field_site_eu_biogeo_region','field_research_site_biogeo');
     $this->addFieldMapping('field_site_eu_enviro_zone','field_research_site_euenvzone');
-    $this->addFieldMapping('field_site_eu_economic_density','field_research_site_metzecodens');
-    $this->addFieldMapping('field_site_eu_environ_zone_econ','field_research_site_metzenzeco');
+//   these fields are not present in the destination content type. 
+//   may need to be created
+//    $this->addFieldMapping('field_site_eu_economic_density','field_research_site_metzecodens');
+//    $this->addFieldMapping('field_site_eu_environ_zone_econ','field_research_site_metzenzeco');
     $this->addFieldMapping('field_site_eu_infobase_sitecode','field_research_site_infcode');
     $this->addFieldMapping('field_site_geobon_biome','field_research_site_biome');
     $this->addFieldMapping('field_site_expeer_netmem','field_research_site_expeersite')
@@ -360,11 +366,27 @@ $this->addFieldMapping('field_images:title,'
         $row->field_research_site_operation = 0;
         break;
     }
+    if(!empty($row->field_research_site_lat[0])){ 
+       $row->geo = 'POINT(' . 
+       $row->field_research_site_long[0] . ' ' . $row->field_research_site_lat[0]. ')' ;
+    }
+ 
+    if(!empty($row->field_research_site_bbox_wc[0])) { 
+       $row->geobb = 'POLYGON(' . 
+       $row->field_research_site_bbox_wc[0] . ' ' . $row->field_research_site_bbox_nc[0]. ',' .
+       $row->field_research_site_bbox_ec[0] . ' ' . $row->field_research_site_bbox_nc[0]. ',' .
+       $row->field_research_site_bbox_ec[0] . ' ' . $row->field_research_site_bbox_sc[0]. ',' .
+       $row->field_research_site_bbox_wc[0] . ' ' . $row->field_research_site_bbox_sc[0]. ',' .
+       $row->field_research_site_bbox_wc[0] . ' ' . $row->field_research_site_bbox_nc[0]. ')'; 
+    }
 
   }
+
   public function prepare($node, $row) {
 
-    $node->field_coordinates[LANGUAGE_NONE] = $this->getLatLong($node, $row);
+//    $node->field_coordinates[LANGUAGE_NONE] = $this->getLatLong($node, $row);
+
+//  depending on success of geof2.x, these 2 may be deprecated in favor of preparerow approach.
     
     $node->field_geo_bounding_box[LANGUAGE_NONE] = $this->getCoordinates($node, $row);
 
