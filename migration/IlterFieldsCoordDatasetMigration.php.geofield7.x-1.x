@@ -33,7 +33,9 @@ class IlterFieldsCoordDataSetMigration extends DrupalNode6Migration {
     $this->removeFieldMapping('title');
 
     $this->addFieldMapping('title', 'field_dataset_site_name')
-     ->description('let us do this manually in prepare()');
+     ->sourceMigration('IlterContentSite');
+//   Should we try dedupe?
+//     ->dedupe('');
 
     $this->addFieldMapping('field_description:format', 'format')
       ->description('in prepare()');
@@ -48,11 +50,8 @@ class IlterFieldsCoordDataSetMigration extends DrupalNode6Migration {
 //  create this field!
     $this->addFieldMapping('field_elevation_min', 'field_dataset_altit_min');
 
-      $this->addFieldMapping('field_coordinates','geo')
-        ->description('in Prep');
-      $this->addFieldMapping('field_coordinates:geom','geo')
-        ->description('in Prep');
-      $this->addFieldMapping('field_coordinates:geo_type')->defaultValue('polygon');
+    $this->addFieldMapping('field_coordinates')
+      ->description('Handled in prepare().');
 
     $this->addUnmigratedSources(array(
       'revision',
@@ -101,6 +100,13 @@ class IlterFieldsCoordDataSetMigration extends DrupalNode6Migration {
       'upload:weight',
     ));
 
+
+//'field_dataset_bbox	Bounding polygon coordinates
+///'field_dataset_bbox_nc	North bound coordinate
+//'field_dataset_bbox_sc	South bound coordinate
+//'field_dataset_bbox_wc	West bound coordinate
+//'field_dataset_bbox_ec	East bound coordinate
+
     $this->addUnmigratedDestinations(array(
       'field_images:language',
       'field_images:destination_dir',
@@ -108,7 +114,9 @@ class IlterFieldsCoordDataSetMigration extends DrupalNode6Migration {
       'field_images:file_replace',
       'field_images:source_dir',
       'field_description:language',
-      'field_coordinates:geohash',
+      'field_coordinates:srid',
+      'field_coordinates:accuracy',
+      'field_coordinates:source',
       'field_core_areas',
       'field_core_areas:source_type',
       'field_core_areas:create_term',
@@ -122,22 +130,19 @@ class IlterFieldsCoordDataSetMigration extends DrupalNode6Migration {
 
   public function prepareRow($row) {
     parent::prepareRow($row);
-
     if (! is_int($row->field_dataset_id)){
       $row->field_dataset_id = NULL;
     }
- 
-    if(!empty($row->field_dataset_bbox_wc[0])) { 
-       $row->geo = 'POLYGON(' . 
-       $row->field_dataset_bbox_wc[0] . ' ' . $row->field_dataset_bbox_nc[0]. ',' .
-       $row->field_dataset_bbox_ec[0] . ' ' . $row->field_dataset_bbox_nc[0]. ',' .
-       $row->field_dataset_bbox_ec[0] . ' ' . $row->field_dataset_bbox_sc[0]. ',' .
-       $row->field_dataset_bbox_wc[0] . ' ' . $row->field_dataset_bbox_sc[0]. ',' .
-       $row->field_dataset_bbox_wc[0] . ' ' . $row->field_dataset_bbox_nc[0]. ')'; 
-    }else{
-      dpm($row->title);
+
+    if (empty($row->field_dataset_bbox[0])){
+      return FALSE;
     }
 
+    // if the node is already in the system, DNM or return 
+    // false, but to return false, we need to understand how would
+    // we then link up a given node.
+ 
+    // when would we know we are dealing with the same site?
   }
 
   public function prepare($node, $row) {
@@ -163,7 +168,7 @@ class IlterFieldsCoordDataSetMigration extends DrupalNode6Migration {
         if (!empty($eresults['node'])) {   // is already present
           return FALSE;
         } else {
-          $node->title = $result->title .':'.$row->title;
+          $node->title = $result->title;
         }
       }
 
@@ -173,10 +178,34 @@ class IlterFieldsCoordDataSetMigration extends DrupalNode6Migration {
       }
     }
 
+    $node->field_coordinates[LANGUAGE_NONE] = $this->getCoordinates($node, $row);
+
     // Remove any empty or illegal delta field values.
     EntityHelper::removeInvalidFieldDeltas('node', $node);
     EntityHelper::removeEmptyFieldValues('node', $node);
 
   }
 
+
+  public function getCoordinates($node, $row) {
+    $field_values = array();
+
+//    $debg = dpm($row->field_dataset_bbox);
+//    $debg2 = print_r($row->field_dataset_bbox);
+//     $this->queueMessage("Here is my WKT object {$debg} and also {$debg2} .", MigrationBase::MESSAGE_INFORMATIONAL);
+
+   if (!empty($row->field_dataset_bbox[0])){
+ 
+     $wkt= $row->field_dataset_bbox;
+       
+    // Force the geo module to accept our field value as they come
+      $field_values[] = array(
+       'geo_type' => 'geometrycollection',
+       'wkt' => $wkt,
+       'master_column' => 'wkt',
+      );
+   }
+
+    return $field_values;
+  }
 }
