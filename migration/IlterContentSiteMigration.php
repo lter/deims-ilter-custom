@@ -135,7 +135,7 @@ class IlterContentSiteMigration extends DrupalNode6Migration {
     $this->addFieldMapping('field_images','field_research_site_image')
      ->sourceMigration('DeimsFile');
     $this->addFieldMapping('field_images:file_class')->defaultValue('MigrateFileFid');
-    $this->addFieldMapping('field_images:preserve_files')defaultValue(TRUE);
+    $this->addFieldMapping('field_images:preserve_files')->defaultValue(TRUE);
 
 //  seems to me that this is a duplicate field.  If NEEDED, uncomment to migrate to it.
 //  IF not needed, delete field.
@@ -190,9 +190,6 @@ class IlterContentSiteMigration extends DrupalNode6Migration {
     $this->addFieldMapping('field_upload_shapefile:preserve_files')->defaultValue(TRUE);   
 
     $this->addFieldMapping('field_research_topics','field_research_site_resrchtopic');
-
-    $this->addFieldMapping('field_associated_dataset','field_research_site_dataset')
-     ->sourceMigration('IlterContentDataSet');
 
     $this->addFieldMapping('field_site_inf_staff_room','field_research_site_staffrm')
      ->description('Tweaked in prepareRow()');
