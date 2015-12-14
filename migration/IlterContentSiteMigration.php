@@ -82,14 +82,22 @@ class IlterContentSiteMigration extends DrupalNode6Migration {
 
     $this->addFieldMapping('field_site_description','field_research_site_description');
     $this->addFieldMapping('field_site_size','field_research_site_size');
-    // this the fields res. site
-    // $this->addFieldMapping('field_site_resch_site_ref,'
 
-//  this may need to be changed -- depends whether the new fields exist or not.
-//  changed in tests, but not in the committed version (this one)
+//  The geo field mapping for version 2.x, which was deprecated for a more recent version
+//    $this->addFieldMapping('field_coordinates','field_research_site_lat')
+//     ->description('Handled in prepare()');
 
-    $this->addFieldMapping('field_coordinates','field_research_site_lat')
-     ->description('Handled in prepare()');
+    $this->addFieldMapping('field_coordinates','geo')  
+        ->description('in Prep'); 
+    $this->addFieldMapping('field_coordinates:geom','geo')
+        ->description('in Prep');
+    $this->addFieldMapping('field_coordinates:geo_type')->defaultValue('point');
+
+    $this->addFieldMapping('field_geo_bounding_box','geobb')
+        ->description('in Prep'); 
+    $this->addFieldMapping('field_geo_bounding_box:geom','geobb')
+        ->description('in Prep');
+    $this->addFieldMapping('field_geo_bounding_box:geo_type')->defaultValue('polygon');
 
     $this->addFieldMapping('field_temperature_average_annual','field_research_site_temp_ann');
     $this->addFieldMapping('field_precipitation_annual_ilter','field_research_site_precip_ann');
@@ -136,14 +144,6 @@ class IlterContentSiteMigration extends DrupalNode6Migration {
      ->sourceMigration('DeimsFile');
     $this->addFieldMapping('field_images:file_class')->defaultValue('MigrateFileFid');
     $this->addFieldMapping('field_images:preserve_files')->defaultValue(TRUE);
-
-//  seems to me that this is a duplicate field.  If NEEDED, uncomment to migrate to it.
-//  IF not needed, delete field.
-
-//    $this->addFieldMapping('field_research_site_image','field_research_site_image')
-//     ->sourceMigration('DeimsFile');
-//    $this->addFieldMapping('field_research_site_image:file_class')->defaultValue('MigrateFileFid');
-//    $this->addFieldMapping('field_research_site_image:preserve_files')->defaultValue(TRUE);
 
     $this->addFieldMapping('field_site_protprgcover','field_research_site_protprgcover');
     $this->addFieldMapping('field_site_protection_prog_ref','field_research_site_protprg')
@@ -381,11 +381,10 @@ class IlterContentSiteMigration extends DrupalNode6Migration {
 
   public function prepare($node, $row) {
 
+//   because of geof2.x, these 2 may be deprecated in favor of preparerow approach.
+//   also, functs getLatLong and getCoordinates would therefore go unused.  
 //    $node->field_coordinates[LANGUAGE_NONE] = $this->getLatLong($node, $row);
-
-//  depending on success of geof2.x, these 2 may be deprecated in favor of preparerow approach.
-    
-    $node->field_geo_bounding_box[LANGUAGE_NONE] = $this->getCoordinates($node, $row);
+//    $node->field_geo_bounding_box[LANGUAGE_NONE] = $this->getCoordinates($node, $row);
 
     $node->field_site_details[LANGUAGE_NONE] = $this->getSiteDetails($node, $row);
 
