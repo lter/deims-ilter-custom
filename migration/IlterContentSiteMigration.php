@@ -369,12 +369,12 @@ class IlterContentSiteMigration extends DrupalNode6Migration {
     }
  
     if(!empty($row->field_research_site_bbox_wc[0])) { 
-       $row->geobb = 'POLYGON(' . 
+       $row->geobb = 'POLYGON((' . 
        $row->field_research_site_bbox_wc[0] . ' ' . $row->field_research_site_bbox_nc[0]. ',' .
        $row->field_research_site_bbox_ec[0] . ' ' . $row->field_research_site_bbox_nc[0]. ',' .
        $row->field_research_site_bbox_ec[0] . ' ' . $row->field_research_site_bbox_sc[0]. ',' .
        $row->field_research_site_bbox_wc[0] . ' ' . $row->field_research_site_bbox_sc[0]. ',' .
-       $row->field_research_site_bbox_wc[0] . ' ' . $row->field_research_site_bbox_nc[0]. ')'; 
+       $row->field_research_site_bbox_wc[0] . ' ' . $row->field_research_site_bbox_nc[0]. '))'; 
     }
 
   }

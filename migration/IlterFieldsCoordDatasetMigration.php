@@ -128,14 +128,12 @@ class IlterFieldsCoordDataSetMigration extends DrupalNode6Migration {
     }
  
     if(!empty($row->field_dataset_bbox_wc[0])) { 
-       $row->geo = 'POLYGON(' . 
+       $row->geo = 'POLYGON((' . 
        $row->field_dataset_bbox_wc[0] . ' ' . $row->field_dataset_bbox_nc[0]. ',' .
        $row->field_dataset_bbox_ec[0] . ' ' . $row->field_dataset_bbox_nc[0]. ',' .
        $row->field_dataset_bbox_ec[0] . ' ' . $row->field_dataset_bbox_sc[0]. ',' .
        $row->field_dataset_bbox_wc[0] . ' ' . $row->field_dataset_bbox_sc[0]. ',' .
-       $row->field_dataset_bbox_wc[0] . ' ' . $row->field_dataset_bbox_nc[0]. ')'; 
-    }else{
-      dpm($row->title);
+       $row->field_dataset_bbox_wc[0] . ' ' . $row->field_dataset_bbox_nc[0]. '))'; 
     }
 
   }
