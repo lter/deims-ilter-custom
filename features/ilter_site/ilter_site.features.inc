@@ -9,6 +9,10 @@
  */
 function ilter_site_ctools_plugin_api() {
   list($module, $api) = func_get_args();
+  if ($module == "ds" && $api == "ds") {
+    return array("version" => "1");
+  }
+  list($module, $api) = func_get_args();
   if ($module == "field_group" && $api == "field_group") {
     return array("version" => "1");
   }
@@ -16,6 +20,25 @@ function ilter_site_ctools_plugin_api() {
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
+}
+
+/**
+ * Implements hook_eck_entity_type_info().
+ */
+function ilter_site_eck_entity_type_info() {
+$items = array(
+       'site_data' => array(
+  'name' => 'site_data',
+  'label' => 'Site Data',
+  'properties' => array(),
+),
+       'site_infrastructure' => array(
+  'name' => 'site_infrastructure',
+  'label' => 'Site Infrastructure',
+  'properties' => array(),
+),
+  );
+  return $items;
 }
 
 /**

@@ -13,41 +13,68 @@ function ilter_site_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_abiotic|node|site|form';
+  $field_group->group_name = 'group_abiotic';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'site';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_site_ecosystem';
+  $field_group->data = array(
+    'label' => 'Abiotic Characteristics',
+    'weight' => '227',
+    'children' => array(
+      0 => 'field_geology',
+      1 => 'field_hydrology',
+      2 => 'field_soils',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-abiotic field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_abiotic|node|site|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_data_mgmnt|node|site|form';
   $field_group->group_name = 'group_data_mgmnt';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'site';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_site_detailinfo';
+  $field_group->parent_name = 'group_site_coreinfo';
   $field_group->data = array(
     'label' => 'Data Management',
-    'weight' => '13',
+    'weight' => '15',
     'children' => array(
       0 => 'field_collected_datasets_ref',
-      1 => 'field_site_dataccadmin',
-      2 => 'field_site_datapolpubl',
-      3 => 'field_site_dataacced',
+      1 => 'field_site_data_notes',
+      2 => 'field_site_dataacced',
+      3 => 'field_site_dataccadmin',
       4 => 'field_site_dataccres',
-      5 => 'field_site_datacstadmin',
-      6 => 'field_site_datacstpub',
-      7 => 'field_site_datacosted',
-      8 => 'field_site_datacostres',
-      9 => 'field_site_data_notes',
-      10 => 'field_site_datareq',
-      11 => 'field_site_dataformat',
+      5 => 'field_site_datacosted',
+      6 => 'field_site_datacostres',
+      7 => 'field_site_datacstadmin',
+      8 => 'field_site_datacstpub',
+      9 => 'field_site_dataformat',
+      10 => 'field_site_datapolpubl',
+      11 => 'field_site_datareq',
       12 => 'field_site_dataservi',
       13 => 'field_site_datastorloc',
       14 => 'field_site_datastornum',
-      15 => 'field_associated_dataset',
     ),
-    'format_type' => 'htab',
+    'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
         'required_fields' => 1,
-        'id' => '',
       ),
     ),
   );
@@ -64,10 +91,8 @@ function ilter_site_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Details',
-    'weight' => '8',
-    'children' => array(
-      0 => 'group_site_detailinfo',
-    ),
+    'weight' => '2',
+    'children' => array(),
     'format_type' => 'html-element',
     'format_settings' => array(
       'formatter' => '',
@@ -86,26 +111,83 @@ function ilter_site_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_ecosystem_characteristics|node|site|form';
+  $field_group->group_name = 'group_ecosystem_characteristics';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'site';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_site_geographic';
+  $field_group->data = array(
+    'label' => 'Ecosystem and Environmental Characteristics',
+    'weight' => '175',
+    'children' => array(
+      0 => 'group_site_temp',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-ecosystem-characteristics field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_ecosystem_characteristics|node|site|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_ecosystemref|node|site|form';
+  $field_group->group_name = 'group_ecosystemref';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'site';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_site_ecosystem';
+  $field_group->data = array(
+    'label' => 'Ecosystem Reference ',
+    'weight' => '229',
+    'children' => array(
+      0 => 'field_site_biomeplus',
+      1 => 'field_site_ecostype1',
+      2 => 'field_site_ecostype3',
+      3 => 'field_site_ecosytype2',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-ecosystemref field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_ecosystemref|node|site|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_elevation_range|node|site|form';
   $field_group->group_name = 'group_elevation_range';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'site';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_site_coreinfo';
+  $field_group->parent_name = 'group_site_geographic';
   $field_group->data = array(
     'label' => 'Elevation Range',
-    'weight' => '142',
+    'weight' => '173',
     'children' => array(
       0 => 'field_elevation_average',
-      1 => 'field_elevation_maximum_',
-      2 => 'field_elevation_lowest',
+      1 => 'field_elevation_lowest',
+      2 => 'field_elevation_maximum_',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-elevation-range field-group-fieldset',
+        'classes' => '',
         'required_fields' => 1,
       ),
     ),
@@ -150,21 +232,20 @@ function ilter_site_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'site';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_site_geobon';
+  $field_group->parent_name = 'group_site_coreinfo';
   $field_group->data = array(
     'label' => 'Geobon',
-    'weight' => '148',
+    'weight' => '18',
     'children' => array(
       0 => 'field_site_geobon_biome',
     ),
-    'format_type' => 'htab',
+    'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-geobon-tab-grp field-group-htab',
+        'classes' => '',
         'required_fields' => 1,
-        'id' => '',
       ),
     ),
   );
@@ -198,6 +279,67 @@ function ilter_site_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_metadata_provider|node|site|form';
+  $field_group->group_name = 'group_metadata_provider';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'site';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_site_coreinfo';
+  $field_group->data = array(
+    'label' => 'Metadata Provider',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_metadata_provider',
+      1 => 'field_metadata_update_date',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-metadata-provider field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_metadata_provider|node|site|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_name_description|node|site|form';
+  $field_group->group_name = 'group_name_description';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'site';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_site_coreinfo';
+  $field_group->data = array(
+    'label' => 'Name And General Description',
+    'weight' => '0',
+    'children' => array(
+      0 => 'field__site_sitecode',
+      1 => 'field_ilter_national_network_nam',
+      2 => 'field_site_description',
+      3 => 'field_site_parentsite_ref',
+      4 => 'field_site_sitelong',
+      5 => 'field_site_subsite_code_ref',
+      6 => 'title',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-name-description field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_name_description|node|site|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_networks|node|site|form';
   $field_group->group_name = 'group_networks';
   $field_group->entity_type = 'node';
@@ -206,24 +348,22 @@ function ilter_site_field_group_info() {
   $field_group->parent_name = 'group_site_coreinfo';
   $field_group->data = array(
     'label' => 'Networks and Contacts',
-    'weight' => '145',
+    'weight' => '7',
     'children' => array(
       0 => 'field_date',
       1 => 'field_ilter_network_country',
       2 => 'field_ilter_network_url',
       3 => 'field_networks_term_ref',
       4 => 'field_person_contact',
-      5 => 'field_person_metadata_provider',
-      6 => 'field_short_name',
+      5 => 'field_short_name',
     ),
-    'format_type' => 'htab',
+    'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
         'required_fields' => 1,
-        'id' => '',
       ),
     ),
   );
@@ -269,24 +409,23 @@ function ilter_site_field_group_info() {
   $field_group->parent_name = 'group_site_coreinfo';
   $field_group->data = array(
     'label' => 'Purpose, History, Research Topics	',
-    'weight' => '146',
+    'weight' => '8',
     'children' => array(
       0 => 'field_images',
       1 => 'field_purpose',
-      2 => 'field_site_params',
-      3 => 'field_site_status',
-      4 => 'field_year',
-      5 => 'field_year_closed',
-      6 => 'field_research_topics',
+      2 => 'field_research_topics',
+      3 => 'field_site_params',
+      4 => 'field_site_status',
+      5 => 'field_year',
+      6 => 'field_year_closed',
     ),
-    'format_type' => 'htab',
+    'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
         'required_fields' => 1,
-        'id' => '',
       ),
     ),
   );
@@ -300,14 +439,11 @@ function ilter_site_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'site';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_site_coreinfo';
+  $field_group->parent_name = 'group_site_detailinfo';
   $field_group->data = array(
     'label' => 'OLD Site Info: Don\'t Delete',
-    'weight' => '144',
-    'children' => array(
-      0 => 'field_eunis_habitat',
-      1 => 'field_site_details',
-    ),
+    'weight' => '17',
+    'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
       'formatter' => 'collapsible',
@@ -360,23 +496,35 @@ function ilter_site_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Core ILTER Information',
-    'weight' => '7',
+    'weight' => '0',
     'children' => array(
-      0 => 'group_networks',
-      1 => 'group_purpose',
-      2 => 'group_site_ecosystem',
-      3 => 'group_site_precip',
-      4 => 'group_site_temp',
-      5 => 'group_site_geographic',
-      6 => 'group_elevation_range',
-      7 => 'group_res_site_redmex',
+      0 => 'group_data_mgmnt',
+      1 => 'group_geobon_tab_grp',
+      2 => 'group_networks',
+      3 => 'group_purpose',
+      4 => 'group_site_design_status',
+      5 => 'group_site_design',
+      6 => 'group_site_detailinfo',
+      7 => 'group_site_eu_class',
+      8 => 'group_site_expeer',
+      9 => 'group_site_geobon',
+      10 => 'group_site_geographic',
+      11 => 'group_site_infrstrctr_group',
+      12 => 'group_site_ops',
+      13 => 'group_site_protectmgt_grp',
+      14 => 'group_site_status',
+      15 => 'group_name_description',
+      16 => 'group_site_taxonomy',
+      17 => 'group_metadata_provider',
     ),
-    'format_type' => 'htabs',
+    'format_type' => 'tabs',
     'format_settings' => array(
-      'formatter' => '',
+      'label' => 'Core ILTER Information',
       'instance_settings' => array(
+        'id' => '',
         'classes' => '',
       ),
+      'formatter' => '',
     ),
   );
   $export['group_site_coreinfo|node|site|form'] = $field_group;
@@ -389,21 +537,17 @@ function ilter_site_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'site';
   $field_group->mode = 'form';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_site_coreinfo';
   $field_group->data = array(
     'label' => 'Site Design, Status, Classifictions, ExpeER',
-    'weight' => '9',
-    'children' => array(
-      0 => 'group_site_design',
-      1 => 'group_site_eu_class',
-      2 => 'group_site_expeer',
-      3 => 'group_site_status',
-    ),
-    'format_type' => 'htabs',
+    'weight' => '22',
+    'children' => array(),
+    'format_type' => 'tabs',
     'format_settings' => array(
-      'label' => 'Site Design, Status, Classifictions, ExpeER',
+      'formatter' => '',
       'instance_settings' => array(
         'classes' => '',
+        'id' => '',
       ),
     ),
   );
@@ -417,25 +561,23 @@ function ilter_site_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'site';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_site_design_status';
+  $field_group->parent_name = 'group_site_coreinfo';
   $field_group->data = array(
     'label' => 'Site Design',
-    'weight' => '95',
+    'weight' => '10',
     'children' => array(
-      0 => 'field_site_eu__status_accred',
-      1 => 'field_site_eu_design_experiments',
-      2 => 'field_site_eu_design_observ',
-      3 => 'field_site_eu_design_scale',
-      4 => 'field_site_eu_experiment_scale',
+      0 => 'field_site_eu_design_experiments',
+      1 => 'field_site_eu_design_observ',
+      2 => 'field_site_eu_design_scale',
+      3 => 'field_site_eu_experiment_scale',
     ),
-    'format_type' => 'htab',
+    'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
         'required_fields' => 1,
-        'id' => '',
       ),
     ),
   );
@@ -449,21 +591,19 @@ function ilter_site_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'site';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_details';
+  $field_group->parent_name = 'group_site_coreinfo';
   $field_group->data = array(
     'label' => 'Detailed Information',
-    'weight' => '42',
+    'weight' => '21',
     'children' => array(
-      0 => 'group_data_mgmnt',
-      1 => 'group_site_infrstrctr_group',
-      2 => 'group_site_ops',
-      3 => 'group_site_protectmgt_grp',
+      0 => 'group_res_site_redmex',
     ),
-    'format_type' => 'htabs',
+    'format_type' => 'tabs',
     'format_settings' => array(
       'formatter' => '',
       'instance_settings' => array(
-        'classes' => 'group-site-detailinfo field-group-htabs',
+        'classes' => '',
+        'id' => '',
       ),
     ),
   );
@@ -477,24 +617,23 @@ function ilter_site_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'site';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_site_coreinfo';
+  $field_group->parent_name = 'group_site_geographic';
   $field_group->data = array(
     'label' => 'Ecosystem and Habitat',
-    'weight' => '143',
+    'weight' => '177',
     'children' => array(
-      0 => 'field_site_biomeplus',
-      1 => 'field_site_ecostype1',
-      2 => 'field_site_ecostype3',
-      3 => 'field_site_ecosytype2',
+      0 => 'field_eunis_habitat',
+      1 => 'field_ecosystem_and_land_use',
+      2 => 'group_abiotic',
+      3 => 'group_ecosystemref',
     ),
-    'format_type' => 'htab',
+    'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
         'required_fields' => 1,
-        'id' => '',
       ),
     ),
   );
@@ -508,24 +647,23 @@ function ilter_site_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'site';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_site_design_status';
+  $field_group->parent_name = 'group_site_coreinfo';
   $field_group->data = array(
     'label' => 'Europe Specific Classifications',
-    'weight' => '96',
+    'weight' => '11',
     'children' => array(
       0 => 'field_site_eu_biogeo_region',
       1 => 'field_site_eu_enviro_zone',
       2 => 'field_site_eu_infobase_sitecode',
       3 => 'field_site_expeer_classif',
     ),
-    'format_type' => 'htab',
+    'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
         'required_fields' => 1,
-        'id' => '',
       ),
     ),
   );
@@ -539,23 +677,22 @@ function ilter_site_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'site';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_site_design_status';
+  $field_group->parent_name = 'group_site_coreinfo';
   $field_group->data = array(
     'label' => 'ExpeER Specific',
-    'weight' => '97',
+    'weight' => '17',
     'children' => array(
       0 => 'field_site_expeer_corine_class',
       1 => 'field_site_expeer_netmem',
       2 => 'field_site_expeer_sitename',
     ),
-    'format_type' => 'htab',
+    'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
         'required_fields' => 1,
-        'id' => '',
       ),
     ),
   );
@@ -572,11 +709,10 @@ function ilter_site_field_group_info() {
   $field_group->parent_name = 'group_site_geographic';
   $field_group->data = array(
     'label' => 'Site Geographic Coordinates',
-    'weight' => '144',
+    'weight' => '174',
     'children' => array(
-      0 => 'field_site_size',
+      0 => 'field_upload_shapefile',
       1 => 'field_geo_bounding_box',
-      2 => 'field_upload_shapefile',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -598,18 +734,17 @@ function ilter_site_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'site';
   $field_group->mode = 'form';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_site_coreinfo';
   $field_group->data = array(
     'label' => 'GEO-BON',
-    'weight' => '11',
-    'children' => array(
-      0 => 'group_geobon_tab_grp',
-    ),
-    'format_type' => 'htabs',
+    'weight' => '20',
+    'children' => array(),
+    'format_type' => 'tabs',
     'format_settings' => array(
       'formatter' => '',
       'instance_settings' => array(
         'classes' => '',
+        'id' => '',
       ),
     ),
   );
@@ -626,20 +761,23 @@ function ilter_site_field_group_info() {
   $field_group->parent_name = 'group_site_coreinfo';
   $field_group->data = array(
     'label' => 'Geographic',
-    'weight' => '139',
+    'weight' => '2',
     'children' => array(
-      0 => 'field_coordinates',
-      1 => 'group_geographic',
-      2 => 'group_site_geo_coordinates',
+      0 => 'field_site_size',
+      1 => 'field_coordinates',
+      2 => 'group_elevation_range',
+      3 => 'group_site_ecosystem',
+      4 => 'group_site_geo_coordinates',
+      5 => 'group_site_precip',
+      6 => 'group_ecosystem_characteristics',
     ),
-    'format_type' => 'htab',
+    'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-site-geographic field-group-htab',
+        'classes' => '',
         'required_fields' => 1,
-        'id' => '',
       ),
     ),
   );
@@ -653,10 +791,10 @@ function ilter_site_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'site';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_site_detailinfo';
+  $field_group->parent_name = 'group_site_coreinfo';
   $field_group->data = array(
     'label' => 'Infrastructure',
-    'weight' => '12',
+    'weight' => '14',
     'children' => array(
       0 => 'field_perm_power_loc',
       1 => 'field_site_access_allyear',
@@ -676,16 +814,18 @@ function ilter_site_field_group_info() {
       15 => 'field_site_inf_val',
       16 => 'field_site_infr_snow_clearng',
       17 => 'field_site_snow_clrng_freq',
+      18 => 'field_infrastructure_tax',
+      19 => 'field_infrastructure',
     ),
-    'format_type' => 'htab',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'label' => 'Infrastructure',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
         'required_fields' => 1,
-        'id' => '',
+        'classes' => '',
+        'description' => '',
       ),
+      'formatter' => 'closed',
     ),
   );
   $export['group_site_infrstrctr_group|node|site|form'] = $field_group;
@@ -698,10 +838,10 @@ function ilter_site_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'site';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_site_detailinfo';
+  $field_group->parent_name = 'group_site_coreinfo';
   $field_group->data = array(
     'label' => 'Operations',
-    'weight' => '11',
+    'weight' => '13',
     'children' => array(
       0 => 'field_site_ops_cost',
       1 => 'field_site_ops_ispermanent',
@@ -709,14 +849,13 @@ function ilter_site_field_group_info() {
       3 => 'field_site_ops_notes',
       4 => 'field_site_ops_sampling_intr',
     ),
-    'format_type' => 'htab',
+    'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
         'required_fields' => 1,
-        'id' => '',
       ),
     ),
   );
@@ -730,14 +869,11 @@ function ilter_site_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'site';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_details';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Detailed Categories (Europe required, others optional)',
-    'weight' => '7',
-    'children' => array(
-      0 => 'group_protection_status',
-      1 => 'group_resource_mgmnt',
-    ),
+    'weight' => '1',
+    'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
       'formatter' => 'collapsible',
@@ -758,23 +894,22 @@ function ilter_site_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'site';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_site_coreinfo';
+  $field_group->parent_name = 'group_site_geographic';
   $field_group->data = array(
     'label' => 'Precipitation',
-    'weight' => '141',
+    'weight' => '176',
     'children' => array(
       0 => 'field_precipitation_annual_ilter',
       1 => 'field_site_precip_max',
       2 => 'field_site_precip_min',
     ),
-    'format_type' => 'htab',
+    'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
         'required_fields' => 1,
-        'id' => '',
       ),
     ),
   );
@@ -788,22 +923,21 @@ function ilter_site_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'site';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_site_detailinfo';
+  $field_group->parent_name = 'group_site_coreinfo';
   $field_group->data = array(
     'label' => 'Protection and Management',
-    'weight' => '14',
+    'weight' => '16',
     'children' => array(
       0 => 'group_protection_status',
       1 => 'group_resource_mgmnt',
     ),
-    'format_type' => 'htab',
+    'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => 'group-site-protectmgt-grp field-group-htab',
+        'classes' => '',
         'required_fields' => 1,
-        'id' => '',
       ),
     ),
   );
@@ -817,29 +951,60 @@ function ilter_site_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'site';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_site_design_status';
+  $field_group->parent_name = 'group_site_coreinfo';
   $field_group->data = array(
     'label' => 'Site Status',
-    'weight' => '94',
+    'weight' => '9',
     'children' => array(
-      0 => 'field_site_eu_classification',
-      1 => 'field_site_eu_declaration_status',
-      2 => 'field_site_eu_docume_status',
-      3 => 'field_site_eu_notes',
-      4 => 'field_site_eu_site_type',
+      0 => 'field_site_eu__status_accred',
+      1 => 'field_site_eu_classification',
+      2 => 'field_site_eu_declaration_status',
+      3 => 'field_site_eu_docume_status',
+      4 => 'field_site_eu_notes',
+      5 => 'field_site_eu_site_type',
+      6 => 'field_declaration_status_accredi',
     ),
-    'format_type' => 'htab',
+    'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
         'required_fields' => 1,
-        'id' => '',
       ),
     ),
   );
   $export['group_site_status|node|site|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_site_taxonomy|node|site|form';
+  $field_group->group_name = 'group_site_taxonomy';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'site';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_site_coreinfo';
+  $field_group->data = array(
+    'label' => 'Taxonomy',
+    'weight' => '19',
+    'children' => array(
+      0 => 'field_free_keywords_ref',
+      1 => 'field_keywords',
+      2 => 'field_core_areas',
+      3 => 'field_taxa_ref',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_site_taxonomy|node|site|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -849,22 +1014,21 @@ function ilter_site_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'site';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_site_coreinfo';
+  $field_group->parent_name = 'group_ecosystem_characteristics';
   $field_group->data = array(
     'label' => 'Temperature',
-    'weight' => '140',
+    'weight' => '169',
     'children' => array(
       0 => 'field_temperature_average_annual',
       1 => 'group_temperature_rng',
     ),
-    'format_type' => 'htab',
+    'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
         'classes' => '',
         'required_fields' => 1,
-        'id' => '',
       ),
     ),
   );
