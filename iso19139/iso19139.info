@@ -1,0 +1,7 @@
+name = ISO19139
+description = Provides the ability to output ISO 19139 from nodes.
+core = 7.x
+package = DEIMS Base
+dependencies[] = field
+dependencies[] = helper
+files[] = lib/Iso19139DataSet.php
