@@ -197,7 +197,7 @@ function iso19139_field_formatter_view($entity_type, $entity, $field, $instance,
       }
       break;
 
-    case 'entityreference19139_iso_element':
+    case 'entityreference_iso19139_element':
       $ids = array();
       foreach ($items as $item) {
         $ids[] = $item['target_id'];
