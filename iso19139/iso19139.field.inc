@@ -192,7 +192,7 @@ function iso19139_field_formatter_view($entity_type, $entity, $field, $instance,
         );
         $element = array(
           '#theme' => 'iso19139_elements',
-          '#iso' => array('gmd:descriptiveKeywords' => array('gmd:MD_Keywords' => $keywords)),
+          '#iso19139' => array('gmd:descriptiveKeywords' => array('gmd:MD_Keywords' => $keywords)),
         );
       }
       break;
