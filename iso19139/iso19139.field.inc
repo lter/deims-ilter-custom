@@ -29,6 +29,8 @@ function iso19139_field_formatter_info() {
     'label' => t('ISO 19139 individualName'),
     'field types' => array('name'),
   );
+  
+  
   $info['addressfield_iso19139_address'] = array(
     'label' => t('ISO 19139 address'),
     'field types' => array('addressfield', 'email'),
@@ -64,6 +66,12 @@ function iso19139_field_formatter_info() {
   );
   $info['iso19139_text'] = array(
     'label' => t('ISO 19139 text'),
+    'field types' => array('text', 'text_long', 'text_with_summary'),
+  );
+  
+    // KLIMETO
+  $info['iso19139_text_ipr'] = array(
+    'label' => t('ISO 19139 text ipr'),
     'field types' => array('text', 'text_long', 'text_with_summary'),
   );
 
@@ -135,7 +143,7 @@ function iso19139_field_formatter_settings_form($field, $instance, $view_mode, $
 
     case 'entityreference_iso19139_element':
       $element['element'] = array(
-        '#title' => t('ISO_139 element name'),
+        '#title' => t('ISO_19139 element name'),
         '#type' => 'textfield',
         '#default_value' => $settings['element'],
         '#description' => t('If blank, will not output a root XML element and only output the contents from the template.'),
@@ -181,11 +189,13 @@ function iso19139_field_formatter_view($entity_type, $entity, $field, $instance,
         );
       }
       if (!empty($keywords)) {
-        $keywords[] = array(
+        /*
+		$keywords[] = array(
           'key' => 'gmd:type',
-          'value' => array('gmd:MD_KeywordTypeCode' => 'theme')      
-        );
-//        'attributes' => array('codeList' => 'http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_KeywordTypeCode','codeListValue' => 'theme'),
+          'value' => array('gmd:MD_KeywordTypeCode' => 'theme'),
+        'attributes' => array('codeList' => 'http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_KeywordTypeCode','codeListValue' => 'theme'),
+		);
+		*/
         $keywords[] = array(
           'key' => 'gmd:thesaurusName',
           'value' => array('gmd:CI_Citation' => array('gmd:title' => array('gco:CharacterString' => token_replace($settings['thesaurus_value'], array ('term' => reset($terms)))),'gmd:date gco:nilReason=unknown'=>'',))
@@ -242,6 +252,7 @@ function iso19139_field_formatter_view($entity_type, $entity, $field, $instance,
         );
       }
       break;
+	  
 
     case 'addressfield_iso19139_address':
 
@@ -313,10 +324,10 @@ function iso19139_field_formatter_view($entity_type, $entity, $field, $instance,
         $element[$delta] = array(
           '#theme' => 'iso19139_elements',
           '#iso19139' => array(
-            'gmd:westBoundingLongitude' => array('gco:Decimal' => $item['right']),
-            'gmd:eastBoundingLongitude' => array('gco:Decimal' => $item['left']),
-            'gmd:southBoundingLatitude' => array('gco:Decimal' =>  $item['bottom']),
-            'gmd:northBoundingLatitude' => array('gco:Decimal' => $item['top']),
+            'gmd:westBoundLongitude' => array('gco:Decimal' => $item['right']),
+            'gmd:eastBoundLongitude' => array('gco:Decimal' => $item['left']),
+            'gmd:southBoundLatitude' => array('gco:Decimal' =>  $item['bottom']),
+            'gmd:northBoundLatitude' => array('gco:Decimal' => $item['top']),
           ),
         );
       }
@@ -344,7 +355,8 @@ function iso19139_field_formatter_view($entity_type, $entity, $field, $instance,
 *      }
 *      break;
 */
-    case 'iso19139_onlineUrl':
+    
+	/*case 'iso19139_onlineUrl':
       foreach ($items as $delta => $item) {
         $element[$delta] = array(
           '#theme' => 'iso19139_elements',
@@ -352,8 +364,18 @@ function iso19139_field_formatter_view($entity_type, $entity, $field, $instance,
             'gmd:contactInfo' => array('gmd:CI_Contact' => array('gmd:onlineResource' => array('gmd:CI_OnlineResource' => array('gmd:linkage'  => array('gmd:URL' => $field['type'] == 'url' ? $item['value'] : $item['url']))))),
           ),
         );
-      }
+      }*/
+	  case 'iso19139_onlineUrl':
+      foreach ($items as $delta => $item) {
+        $element[$delta] = array(
+          '#theme' => 'iso19139_elements',
+          '#iso19139' => array('gmd:onlineResource' => array('gmd:CI_OnlineResource' => array('gmd:linkage'  => array('gmd:URL' => $field['type'] == 'url' ? $item['value'] : $item['url']))),
+          ),
+        );
+      } 
       break;
+	  
+
 
     case 'iso19139_text':
       foreach ($items as $delta => $item) {
@@ -365,6 +387,19 @@ function iso19139_field_formatter_view($entity_type, $entity, $field, $instance,
         );
       }
       break;
+	  
+	  // klimeto
+	  case 'iso19139_text_ipr':
+      foreach ($items as $delta => $item) {
+        $text = _text_sanitize($instance, $langcode, $item, 'value');
+        $element[$delta] = array(
+          '#theme' => 'iso19139_elements',
+          '#iso19139' => array('gmd:useLimitation' => array('gco:CharacterString' => strip_tags($text)),
+          ),
+        );
+      }
+      break;
+
   }
 
   return $element;
